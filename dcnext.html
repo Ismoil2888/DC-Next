@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <title>Document</title>
+</head>
+
+<style>
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.container{
+    width: 393px;
+}
+
+.prilozhenie{
+    width: 393;
+    background-color: #F1F1F3;
+    height: 100%;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 393px;
+    height: 6%;
+    border-bottom: 1px solid rgb(194, 189, 189);
+    position: fixed;
+    background: #F1F1F3;
+    z-index: 100;
+}
+
+.icon-menu{
+    font-size: 40px;
+    color: #017CFE;
+    margin-left: 15px;
+}
+
+.icon1{
+    font-size: 30px;
+    margin-right: 15px;
+    color: #017CFE;
+}
+
+main{
+    height: 820px;
+}
+
+main::-webkit-scrollbar{
+    width: 0;
+}
+
+.main-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.poisk{
+    width: 290px;
+    height: 40px;
+    padding-left: 20px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+.input-poisk{
+    background: white;
+    height: 40px;
+    margin: 15px;
+    padding-left: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.icon-poisk{
+    color: #8F8F8F;
+    font-size: 25px;
+}
+
+.balance{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 350px;
+    height: 90px;
+    color: white;
+    background: #017CFE;
+    border-radius: 15px;
+}
+
+.check{
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.tjs{
+    margin-left: 2px;
+    margin-top: 13px;
+}
+
+.balance-icons{
+    font-size: 30px;
+    margin-right: 15px;
+}
+
+.icon-repeat{
+    margin-left: 10px;
+}
+
+.time{
+    color: rgb(227, 216, 216);
+    font-size: 10px;
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
+.card1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 70px;
+    height: 70px;
+    background: white;
+    font-size: 8px;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+.dc-image1{
+    border: 1px solid grey;
+    border-radius: 50px;
+    width: 30px;
+}
+
+.razdel2{
+    display: flex;
+    overflow-x: auto;
+    align-items: center;
+    scroll-behavior: smooth;
+}
+
+.razdel2::-webkit-scrollbar{
+    width: 0;
+}
+
+.razdel3{
+    display: flex;
+    position: absolute;
+    top: 400px;
+}
+
+.razdel4{
+    display: flex;
+    margin-top: 110px;
+}
+
+.razdel5{
+    display: flex;
+}
+
+footer{
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 222;
+    height: 8%;
+    bottom: 0;
+    background: #F1F1F3;
+    width: 393px;
+}
+
+.footer-block1{
+    display: flex;
+    border-top: 2px solid gainsboro;
+    border-right: 2px solid gainsboro;
+    border-radius: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+}
+
+.footer-block2{
+    display: flex;
+    border-top: 2px solid gainsboro;
+    border-left: 2px solid gainsboro;
+    border-radius: 25px;
+    padding-left: 25px;
+    padding-top: 10px;
+}
+
+.footer-razdel4{
+    border-bottom: 2px solid gainsboro;
+    border-radius: 25px;
+    margin-bottom: 100px;
+    position: absolute;
+    margin-left: 170px;
+    
+}
+
+.footer-undertext{
+    font-size: 10px;
+    font-weight: 700;
+    color: rgb(161, 159, 159);
+}
+
+</style>
+
+<body>
+    
+<div class="container">
+    <div class="prilozhenie">
+        <header>
+            <div class="header-bar1">
+                <ion-icon class="icon-menu" name="reorder-three-outline"></ion-icon>
+            </div>
+            <img style="margin-left: 30px;" src="images/dc.next0.png" width="70px" alt="">
+            <div class="header-bar2">
+                <ion-icon class="icon1" name="qr-code-outline"></ion-icon>
+                <ion-icon class="icon1" name="notifications-outline"></ion-icon>
+            </div>
+        </header>
+
+        <main>
+            <div class="main-header">
+                <div class="input-poisk">
+                    <ion-icon class="icon-poisk" name="search-outline"></ion-icon>
+                    <input class="poisk" type="text" placeholder="Поиск">
+                </div>
+
+                <div class="balance">
+                    <div class="check-and-time">
+                        <div class="check">
+                            <h1>1100100</h1><h6 class="tjs">TJS</h6><br>
+                        </div>
+                        <div class="time">
+                            <p>30.04.24 - 18:29:10</p>
+                        </div>
+                    </div>
+                    <div class="balance-icons">
+                        <ion-icon name="eye-outline"></ion-icon>
+                        <ion-icon class="icon-repeat" name="sync-outline"></ion-icon>
+                    </div>                
+                </div>
+            </div>
+
+            <div class="main-card-razdels">
+                <div class="razdel1">
+                    <div class="card1">
+                        <img class="dc-image1" src="images/dc-image1.jpg" alt="dc">
+                        <p style="margin-left: 8px;">DC (по номеру телефона)</p>
+                    </div>
+                </div>
+
+                <div class="razdel2">
+                    <div class="card2">
+                        <img style="margin-top: 3px; margin-left: 15px;" width="190px" src="images/dc.next1.png" alt="">
+                    </div>
+                    <div class="card3">
+                        <img style="margin-top: 3px; margin-left: 20px;" width="180px" src="images/dc.next2.png" alt="">
+                    </div>
+                    <div class="card4">
+                        <img style="margin-top: 3px; margin-left: 25px; border-radius: 10px;" width="150px" src="images/dc.next3.png" alt="">
+                    </div>
+                </div>
+
+                <div class="razdel3">
+                    <div class="card5">
+                        <img style="margin-left: 15px;" width="240px" src="images/dc.next4.png" alt="">
+                    </div>
+                    <div class="card6">
+                        <img style="margin-left: 9px;" width="118px" src="images/dc.next5.png" alt="">
+                    </div>
+                </div>
+
+                <div class="razdel4">
+                    <div class="card7">
+                        <img style="margin-left: 15px;" width="118px" src="images/dc.next6.png" alt="">
+                    </div>
+                    <div class="card8">
+                        <img style="margin-left: 9px;" width="113px" src="images/dc.next7.png" alt="">
+                    </div>
+                    <div class="card9">
+                        <img style="margin-left: 11px;" width="113px" src="images/dc.next8.png" alt="">
+                    </div>
+                </div>
+
+                <div class="razdel5">
+                    <div class="card7">
+                        <img style="margin-left: 16px; margin-bottom: 1px;" width="116px" src="images/dc.next9.png" alt="">
+                    </div>
+                    <div class="card8">
+                        <img style="margin-left: 9px;" width="120px" src="images/dc.next10.png" alt="">
+                    </div>
+                    <div class="card9">
+                        <img style="margin-left: 6px;" width="115px" src="images/dc.next11.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-block1">
+                <div class="footer-razdel1">
+                    <ion-icon style="color: rgb(181, 181, 181); margin-left: 40px; font-size: 30px;" name="home"></ion-icon>
+                    <p style="margin-left: 35px;" class="footer-undertext">Главная</p>
+                </div>
+                <div class="footer-razdel2">
+                    <ion-icon style="color: rgb(181, 181, 181); margin-left: 40px; font-size: 30px;" name="arrow-forward-circle"></ion-icon> 
+                    <p style="margin-left: 35px;" class="footer-undertext">Переводы</p>
+                </div>
+            </div>
+            <div class="footer-razdel4">
+                <img src="images/dc.next.scanner.png" width="50px" alt="">
+            </div>
+            <div class="footer-block2">
+                <div class="footer-razdel3">
+                    <ion-icon style="color: rgb(181, 181, 181); margin-left: 10px; font-size: 30px;" name="grid"></ion-icon>
+                    <p style="margin-right: 40px;" class="footer-undertext">Сервисы</p>
+                </div>
+                <div class="footer-razdel5">
+                    <ion-icon style="color: rgb(181, 181, 181); margin-right: 25px; font-size: 30px;" name="time"></ion-icon>
+                    <p style="margin-right: 35px;" class="footer-undertext">История</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+</body>
+</html>
