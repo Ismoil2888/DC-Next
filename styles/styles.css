@@ -320,7 +320,7 @@ footer{
   justify-content: center;
   align-items: center;
   color: white;
-  background: #017CFE;
+  background-color: linear-gradient(#0371E5, #056BD6, #0862C2);
 }
 
 a{
@@ -339,7 +339,6 @@ a{
     width: 393px;
     height: 100%;
     z-index: 10000;
-    background: url(images/apploading.jpg);
-    background-size: 100%;
-    background-repeat: no-repeat;
+    background-image: url(/images/apploading.jpg);
+    background-size: cover;
 }
