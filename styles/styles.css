@@ -348,5 +348,5 @@ a{
     height: 100%;
     z-index: 10000;
     background-image: url(/images/apploading.jpg);
-    background-size: cover;
+    background-size: 100%;
 }
