@@ -17,13 +17,13 @@
  
 </style> 
  
-<body class="skeleton"> 
+<body> 
   
   <div id="notification" class="notification">
   <div class="notification-content"><h4>Успешно</h4><p>Ваш баланс обновлён</p></div>
   </div>
      
-<div class="container"> 
+<div class="container skeleton"> 
     <div class="prilozhenie"> 
         <header> 
             <div class="header-bar1"> 
@@ -40,16 +40,19 @@
     <button class="toggle-btn" onclick="toggleSidebar()">Х</button>
     <nav class="menu">
         <ul>
-          <img style="margin-bottom: 15px;" width="200px" src="images/dc.next-formenu.png">
+          <img width="190px" src="images/dc.next-formenu.png">
             <li><p class="username" href="#">Исмоил Хамидзода</p></li>
             <p class="telephon-number-in-menu">+992 (07) 023-4747</p><br>
-          <div class="ispvp"><li><img src="images/dc.next-identification.png" width="30px"><a class="link-in-menu" href="#"> Идентифицирован</a></li></div><br>
-          <div class="ispvp"><li><a href="#"><img src="images/dc.next-svyazsbankom.png" width="25px"> Связь с банком</a></li></div><br>
-            <li class="ispvp"><a href="#"><img src="images/dc.next-parametri.png" width="25px"> Параметры</a></li><br>
-            <li class="ispvp"><a href="#"><img src="images/dc.next-voprosi.png" width="25px"> Частые вопросы</a></li><br>
-            <li class="ispvp"><a href="#"><img src="images/dc.next-podelitsya.png" width="25px"> Поделиться приложением</a></li><br>
+            <li class="ispvp"><img src="images/dc.next-identification.png" width="25px"><a href="#"><p class="menu-links">Идентифицирован</p></a></li>
+            <li class="ispvp"><img src="images/dc.next-svyazsbankom.png" width="25px"><a href="#"><p class="menu-links"> Связь с банком</p></a></li>
+            <li class="ispvp"><img src="images/dc.next-parametri.png" width="25px"><a href="#"><p class="menu-links"> Параметры</p></a></li>
+            <li class="ispvp"><img src="images/dc.next-voprosi.png" width="25px"><a href="#"><p class="menu-links"> Частые вопросы</p></a></li>
+            <li class="ispvp"><img src="images/dc.next-podelitsya.png" width="25px"><a href="#"><p class="menu-links"> Поделиться приложением</p></a></li>
         </ul>
-      <button class="vikhod-btn"><img src="images/dc.next-vikhod.png" width="40px"> Выход</button>
+      <button class="vikhod-btn"><img style="margin: 10px;" src="images/dc.next-vikhod.png" width="30px"> Выход</button>
+       <div class="versiya-sborka-block">
+      <p>Версия: 2.3.1</p> <p style="margin-left: 15px;">Сборка: 281:3451</p>
+      </div>
     </nav>
 </div>
         </header> 
@@ -293,6 +296,6 @@ window.addEventListener('load', function() {
 });
   
   </script>
-  
+
 </body> 
 </html>

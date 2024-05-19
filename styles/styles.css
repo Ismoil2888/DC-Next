@@ -305,12 +305,12 @@ footer{
   align-items: center;
 }
 
-.link-in-menu{
-  margin-top: 105px;
+.menu-links{
+  margin-left: 20px;
 }
 
 .vikhod-btn{
-  margin-top: 50px;
+  margin-top: 220px;
   width: 250px;
   height: 50px;
   border: 0;
@@ -320,7 +320,15 @@ footer{
   justify-content: center;
   align-items: center;
   color: white;
-  background: linear-gradient(#0371E5, #056BD6, #0862C2);
+  background: linear-gradient(#036EDE, #0062C7, #005BBC);
+}
+
+.versiya-sborka-block{
+    display: flex;
+    color: #8F8F8F;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 30px;
 }
 
 a{
