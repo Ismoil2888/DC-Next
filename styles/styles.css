@@ -320,7 +320,7 @@ footer{
   justify-content: center;
   align-items: center;
   color: white;
-  background-color: linear-gradient(#0371E5, #056BD6, #0862C2);
+  background: linear-gradient(#0371E5, #056BD6, #0862C2);
 }
 
 a{
