@@ -6,6 +6,7 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script> 
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> 
     <title>DC Next App</title> 
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 </head> 
  
 <style> 
@@ -44,7 +45,6 @@ header{
  
 .h2-perevodi{
     font-size: 18px;
-    color: #333333;
     font-weight: 100;
 }
  
@@ -62,8 +62,8 @@ header{
 }
  
 main{ 
-    height: 820px; 
-  height: 107vh;
+    /* height: 820px;  */
+  height: 300vh;
   overflow: hidden;
 } 
  
@@ -78,80 +78,8 @@ main::-webkit-scrollbar{
     flex-direction: column; 
 } 
  
-.poisk{ 
-    width: 290px; 
-    height: 40px; 
-    padding-left: 20px; 
-    border: none; 
-    outline: none; 
-    border-radius: 5px; 
-} 
- 
-.input-poisk{ 
-    background: white; 
-    height: 40px; 
-    margin: 15px; 
-    padding-left: 15px; 
-    border-radius: 10px; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    margin-top: 60px; 
-} 
- 
-.icon-poisk{ 
-    color: #8F8F8F; 
-    font-size: 25px; 
-} 
-
-.hide-balance{
-  display: none;
-}
- 
-.card2{ 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    width: 350px; 
-    height: 90px; 
-    color: grey; 
-    background: white; 
-    border-radius: 15px; 
-    margin-top: 20px;
-} 
- 
-.check{ 
-    display: flex; 
-    align-items: center; 
-    margin-left: 15px; 
-} 
- 
-.tjs{ 
-    margin-left: 2px; 
-    margin-top: 13px; 
-} 
- 
-.balance-icons{ 
-    font-size: 30px; 
-    margin-right: 15px; 
-} 
- 
-.icon-repeat{ 
-    margin-left: 10px; 
-} 
- 
-.time{ 
-    color: rgb(227, 216, 216); 
-    font-size: 10px; 
-    margin-left: 15px; 
-    margin-top: 5px; 
-} 
- 
 .card1{ 
-    display: flex; 
-    justify-content: ; 
-    align-items: center; 
-    flex-direction: ; 
+    display: flex;     align-items: center; 
     width: 350px; 
     height: 100px; 
     background: white; 
@@ -171,22 +99,22 @@ main::-webkit-scrollbar{
     margin-left: 10px;
 }
 
-.card2{ 
-    display: flex; 
-    justify-content: ; 
-    align-items: center; 
-    flex-direction: ; 
-    width: 350px; 
-    height: 80px; 
-    background: white; 
-    font-size: 8px; 
-    border-radius: 10px;  
-    margin-top: 15px; 
-} 
-
 .gerb-image{ 
     width: 42px; 
     margin-left: 15px;
+} 
+
+.card2{ 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 350px; 
+    height: 80px; 
+    color: grey; 
+    background: white; 
+    font-size: 8px; 
+    border-radius: 10px;  
+    margin-top: 15px;
 } 
 
 .card2-text{
@@ -195,9 +123,7 @@ main::-webkit-scrollbar{
 
 .card3{ 
     display: flex; 
-    justify-content: ; 
     align-items: center; 
-    flex-direction: ; 
     width: 350px; 
     height: 60px; 
     background: white; 
@@ -217,11 +143,9 @@ main::-webkit-scrollbar{
  
 .card4{
     display: flex; 
-    justify-content: ; 
     align-items: center; 
-    flex-direction: ; 
     width: 350px; 
-    height: 80px; 
+    height: 85px; 
     background: white; 
     font-size: 8px; 
     border-radius: 10px;  
@@ -230,9 +154,7 @@ main::-webkit-scrollbar{
 
 .card5{
     display: flex; 
-    justify-content: ; 
     align-items: center; 
-    flex-direction: ; 
     width: 350px; 
     height: 60px; 
     background: white; 
@@ -248,9 +170,7 @@ main::-webkit-scrollbar{
 
 .card6{
     display: flex; 
-    justify-content: ; 
     align-items: center; 
-    flex-direction: ; 
     width: 350px; 
     height: 110px; 
     background: white; 
@@ -263,6 +183,209 @@ main::-webkit-scrollbar{
     width: 42px;
     margin-left: 15px;
 }
+
+.card7{
+    display: flex; 
+    align-items: center; 
+    width: 350px; 
+    height: 60px; 
+    background: white; 
+    font-size: 8px; 
+    border-radius: 10px;  
+    margin-top: 15px;
+}
+
+.sepa-zone{
+    width: 40px;
+    margin-left: 15px;
+}
+
+.card8{
+    display: flex; 
+    align-items: center; 
+    width: 350px; 
+    height: 60px; 
+    background: white; 
+    font-size: 8px; 
+    border-radius: 10px;  
+    margin-top: 15px;
+}
+
+.card9{
+    display: flex; 
+    align-items: center; 
+    width: 350px; 
+    height: 60px; 
+    background: white; 
+    font-size: 8px; 
+    border-radius: 10px;  
+    margin-top: 15px;
+}
+
+.card10{
+    display: flex; 
+    align-items: center; 
+    width: 350px; 
+    height: 60px; 
+    background: white; 
+    font-size: 8px; 
+    border-radius: 10px;  
+    margin-top: 15px;
+}
+
+.card11{
+    display: flex; 
+    align-items: center; 
+    width: 350px; 
+    height: 80px; 
+    background: white; 
+    font-size: 8px; 
+    border-radius: 10px;  
+    margin-top: 15px;
+}
+
+.card12{
+    display: flex; 
+    align-items: center; 
+    width: 350px; 
+    height: 80px; 
+    background: white; 
+    font-size: 8px; 
+    border-radius: 10px;  
+    margin-top: 15px;
+}
+
+.card13{ 
+    display: flex; 
+    align-items: center; 
+    width: 350px; 
+    height: 60px; 
+    background: white; 
+    font-size: 8px; 
+    border-radius: 10px;  
+    margin-top: 15px; 
+} 
+
+.card14{
+    display: flex; 
+    align-items: center; 
+    width: 350px; 
+    height: 85px; 
+    background: white; 
+    font-size: 8px; 
+    border-radius: 10px;  
+    margin-top: 15px;
+}
+
+.card15{
+    display: flex; 
+    align-items: center; 
+    width: 350px; 
+    height: 85px; 
+    background: white; 
+    font-size: 8px; 
+    border-radius: 10px;  
+    margin-top: 15px;
+}
+
+.card16{ 
+    display: flex; 
+    align-items: center; 
+    width: 350px; 
+    height: 60px; 
+    background: white; 
+    font-size: 8px; 
+    border-radius: 10px;  
+    margin-top: 15px; 
+} 
+
+.card17{ 
+    display: flex; 
+    align-items: center; 
+    width: 350px; 
+    height: 60px; 
+    background: white; 
+    font-size: 8px; 
+    border-radius: 10px;  
+    margin-top: 15px; 
+} 
+
+.card18{
+    display: flex; 
+    align-items: center; 
+    width: 350px; 
+    height: 80px; 
+    background: white; 
+    font-size: 8px; 
+    border-radius: 10px;  
+    margin-top: 15px;
+}
+
+.card19{ 
+    display: flex; 
+    align-items: center; 
+    width: 350px; 
+    height: 60px; 
+    background: white; 
+    font-size: 8px; 
+    border-radius: 10px;  
+    margin-top: 15px; 
+} 
+
+.card20{ 
+    display: flex; 
+    align-items: center; 
+    width: 350px; 
+    height: 60px; 
+    background: white; 
+    font-size: 8px; 
+    border-radius: 10px;  
+    margin-top: 15px; 
+} 
+
+.card21{ 
+    display: flex; 
+    align-items: center; 
+    width: 350px; 
+    height: 60px; 
+    background: white; 
+    font-size: 8px; 
+    border-radius: 10px;  
+    margin-top: 15px; 
+} 
+
+.card22{ 
+    display: flex; 
+    align-items: center; 
+    width: 350px; 
+    height: 60px; 
+    background: white; 
+    font-size: 8px; 
+    border-radius: 10px;  
+    margin-top: 15px; 
+} 
+
+.card23{
+    display: flex; 
+    align-items: center; 
+    width: 350px; 
+    height: 80px; 
+    background: white; 
+    font-size: 8px; 
+    border-radius: 10px;  
+    margin-top: 15px;
+}
+
+.card24{ 
+    display: flex; 
+    align-items: center; 
+    width: 350px; 
+    height: 60px; 
+    background: white; 
+    font-size: 8px; 
+    border-radius: 10px;  
+    margin-top: 15px; 
+} 
  
 footer{ 
     display: flex; 
@@ -372,6 +495,8 @@ a{
          <h2 class="h2-perevodi">Переводы</h2>
         </header> 
  
+        <video id="scanner" style="display: none;"></video>
+
         <main> 
             <div class="main-header"> 
                 <div class="card1"> 
@@ -420,44 +545,137 @@ a{
                     </div> 
                 </div> 
 
+                <div class="card7"> 
+                        <img class="sepa-zone" src="images/sepa-zone.png" alt=""> 
+                        <div class="card1-text">
+                        <h2 style="color: #807f7f; margin-bottom: 20px;">На счета SEPA ZONE с EURO IBAN</h2><br>
+                        </div> 
                 </div> 
- 
-                
- 
-                <div class="razdel2"> 
-                    
-                </div> 
- 
-                <div class="razdel3"> 
-                    <div class="card5"> 
-                        <img style="margin-left: 15px;" width="240px" src="images/d.next4.png" alt=""> 
+
+                <div class="card8"> 
+                    <img class="sepa-zone" src="images/turkey.png" alt=""> 
+                    <div class="card1-text">
+                    <h2 style="color: #807f7f; margin-bottom: 18px;">На счёт в Турции по номеру IBAN</h2><br>
                     </div> 
-                    <div class="card6"> 
-                        <img style="margin-left: 9px;" width="118px" src="images/d.next5.png" alt=""> 
-                    </div> 
-                </div> 
- 
-                <div class="razdel4"> 
-                    <div class="card7"> 
-                        <img style="margin-left: 15px;" width="118px" src="images/dc.next6.png" alt=""> 
-                    </div> 
-                    <div class="card8"> 
-                        <img style="margin-left: 9px;" width="113px" src="images/dc.next7.png" alt=""> 
-                    </div> 
-                    <div class="card9"> 
-                        <img style="margin-left: 11px;" width="113px" src="images/dc.next8.png" alt=""> 
+                </div>
+
+                <div class="card9"> 
+                    <img class="sepa-zone" src="images/upt.png" alt=""> 
+                    <div class="card1-text">
+                    <h2 style="color: #807f7f; margin-bottom: 18px;">Наличные переводы в UPT Турции (USD)</h2><br>
                     </div> 
                 </div> 
- 
-                <div class="razdel5"> 
-                    <div class="card7"> 
-                        <img style="margin-left: 16px; margin-bottom: 1px;" width="116px" src="images/dc.next9.png" alt=""> 
+
+                <div class="card10"> 
+                    <img style="margin-left: 15px;" width="40px" src="images/alkart.png" alt=""> 
+                    <div class="card1-text">
+                    <h2 style="color: #807f7f; margin-bottom: 18px;">В Кыргызстан на карты ЭЛКАРТ</h2><br>
                     </div> 
-                    <div class="card8"> 
-                        <img style="margin-left: 9px;" width="120px" src="images/dc.next10.png" alt=""> 
+                </div> 
+
+                <div class="card11"> 
+                    <img class="sepa-zone" src="images/tinkof.png" alt=""> 
+                    <div class="card1-text">
+                    <h2 style="color: #807f7f;">На Тинькофф (по номеру телефона)</h2><br>
+                    <p style="font-size: 11px; color: #8F8F8F;">Введите номер телефона, за которым закреплена карта Тинькоффа. Комиссия: 0%.</p>
                     </div> 
-                    <div class="card9"> 
-                        <img style="margin-left: 6px;" width="115px" src="images/dc.next11.png" alt=""> 
+                </div> 
+
+                <div class="card12"> 
+                    <img class="sepa-zone" src="images/koreyskiy.png" alt=""> 
+                    <div class="card1-text">
+                    <h2 style="color: #807f7f;">На Корйский банковский счёт по номеру клиента E9pay</h2><br>
+                    <p style="font-size: 11px; color: #8F8F8F;">Укажите номер счёта</p>
+                    </div> 
+                </div> 
+
+                <div class="card13"> 
+                    <img class="sepa-zone" src="images/mbulak.png" alt=""> 
+                    <div class="card1-text">
+                    <h2 style="color: #807f7f; margin-bottom: 18px;">ООО "MKK M Булак"</h2><br>
+                    </div>
+                </div> 
+
+                <div class="card14"> 
+                    <img class="sepa-zone" src="images/gruziya.png" alt=""> 
+                    <div class="card1-text">
+                    <h2 style="color: #807f7f;">На счёт в Грузии по номеру IBAN</h2><br>
+                    <p style="font-size: 11px; color: #8F8F8F;">Перевод зачисляется в течение суток<br> В редких случаях срок зачисления увеличивается<br> до нескольких дней</p>
+                    </div> 
+                </div> 
+
+                <div class="card15"> 
+                    <img class="sepa-zone" src="images/uae.png" alt=""> 
+                    <div class="card1-text">
+                    <h2 style="color: #807f7f;">На счёт в ОАЭ по номеру IBAN</h2><br>
+                    <p style="font-size: 11px; color: #8F8F8F;">Перевод зачисляется в течение суток<br> В редких случаях срок зачисления увеличивается<br> до нескольких дней</p>
+                    </div> 
+                </div> 
+
+                <div class="card16"> 
+                    <img style="margin-left: 15px;" width="40px" src="images/pingpongtest.png" alt=""> 
+                    <div class="card1-text">
+                    <h2 style="color: #807f7f; margin-bottom: 18px;">PingPong(test)</h2><br>
+                    </div> 
+                </div> 
+
+                <div class="card17"> 
+                    <img style="margin-left: 15px;" width="40px" src="images/webmoney.png" alt=""> 
+                    <div class="card1-text">
+                    <h2 style="color: #807f7f; margin-bottom: 18px;">WebMoney-USD</h2><br>
+                    </div> 
+                </div> 
+
+                <div class="card18"> 
+                    <img class="sepa-zone" src="images/uzbekistanlar.png" alt=""> 
+                    <div class="card1-text">
+                    <h2 style="color: #807f7f;">На карты Узбекистана</h2><br>
+                    <p style="font-size: 11px; color: #8F8F8F;">Укажите номер карты Узбекистана (UzCard,Humo) и введите сумму первода</p>
+                    </div> 
+                </div> 
+
+                <div class="card19"> 
+                    <img style="margin-left: 15px;" width="40px" src="images/kazak.png" alt=""> 
+                    <div class="card1-text">
+                    <h2 style="color: #807f7f; margin-bottom: 18px;">На карты Казахстана</h2><br>
+                    </div> 
+                </div> 
+
+                <div class="card20"> 
+                    <img style="margin-left: 15px;" width="40px" src="images/armen.png" alt=""> 
+                    <div class="card1-text">
+                    <h2 style="color: #807f7f; margin-bottom: 18px;">На карты Армении</h2><br>
+                    </div> 
+                </div> 
+
+                <div class="card21"> 
+                    <img style="margin-left: 15px;" width="40px" src="images/ozerboy.png" alt=""> 
+                    <div class="card1-text">
+                    <h2 style="color: #807f7f; margin-bottom: 18px;">На карты Азербайджана</h2><br>
+                    </div> 
+                </div> 
+
+                <div class="card22"> 
+                    <img class="sepa-zone" src="images/sbp.png" alt=""> 
+                    <div class="card1-text">
+                    <h2 style="color: #807f7f;">СБП</h2><br>
+                    <p style="font-size: 11px; color: #8F8F8F;">Система быстрых платежей</p>
+                    </div> 
+                </div> 
+
+                <div class="card23"> 
+                    <img class="sepa-zone" src="images/sber.png" alt=""> 
+                    <div class="card1-text">
+                    <h2 style="color: #807f7f;">На Сбербанк (по номеру телефона)</h2><br>
+                    <p style="font-size: 11px; color: #8F8F8F;">Введите номер телефона, за которым закреплена карта Сбербанка. Комиссия: 0%.</p>
+                    </div> 
+                </div> 
+
+                <div class="card24"> 
+                    <img class="sepa-zone" src="images/sber.png" alt=""> 
+                    <div class="card1-text">
+                    <h2 style="color: #807f7f;">СБП</h2><br>
+                    <p style="font-size: 11px; color: #8F8F8F;">Введите номер карты Сбербанка. Комиссия 0%.</p>
                     </div> 
                 </div> 
             </div> 
@@ -477,7 +695,7 @@ a{
                 </div> 
             </div> 
             <div class="footer-razdel4"> 
-                <img src="images/dc.next.scanner.png" class="scanner" width="52px" alt=""> 
+                <img id="startScanButton" src="images/dc.next.scanner.png" class="scanner" width="52px" alt=""> 
             </div> 
             <div class="footer-block2"> 
                 <div class="footer-razdel3"> 
@@ -495,7 +713,33 @@ a{
  
   <script>
   
-  
+  const startScanButton = document.getElementById('startScanButton');
+const scanner = new Instascan.Scanner({ video: document.getElementById('scanner'), mirror: false }); // mirror: false для использования задней камеры
+let timer;
+
+startScanButton.addEventListener('click', async () => {
+    try {
+        const cameras = await Instascan.Camera.getCameras();
+        if (cameras.length > 0) {
+            scanner.start(cameras[cameras.length - 1]); // Используем последнюю камеру (заднюю)
+            scanner.addListener('scan', function (content) {
+                alert('QR-код найден: ' + content);
+                clearTimeout(timer); // Сбрасываем таймер при обнаружении QR-кода
+            });
+            document.getElementById('scanner').style.display = 'block';
+
+            timer = setTimeout(() => {
+                scanner.stop(); // Останавливаем сканирование после 3 секунд без обнаружения QR-кода
+                document.getElementById('scanner').style.display = 'none';
+                alert('QR-код не найден. Камера закрыта.');
+            }, 6000);
+        } else {
+            alert('Камера не найдена');
+        }
+    } catch (error) {
+        console.error('Ошибка при доступе к камере:', error);
+    }
+});
   
   </script>
   

@@ -1,0 +1,328 @@
+*{ 
+    margin: 0; 
+    padding: 0; 
+    font-family: sans-serif; 
+} 
+
+/* ::-webkit-scrollbar{ 
+    display: none;
+} */
+ 
+.container{ 
+    width: 393px; 
+} 
+ 
+.prilozhenie{ 
+    width: 393; 
+    background-color: #F1F1F3; 
+    height: 100%;
+} 
+ 
+header{ 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 393px; 
+    border-bottom: 1px solid rgb(194, 189, 189); 
+    position: fixed; 
+    background: #F1F1F3; 
+    z-index: 100; 
+    height: 45px;
+} 
+ 
+.icon-menu{ 
+    margin-left: 15px; 
+} 
+
+.sidebar {
+    height: 100vh;
+    width: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    z-index: 99999;
+    transition: all 0.3s ease 0s;
+    transform: translateX(-900px);
+}
+
+.toggle-btn {
+    font-size: 30px;
+    cursor: pointer;
+    color: #017CFE;
+    background: transparent;
+    border: 0px;
+    padding-left: 15px;
+}
+
+.menu {
+    padding-left: 25px;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu ul li {
+    padding: 10px 0;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.sidebar.open {
+    width: 290px;
+    transform: translateX(1px);
+}
+
+.username{
+  color: #017CFE;
+  font-size: 20px;
+}
+ 
+.icon1{  
+    margin-top: 5px;
+    margin-right: 15px; 
+} 
+
+.uvedomleniye{
+  margin-bottom: 6px;
+}
+
+.elastic-effect {
+  transition: transform 0.5s ease;
+}
+ 
+main{ 
+    height: 820px; 
+  /* height: 107vh; */
+  overflow: hidden;
+} 
+ 
+main::-webkit-scrollbar{ 
+    width: 0; 
+} 
+ 
+.main-header{ 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column; 
+} 
+ 
+.poisk{ 
+    width: 290px; 
+    height: 40px; 
+    padding-left: 20px; 
+    border: none; 
+    outline: none; 
+    border-radius: 5px; 
+} 
+ 
+.input-poisk{ 
+    background: white; 
+    height: 40px; 
+    margin: 15px; 
+    padding-left: 15px; 
+    border-radius: 10px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 60px; 
+} 
+ 
+.icon-poisk{ 
+    color: #8F8F8F; 
+    font-size: 25px; 
+} 
+
+.hide-balance{
+  display: none;
+}
+ 
+.balance{ 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 350px; 
+    height: 90px; 
+    color: white; 
+    background: #017CFE; 
+    border-radius: 15px; 
+} 
+ 
+.check{ 
+    display: flex; 
+    align-items: center; 
+    margin-left: 15px; 
+} 
+ 
+.tjs{ 
+    margin-left: 2px; 
+    margin-top: 13px; 
+} 
+ 
+.balance-icons{ 
+    font-size: 30px; 
+    margin-right: 15px; 
+} 
+ 
+.icon-repeat{ 
+    margin-left: 10px; 
+} 
+ 
+.time{ 
+    color: rgb(227, 216, 216); 
+    font-size: 10px; 
+    margin-left: 15px; 
+    margin-top: 5px; 
+} 
+ 
+.card1{ 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column; 
+    width: 70px; 
+    height: 70px; 
+    background: white; 
+    font-size: 8px; 
+    border-radius: 10px; 
+    margin-left: 20px; 
+    margin-top: 15px; 
+} 
+ 
+.dc-image1{ 
+    border: 1px solid grey; 
+    border-radius: 50px; 
+    width: 30px; 
+} 
+ 
+.razdel2{ 
+    display: flex; 
+    overflow-x: auto; 
+    align-items: center; 
+    scroll-behavior: smooth; 
+}
+ 
+.razdel2::-webkit-scrollbar{ 
+    width: 0; 
+} 
+ 
+.razdel3{ 
+    display: flex;
+    position: absolute; 
+    top: 400px; 
+} 
+ 
+.razdel4{ 
+    display: flex; 
+    margin-top: 110px; 
+} 
+ 
+.razdel5{ 
+    display: flex; 
+} 
+ 
+footer{ 
+    display: flex; 
+    justify-content: space-between; 
+    position: fixed; 
+    height: 8%; 
+    bottom: 0; 
+    background: #F1F1F3; 
+    width: 393px; 
+} 
+ 
+.footer-block1{ 
+    display: flex; 
+    border-top: 1px solid gainsboro; 
+    border-radius: 25px; 
+    padding-right: 25px; 
+    padding-top: 10px; 
+} 
+ 
+.footer-block2{ 
+    display: flex; 
+    border-top: 1px solid gainsboro; 
+    border-radius: 25px; 
+    padding-left: 25px; 
+    padding-top: 10px; 
+} 
+ 
+.footer-razdel4{ 
+  height: 200px;
+  border-bottom: 2px solid gainsboro;
+  border-radius: 25px;
+} 
+
+.scanner{
+  z-index: 200;
+  position: absolute;
+  right: 175px;
+  bottom: 30px; 
+  padding-bottom: 5px;
+  border-bottom: 2px solid gainsboro;
+  border-radius: 25px;
+  box-shadow: 0 0 2px grey;
+}
+ 
+.footer-undertext{ 
+    font-size: 10px; 
+    font-weight: 700; 
+    color: rgb(161, 159, 159); 
+} 
+
+.notification {
+  display: none;
+  position: fixed;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: black;
+  padding-left: 15px;
+  padding-top: 10px;
+  border-radius: 15px;
+  z-index: 9999;
+  transition: all 0.5s ease;
+  background: transparent;
+  backdrop-filter: blur(70px);
+  width: 250px;
+  height: 60px;
+}
+
+.telephon-number-in-menu{
+  color: grey;
+}
+
+.ispvp{
+  display: flex;
+  align-items: center;
+}
+
+.link-in-menu{
+  margin-top: 105px;
+}
+
+.vikhod-btn{
+  margin-top: 50px;
+  width: 250px;
+  height: 50px;
+  border: 0;
+  border-radius: 15px;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: #017CFE;
+}
+
+a{
+    text-decoration: none;
+}
