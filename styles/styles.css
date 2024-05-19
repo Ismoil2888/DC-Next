@@ -46,15 +46,6 @@ header{
     transform: translateX(-900px);
 }
 
-.toggle-btn {
-    font-size: 30px;
-    cursor: pointer;
-    color: #017CFE;
-    background: transparent;
-    border: 0px;
-    padding-left: 15px;
-}
-
 .menu {
     padding-left: 25px;
 }
@@ -111,8 +102,7 @@ header{
 }
  
 main{ 
-    height: 820px; 
-  /* height: 107vh; */
+  height: 820px; 
   overflow: hidden;
 } 
  
@@ -329,6 +319,7 @@ footer{
   border: 0;
   border-radius: 15px;
   font-size: 25px;
+  font-weight: 500;
   display: flex;
   justify-content: center;
   align-items: center;
