@@ -17,7 +17,7 @@
  
 </style> 
  
-<body> 
+<body class="skeleton"> 
   
   <div id="notification" class="notification">
   <div class="notification-content"><h4>Успешно</h4><p>Ваш баланс обновлён</p></div>
@@ -279,6 +279,17 @@ startScanButton.addEventListener('click', async () => {
     } catch (error) {
         console.error('Ошибка при доступе к камере:', error);
     }
+});
+
+
+
+
+const allSkeletonis = document.querySelectorAll('.skeleton');
+
+window.addEventListener('load', function() {
+    allSkeletonis.forEach(item=> {
+        item.classList.remove('skeleton');
+    });
 });
   
   </script>

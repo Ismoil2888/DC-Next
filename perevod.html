@@ -483,12 +483,29 @@ footer{
 a{
     text-decoration: none;
 }
+
+.skeleton{
+    position: relative;
+}
+
+.skeleton::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 393px;
+    height: 100%;
+    z-index: 10000;
+    background: url(images/apploading.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
  
 </style> 
  
 <body> 
      
-<div class="container"> 
+<div class="container skeleton"> 
     <div class="prilozhenie"> 
         <header> 
          <h2 class="h2-perevodi">Переводы</h2>
@@ -772,6 +789,17 @@ startScanButton.addEventListener('click', async () => {
     } catch (error) {
         console.error('Ошибка при доступе к камере:', error);
     }
+});
+
+
+
+
+const allSkeletonis = document.querySelectorAll('.skeleton');
+
+window.addEventListener('load', function() {
+    allSkeletonis.forEach(item=> {
+        item.classList.remove('skeleton');
+    });
 });
   
   </script>
