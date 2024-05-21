@@ -190,10 +190,11 @@ main::-webkit-scrollbar{
     justify-content: center; 
     align-items: center; 
     flex-direction: column; 
-    width: 70px; 
-    height: 70px; 
+    width: 75px; 
+    height: 75px; 
     background: white; 
-    font-size: 8px; 
+    font-size: 9px;
+    text-align: center; 
     border-radius: 10px; 
     margin-left: 20px; 
     margin-top: 15px; 
@@ -256,11 +257,46 @@ footer{
     padding-left: 25px; 
     padding-top: 10px; 
 } 
+
+.footer-razdel1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 75px;
+}
+
+.footer-razdel2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90px;
+}
+
+.footer-razdel3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50px;
+    margin-right: 25px;
+}
+
+.footer-razdel5{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 70px;
+    margin-right: 15px;
+}
  
 .footer-razdel4{ 
   height: 200px;
   border-bottom: 2px solid gainsboro;
   border-radius: 25px;
+  width: 100px;
 } 
 
 .scanner{
