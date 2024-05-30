@@ -21,7 +21,6 @@
 
 
 .form{
-  border: 2px solid grey;
   border-radius: 5px;
   height: 820px;
   width: 100%;
@@ -44,7 +43,8 @@
 }
 
 .form-back-icon{
-  font-size: 35px;
+  font-size: 30px;
+  margin-bottom: 7px;
 }
 
 .form-main{
@@ -161,7 +161,7 @@
     left: 0;
     width: 393px;
     height: 100%;
-    background: url('/images/apploading.jpg') no-repeat center center;
+    background: url('/images/apploading.jpg') center;
     background-size: cover;
     z-index: 9999;
 }
@@ -325,7 +325,7 @@
           
           <div class="form">
     <div class="form-header">
-      <div class="form-back-icon" onclick="toggleForm()"><</div><h3>DC (по номеру телефона)</h3><div style="font-size: 50px; margin-top: 15px;">*</div>
+      <ion-icon class="form-back-icon" onclick="toggleForm()" name="chevron-back-outline"></ion-icon><h3 style="font-weight: 500;">DC (по номеру телефона)</h3><div style="font-size: 50px; margin-top: 15px;"><ion-icon style="width: 30px; margin-bottom: 7px;" name="star-outline"></ion-icon></div>
     </div>
       
       <div class="form-main">
@@ -371,7 +371,7 @@ window.addEventListener('load', function () {
     const loader = document.getElementById('loader');
     const content = document.getElementById('container');
     
-    loader.style.display = 'none';
+    oader.style.display = 'none';
     content.style.display = 'block';
 });
 
