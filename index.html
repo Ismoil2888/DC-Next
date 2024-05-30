@@ -1,306 +1,494 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> 
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="website icon" type="png" href="images/logoapp.png">
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script> 
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> 
-    <title>DC Next App</title> 
-    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
-</head> 
- 
-<style> 
- 
-
- 
-</style> 
- 
-<body> 
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">  
+    <link rel="stylesheet" href="styles/styles.css"> 
+    <link rel="website icon" type="png" href="images/logoapp.png"> 
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>  
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>  
+    <title>DC Next App</title>  
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script> 
+</head>  
   
-  <div id="notification" class="notification">
-  <div class="notification-content"><h4>Успешно</h4><p>Ваш баланс обновлён</p></div>
-  </div>
-     
-<div class="container skeleton"> 
-    <div class="prilozhenie"> 
-        <header> 
-            <div class="header-bar1"> 
-              <img src="images/dc.next.menushka.png" class="icon-menu" onclick="toggleSidebar()" width="35">
-            </div> 
-            <img style="margin-left: 30px;" src="images/dc.next0.png" width="70px" alt=""> 
-            <div class="header-bar2"> 
-              <img class="icon1" src="images/dc.next-qr-code.png" width="30px"> 
-              <img class="icon1 uvedomleniye" src="images/dc.next-uvedomleniye.png" width="26px"> 
-            </div> 
-          
-<div class="sidebar">
-    <nav class="menu">
-        <ul>
-          <img width="190px" src="images/dc.next-formenu.png">
-            <li><p class="username" href="#">Исмоил Хамидзода</p></li>
-            <p class="telephon-number-in-menu">+992 (07) 023-4747</p><br>
-            <li class="ispvp"><img src="images/dc.next-identification.png" width="35px"><a href="perevod.html"><p class="menu-links">Идентифицирован</p></a></li>
-            <li class="ispvp"><img src="images/dc.next-svyazsbankom.png" width="35px"><a href="#"><p class="menu-links"> Связь с банком</p></a></li>
-            <li class="ispvp"><img src="images/dc.next-parametri.png" width="35px"><a href="#"><p class="menu-links"> Параметры</p></a></li>
-            <li class="ispvp"><img src="images/dc.next-voprosi.png" width="35px"><a href="#"><p class="menu-links"> Частые вопросы</p></a></li>
-            <li class="ispvp"><img src="images/dc.next-podelitsya.png" width="35px"><a href="#"><p class="menu-links"> Поделиться приложением</p></a></li>
-        </ul>
-      <button class="vikhod-btn"><img style="margin: 10px;" src="images/dc.next-vikhod.png" width="30px"> Выход</button>
-       <div class="versiya-sborka-block">
-      <p>Версия: 2.3.1</p> <p style="margin-left: 15px;">Сборка: 281:3451</p>
-      </div>
-      <nav class="menu2" onclick="toggleSidebar()"></nav>
-    </nav>
-</div>
-        </header> 
- 
-        <video id="scanner" style="display: none;"></video>
-
-        <main> 
-            <div class="main-header"> 
-                <div class="input-poisk"> 
-                    <ion-icon class="icon-poisk" name="search-outline"></ion-icon> 
-                    <input class="poisk" type="text" placeholder="Поиск"> 
-                </div> 
- 
-                <div class="balance"> 
-                    <div class="check-and-time"> 
-                        <div class="check"> 
-                         <h1 class="hide-balance">****</h1><h1 class="balance-view">1900500,93</h1><h6 class="tjs">TJS</h6><br> 
-                        </div> 
-                        <div class="time"> 
-                            <p>30.04.24 - 18:29:10</p> 
-                        </div> 
-                    </div> 
-                    <div class="balance-icons"> 
-                        <ion-icon id="eye-icon" name="eye-outline"></ion-icon> 
-                        <ion-icon class="icon-repeat" id="showNotification" name="sync-outline"></ion-icon> 
-                    </div>                 
-                </div> 
-            </div> 
- 
-            <div class="main-card-razdels"> 
-                <div class="razdel1"> 
-                    <div class="card1"> 
-                        <img class="dc-image1" src="images/dc-image1.jpg" alt="dc"> 
-                        <p style="margin-top: 3px;">DC (по номеру телефона)</p> 
-                    </div> 
-                </div> 
- 
-                <div class="razdel2"> 
-                    <div class="card2"> 
-                        <img style="margin-top: 3px; margin-left: 15px;" width="190px" src="images/dc.next1.png" alt=""> 
-                    </div> 
-                    <div class="card3"> 
-                        <img style="margin-top: 3px; margin-left: 20px;" width="180px" src="images/dc.next2.png" alt=""> 
-                    </div> 
-                    <div class="card4"> 
-                        <img style="margin-top: 3px; margin-left: 25px; border-radius: 10px;" width="150px" src="images/dc.next3.png" alt=""> 
-                    </div> 
-                </div> 
- 
-                <div class="razdel3"> 
-                    <div class="card5"> 
-                        <img style="margin-left: 15px;" width="240px" src="images/dc.next4.png" alt=""> 
-                    </div> 
-                    <div class="card6"> 
-                        <img style="margin-left: 9px;" width="118px" src="images/dc.next5.png" alt=""> 
-                    </div> 
-                </div> 
- 
-                <div class="razdel4"> 
-                    <div class="card7"> 
-                        <img style="margin-left: 15px;" width="118px" src="images/dc.next6.png" alt=""> 
-                    </div> 
-                    <div class="card8"> 
-                        <img style="margin-left: 9px;" width="113px" src="images/dc.next7.png" alt=""> 
-                    </div> 
-                    <div class="card9"> 
-                        <img style="margin-left: 11px;" width="113px" src="images/dc.next8.png" alt=""> 
-                    </div> 
-                </div> 
- 
-                <div class="razdel5"> 
-                    <div class="card7"> 
-                        <img style="margin-left: 16px; margin-bottom: 1px;" width="116px" src="images/dc.next9.png" alt=""> 
-                    </div> 
-                    <div class="card8"> 
-                        <img style="margin-left: 9px;" width="120px" src="images/dc.next10.png" alt=""> 
-                    </div> 
-                    <div class="card9"> 
-                        <img style="margin-left: 6px;" width="115px" src="images/dc.next11.png" alt=""> 
-                    </div> 
-                </div> 
-            </div> 
-        </main> 
- 
-        <footer> 
-            <div class="footer-block1">
-              <a href="">
-                <div class="footer-razdel1"> 
-                  <img style="margin-lef: 40px;" width="24px" src="images/icon-glv-active.png" alt="">
-                    <p style="margin-top: 5px; text-align: center;" class="footer-undertext">Главная</p> 
-                </div> 
-              </a>
-                <a href="perevod.html">
-                <div class="footer-razdel2"> 
-                      <img style="argin-left: 40px;" width="24px" src="images/icon-perevodi.png" alt="">
-                    <p style="margin-top: 5px; text-align: center;" class="footer-undertext">Переводы</p> 
-                </div> 
-              </a>
-            </div> 
-            <div class="footer-razdel4"> 
-                <img id="startScanButton" src="images/dc.next.scanner.png" class="scanner" width="54px" alt=""> 
-            </div> 
-            <div class="footer-block2"> 
-              <a href="">
-                <div class="footer-razdel3"> 
-                  <img style="argin-left: 10px;" src="images/icon-servisi.png" width="24px" alt="">
-                    <p style="margin-top: 5px;" class="footer-undertext">Сервисы</p> 
-                </div> 
-              </a>
-              <a href="">
-                <div class="footer-razdel5"> 
-                  <img style="argin-right: 25px;" src="images/icon-istori.png" width="24px" alt="">
-                    <p style="margin-top: 5px;" class="footer-undertext">История</p> 
-                </div> 
-              </a>
-            </div> 
-        </footer> 
-    </div> 
-</div> 
- 
-  <script>
+<style>  
   
-  function toggleSidebar() {
-    var sidebar = document.querySelector('.sidebar');
-     sidebar.classList.toggle('open');
+ .form.openn {
+    bottom: 0;
+}
+
+
+.form{
+  border: 2px solid grey;
+  border-radius: 5px;
+  height: 820px;
+  width: 100%;
+  bottom: -850px;
+  position: absolute;
+  transition: bottom 0.4s;
+  background: #F1F1F3;
+  z-index: 700 !important;
+  overflow-y: hidden;
+}
+
+.form-header{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #017CFE;
+  height: 40px;
+  padding-top: 30px;
+  color: white;
+}
+
+.form-back-icon{
+  font-size: 35px;
+}
+
+.form-main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-input1{
+  border: 0;
+  width: 350px;
+  height: 45px;
+  border-radius: 10px; 
+  margin-top: 20px;
+  margin-right: 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-button1{
+  border: 0;
+  width: 350px;
+  height: 50px;
+  border-radius: 15px; 
+  margin-top: 12px;
+  margin-right: 5px;
+  background: skyblue;
+  color: #017CFE;
+}
+
+.form-input2{
+  border: 0;
+  width: 350px;
+  height: 45px;
+  border-radius: 10px; 
+  margin-top: 12px;
+  margin-right: 5px;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+ .form-input3{
+  border: 0;
+  width: 350px;
+  height: 45px;
+  border-radius: 10px; 
+  margin-top: 10px;
+  margin-right: 5px;
+   padding: 10px;
+   font-size: 16px;
+}
+
+.min-summa{
+  margin-top: 5px;
+  margin-left: 250px;
+  color: grey;
+  font-weight: 00;
+}
+
+.form-blocks{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.form-block1{
+  background: #017CFE;
+  color: white;
+  border-radius: 15px;
+  width: 90px;
+  height: 60px;
+  padding: 10px;
+  margin-right: 7px;
+}
+
+.form-block2{
+  background: white;
+  color: grey;
+  border-radius: 15px;
+  width: 90px;
+  height: 60px;
+  padding: 10px;
+  margin-left: 7px;
+  font-weight: 700;
+}
+
+.form-text{
+  margin-left: 5px;
+  margin-top: 12px;
+  font-size: 14px;
+  color: grey;
+}
+
+.form-button2{
+  border: 0;
+  color: white;
+  background: darkorange;
+  border-radius: 15px;
+  width: 350px;
+  height: 65px;
+  margin-top: 165px;
+  font-size: 17px;
+  font-weight: 700;
+  
 }
   
+</style>  
   
-  const showNotificationBtn = document.getElementById('showNotification');
-const notification = document.getElementById('notification');
-
-showNotificationBtn.addEventListener('click', () => {
-  notification.style.display = 'block';
-  setTimeout(() => {
-    notification.style.top = '20px'; // спускаем уведомление
-    setTimeout(() => {
-      notification.style.top = '-90px'; // поднимаем уведомление обратно
-      setTimeout(() => {
-        notification.style.display = 'none';
-      }, 500);
-    }, 2000);
-  }, 0);
-});
+<body>  
+   
+  <div id="notification" class="notification"> 
+  <div class="notification-content"><h4>Успешно</h4><p style="margin-top: 5px; font-weight: 300;">Список поставщиков обновлён</p></div> 
+  </div> 
+      
+<div class="container skeleton">  
+    <div class="prilozhenie">  
+        <header>  
+            <div class="header-bar1">  
+              <img src="images/dc.next.menushka.png" class="icon-menu" onclick="toggleSidebar()" width="35"> 
+            </div>  
+            <img style="margin-left: 30px;" src="images/dc.next0.png" width="70px" alt="">  
+            <div class="header-bar2">  
+              <img class="icon1" src="images/dc.next-qr-code.png" width="30px">  
+              <img class="icon1 uvedomleniye" src="images/dc.next-uvedomleniye.png" width="26px">  
+            </div>  
+           
+<div class="sidebar"> 
+    <nav class="menu"> 
+        <ul> 
+          <img width="190px" src="images/dc.next-formenu.png"> 
+            <li><p class="username" href="#">Исмоил Хамидзода</p></li> 
+            <p class="telephon-number-in-menu">+992 (07) 023-4747</p><br>
+            <li class="ispvp"><img src="images/dc.next-identification.png" width="35px"><a href="perevod.html"><p class="menu-links">Идентифицирован</p></a></li> 
+            <li class="ispvp"><img src="images/dc.next-svyazsbankom.png" width="35px"><a href="#"><p class="menu-links"> Связь с банком</p></a></li> 
+            <li class="ispvp"><img src="images/dc.next-parametri.png" width="35px"><a href="#"><p class="menu-links"> Параметры</p></a></li> 
+            <li class="ispvp"><img src="images/dc.next-voprosi.png" width="35px"><a href="#"><p class="menu-links"> Частые вопросы</p></a></li> 
+            <li class="ispvp"><img src="images/dc.next-podelitsya.png" width="35px"><a href="#"><p class="menu-links"> Поделиться приложением</p></a></li> 
+        </ul> 
+      <button class="vikhod-btn"><img style="margin: 10px;" src="images/dc.next-vikhod.png" width="30px"> Выход</button> 
+       <div class="versiya-sborka-block"> 
+      <p>Версия: 2.3.1</p> <p style="margin-left: 15px;">Сборка: 281:3451</p> 
+      </div> 
+      <nav class="menu2" onclick="toggleSidebar()"></nav> 
+    </nav> 
+</div> 
+        </header>  
   
+        <video id="scanner" style="display: none;"></video> 
+ 
+        <main>  
+            <div class="main-header">  
+                <div class="input-poisk">  
+                    <ion-icon class="icon-poisk" name="search-outline"></ion-icon>  
+                    <input class="poisk" type="text" placeholder="Поиск">  
+                </div>  
   
-  const eyeIcon = document.getElementById('eye-icon');
-
-eyeIcon.addEventListener('click', function() {
-  if (eyeIcon.name === 'eye-outline') {
-    eyeIcon.name = 'eye';
-  } else {
-    eyeIcon.name = 'eye-outline';
-  }
-});
+                <div class="balance">  
+                    <div class="check-and-time">  
+                        <div class="check">  
+                         <h1 class="hide-balance">****</h1><h1 class="balance-view">1900500,93</h1><h6 class="tjs">TJS</h6><br>  
+                        </div>  
+                        <div class="time">  
+                            <p>30.04.24 - 18:29:10</p>  
+                        </div>  
+                    </div>  
+                    <div class="balance-icons">  
+                        <ion-icon id="eye-icon" name="eye-outline"></ion-icon>  
+                        <ion-icon class="icon-repeat" id="showNotification" name="sync-outline"></ion-icon>  
+                    </div>                  
+                </div>  
+            </div>  
   
+            <div class="main-card-razdels">  
+                <div class="razdel1">  
+                    <div class="card1" onclick="toggleForm()">  
+                        <img class="dc-image1" src="images/dc-image1.jpg" alt="dc">  
+                        <p style="margin-top: 3px;">DC (по номеру телефона)</p>  
+                    </div>  
+                </div>  
   
+                <div class="razdel2">  
+                    <div class="card2">  
+                        <img style="margin-top: 3px; margin-left: 15px;" width="190px" src="images/dc.next1.png" alt="">  
+                    </div>  
+                    <div class="card3">  
+                        <img style="margin-top: 3px; margin-left: 20px;" width="180px" src="images/dc.next2.png" alt="">  
+                    </div>  
+                    <div class="card4">  
+                        <img style="margin-top: 3px; margin-left: 25px; border-radius: 10px;" width="150px" src="images/dc.next3.png" alt="">  
+                    </div>  
+                </div>  
   
-let startY = 0;
-let currentY = 0;
-let isScrolling = false;
-const maxStretch = 100; // Максимальное значение растяжения
-
-document.addEventListener('touchstart', (e) => {
-  startY = e.touches[0].clientY;
-  isScrolling = false;
-});
-
-document.addEventListener('touchmove', (e) => {
-  if (!isScrolling) {
-    currentY = e.touches[0].clientY;
-    let diff = currentY - startY;
-    if ((diff > 0 && window.scrollY === 0) || (diff < 0 && window.scrollY + window.innerHeight >= document.body.clientHeight)) {
-      e.preventDefault();
-      let stretchAmount = Math.min(Math.abs(diff), maxStretch) * Math.sign(diff); // Ограничиваем растяжение
-      document.querySelector('main').classList.add('elastic-effect');
-      document.querySelector('main').style.transform = `translateY(${stretchAmount}px)`;
-    } else {
-      isScrolling = true;
-    }
-  }
-});
-
-document.addEventListener('touchend', () => {
-  document.querySelector('main').classList.remove('elastic-effect');
-  document.querySelector('main').style.transform = 'translateY(0)';
-});
+                <div class="razdel3">  
+                    <div class="card5">  
+                        <img style="margin-left: 15px;" width="240px" src="images/dc.next4.png" alt="">  
+                    </div>  
+                    <div class="card6">  
+                        <img style="margin-left: 9px;" width="118px" src="images/dc.next5.png" alt="">  
+                    </div>  
+                </div>  
   
+                <div class="razdel4">  
+                    <div class="card7">
+                      <img style="margin-left: 15px;" width="118px" src="images/dc.next6.png" alt="">  
+                    </div>  
+                    <div class="card8">  
+                        <img style="margin-left: 9px;" width="113px" src="images/dc.next7.png" alt="">  
+                    </div>  
+                    <div class="card9">  
+                        <img style="margin-left: 11px;" width="113px" src="images/dc.next8.png" alt="">  
+                    </div>  
+                </div>  
   
+                <div class="razdel5">  
+                    <div class="card7">  
+                        <img style="margin-left: 16px; margin-bottom: 1px;" width="116px" src="images/dc.next9.png" alt="">  
+                    </div>  
+                    <div class="card8">  
+                        <img style="margin-left: 9px;" width="120px" src="images/dc.next10.png" alt="">  
+                    </div>  
+                    <div class="card9">  
+                        <img style="margin-left: 6px;" width="115px" src="images/dc.next11.png" alt="">  
+                    </div>  
+                </div>  
+            </div>  
+        </main>  
   
-  const eyeIconchik = document.getElementById('eye-icon');
-const hideBalance = document.querySelector('.hide-balance');
-const balanceView = document.querySelector('.balance-view');
-
-let isHidden = false;
-
-eyeIconchik.addEventListener('click', function() {
-  if (isHidden) {
-    hideBalance.style.display = 'none';
-    balanceView.style.display = 'block';
-    isHidden = false;
-  } else {
-    hideBalance.style.display = 'block';
-    balanceView.style.display = 'none';
-    isHidden = true;
-  }
-});
-
-
-
-const startScanButton = document.getElementById('startScanButton');
-const scanner = new Instascan.Scanner({ video: document.getElementById('scanner'), mirror: false }); // mirror: false для использования задней камеры
-let timer;
-
-startScanButton.addEventListener('click', async () => {
-    try {
-        const cameras = await Instascan.Camera.getCameras();
-        if (cameras.length > 0) {
-            scanner.start(cameras[cameras.length - 1]); // Используем последнюю камеру (заднюю)
-            scanner.addListener('scan', function (content) {
-                alert('QR-код найден: ' + content);
-                clearTimeout(timer); // Сбрасываем таймер при обнаружении QR-кода
-            });
-            document.getElementById('scanner').style.display = 'block';
-
-            timer = setTimeout(() => {
+        <footer>  
+            <div class="footer-block1"> 
+              <a href=""> 
+                <div class="footer-razdel1">  
+                  <img width="24px" src="images/icon-glv-active.png" alt=""> 
+                    <p style="margin-top: 5px; text-align: center;" class="footer-undertext">Главная</p>  
+                </div>  
+              </a> 
+                <a href="perevod.html"> 
+                <div class="footer-razdel2">  
+                      <img width="24px" src="images/icon-perevodi.png" alt=""> 
+                    <p style="margin-top: 5px; text-align: center;" class="footer-undertext">Переводы</p>  
+                </div>  
+              </a> 
+            </div>  
+            <div class="footer-razdel4">  
+                <img id="startScanButton" src="images/dc.next.scanner.png" class="scanner" width="54px" alt="">  
+            </div>  
+            <div class="footer-block2">  
+              <a href=""> 
+                <div class="footer-razdel3">  
+                  <img src="images/icon-servisi.png" width="24px" alt=""> 
+                    <p style="margin-top: 5px;" class="footer-undertext">Сервисы</p>  
+                </div>  
+              </a> 
+              <a href=""> 
+                <div class="footer-razdel5">  
+                  <img src="images/icon-istori.png" width="24px" alt=""> 
+                    <p style="margin-top: 5px;" class="footer-undertext">История</p>  
+                </div>  
+              </a> 
+            </div>  
+          
+          <div class="form">
+    <div class="form-header">
+      <div class="form-back-icon" onclick="toggleForm()"><</div><h3>DC (по номеру телефона)</h3><div style="font-size: 50px; margin-top: 15px;">*</div>
+    </div>
+      
+      <div class="form-main">
+        <input class="form-input1" placeholder="Номер телефона поучателя">
+        <button class="form-button1">Проверить номер/счет</button>
+        <input class="form-input2" placeholder="TJS Сумма">
+        <input class="form-input3" placeholder="Коментарий">
+        <div class="min-summa"><h5>Мин. сумма: 0 TJS</h5></div>
+        
+        <div class="form-blocks">
+          <div class="form-block1">
+            <p>DBS****1248</p>
+            <p style="margin-top: 25px;">0,93</p>
+          </div>
+          
+          <div class="form-block2">
+            <p>Оплатить<br>карты РФ</p>
+          </div>
+        </div>
+        
+        <div class="form-text">
+          <p>Для перевода на карту Душанбе Сити укажите<br>
+            номер кошелька и введите сумму перевода. Без <br>
+            комиссии. Если вы отправили деньги не тому <br>
+            человеку, обратитесь к получателю перевода.<br>
+            Деньги может вернуть только получатель.</p>
+        </div>
+        
+        <div>
+          <button class="form-button2">Далее</button>
+        </div>
+        
+      </div>
+    </div>
+          
+        </footer>  
+    </div>  
+</div>  
+  
+  <script> 
+   
+  function toggleSidebar() { 
+    var sidebar = document.querySelector('.sidebar'); 
+     sidebar.classList.toggle('open'); 
+} 
+   
+   
+  const showNotificationBtn = document.getElementById('showNotification'); 
+const notification = document.getElementById('notification'); 
+ 
+showNotificationBtn.addEventListener('click', () => { 
+  notification.style.display = 'block'; 
+  setTimeout(() => { 
+    notification.style.top = '20px'; // спускаем уведомление 
+    setTimeout(() => { 
+      notification.style.top = '-90px'; // поднимаем уведомление обратно 
+      setTimeout(() => { 
+        notification.style.display = 'none'; 
+      }, 500); 
+    }, 2000); 
+  }, 0); 
+}); 
+   
+   
+  const eyeIcon = document.getElementById('eye-icon'); 
+ 
+eyeIcon.addEventListener('click', function() { 
+  if (eyeIcon.name === 'eye-outline') { 
+    eyeIcon.name = 'eye'; 
+  } else { 
+    eyeIcon.name = 'eye-outline'; 
+  } 
+}); 
+   
+   
+   
+let startY = 0; 
+let currentY = 0; 
+let isScrolling = false; 
+const maxStretch = 100; // Максимальное значение растяжения 
+ 
+document.addEventListener('touchstart', (e) => { 
+  startY = e.touches[0].clientY; 
+  isScrolling = false; 
+}); 
+ 
+document.addEventListener('touchmove', (e) => { 
+  if (!isScrolling) { 
+    currentY = e.touches[0].clientY; 
+    let diff = currentY - startY; 
+    if ((diff > 0 && window.scrollY === 0) || (diff < 0 && window.scrollY + window.innerHeight >= document.body.clientHeight)) { 
+      e.preventDefault(); 
+      let stretchAmount = Math.min(Math.abs(diff), maxStretch) * Math.sign(diff); // Ограничиваем растяжение 
+      document.querySelector('main').classList.add('elastic-effect'); 
+      document.querySelector('main').style.transform = `translateY(${stretchAmount}px)`; 
+    } else { 
+      isScrolling = true; 
+    } 
+  } 
+}); 
+ 
+document.addEventListener('touchend', () => { 
+  document.querySelector('main').classList.remove('elastic-effect'); 
+  document.querySelector('main').style.transform = 'translateY(0)'; 
+}); 
+   
+   
+   
+  const eyeIconchik = document.getElementById('eye-icon'); 
+const hideBalance = document.querySelector('.hide-balance'); 
+const balanceView = document.querySelector('.balance-view'); 
+ 
+let isHidden = false; 
+ 
+eyeIconchik.addEventListener('click', function() { 
+  if (isHidden) { 
+    hideBalance.style.display = 'none'; 
+    balanceView.style.display = 'block'; 
+    isHidden = false; 
+  } else { 
+    hideBalance.style.display = 'block'; 
+    balanceView.style.display = 'none'; 
+    isHidden = true; 
+  } 
+}); 
+ 
+ 
+ 
+const startScanButton = document.getElementById('startScanButton'); 
+const scanner = new Instascan.Scanner({ video: document.getElementById('scanner'), mirror: false }); // mirror: false для использования задней камеры 
+let timer; 
+ 
+startScanButton.addEventListener('click', async () => { 
+    try { 
+        const cameras = await Instascan.Camera.getCameras(); 
+        if (cameras.length > 0) { 
+            scanner.start(cameras[cameras.length - 1]); // Используем последнюю камеру (заднюю) 
+            scanner.addListener('scan', function (content) { 
+                alert('QR-код найден: ' + content); 
+                clearTimeout(timer); // Сбрасываем таймер при обнаружении QR-кода 
+            }); 
+            document.getElementById('scanner').style.display = 'block'; 
+ 
+            timer = setTimeout(() => { 
                 scanner.stop(); // Останавливаем сканирование после 3 секунд без обнаружения QR-кода
-                document.getElementById('scanner').style.display = 'none';
-                alert('QR-код не найден. Камера закрыта.');
-            }, 6000);
-        } else {
-            alert('Камера не найдена');
-        }
-    } catch (error) {
-        console.error('Ошибка при доступе к камере:', error);
-    }
+                document.getElementById('scanner').style.display = 'none'; 
+                alert('QR-код не найден. Камера закрыта.'); 
+            }, 6000); 
+        } else { 
+            alert('Камера не найдена'); 
+        } 
+    } catch (error) { 
+        console.error('Ошибка при доступе к камере:', error); 
+    } 
+}); 
+ 
+ 
+ 
+ 
+const allSkeletonis = document.querySelectorAll('.skeleton'); 
+ 
+window.addEventListener('load', function() { 
+    allSkeletonis.forEach(item=> { 
+        item.classList.remove('skeleton'); 
+    }); 
 });
 
 
-
-
-const allSkeletonis = document.querySelectorAll('.skeleton');
-
-window.addEventListener('load', function() {
-    allSkeletonis.forEach(item=> {
-        item.classList.remove('skeleton');
-    });
-});
-  
-  </script>
-
-</body> 
+function toggleForm() {
+    var form = document.querySelector('.form');
+     form.classList.toggle('openn');
+      if (form.classList.contains('openn')) {
+        document.querySelector('header').style.zIndex = '-1';
+  } else {
+    document.querySelector('header').style.zIndex = '100';
+  }
+}
+   
+  </script> 
+ 
+</body>  
 </html>
