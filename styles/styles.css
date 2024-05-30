@@ -375,11 +375,11 @@ a{
     text-decoration: none;
 }
 
-.skeleton{
+.allskeleton{
     position: relative;
 }
 
-.skeleton::before{
+.allskeleton::before{
     content: '';
     position: absolute;
     top: 0;

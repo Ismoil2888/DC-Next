@@ -161,7 +161,7 @@
   <div class="notification-content"><h4>Успешно</h4><p style="margin-top: 5px; font-weight: 300;">Список поставщиков обновлён</p></div> 
   </div> 
       
-<div class="container skeleton">  
+<div class="container allskeleton">  
     <div class="prilozhenie">  
         <header>  
             <div class="header-bar1">  
@@ -350,6 +350,16 @@
 </div>  
   
   <script> 
+
+const allSkeleton = document.querySelectorAll('.allskeleton'); 
+ 
+window.addEventListener('load', function() { 
+    allSkeleton.forEach(item=> { 
+        item.classList.remove('allskeleton'); 
+    }); 
+});
+
+
    
   function toggleSidebar() { 
     var sidebar = document.querySelector('.sidebar'); 
@@ -466,16 +476,6 @@ startScanButton.addEventListener('click', async () => {
     } 
 }); 
  
- 
- 
- 
-const allSkeletonis = document.querySelectorAll('.skeleton'); 
- 
-window.addEventListener('load', function() { 
-    allSkeletonis.forEach(item=> { 
-        item.classList.remove('skeleton'); 
-    }); 
-});
 
 
 function toggleForm() {
