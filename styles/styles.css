@@ -10,6 +10,7 @@
  
 .container{ 
     width: 393px; 
+    display: none;
 } 
  
 .prilozhenie{ 
@@ -375,7 +376,7 @@ a{
     text-decoration: none;
 }
 
-.allskeleton{
+/* .alskeleton{
     position: relative;
 }
 
@@ -387,6 +388,6 @@ a{
     width: 393px;
     height: 100%;
     z-index: 10000;
-    background-image: url(/images/apploading.jpg);
+    background-image: url(images/apploading.jpg);
     background-size: 100%;
-}
+} */
