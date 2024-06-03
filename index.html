@@ -166,6 +166,19 @@
     background-size: cover;
     z-index: 9999;
 }
+
+.edit-window {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 70%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        z-index: 19999;
+}
   
 </style>  
   
@@ -194,14 +207,25 @@
     <nav class="menu"> 
         <ul> 
           <img width="190px" src="images/dc.next-formenu.png"> 
+          <div class="name-number-edit-window">
             <li><p class="username" href="#">Исмоил Хамидзода</p></li> 
             <p class="telephon-number-in-menu">+992 (07) 023-4747</p><br>
+          </div>
             <li class="ispvp"><img src="images/dc.next-identification.png" width="35px"><a href="perevod.html"><p class="menu-links">Идентифицирован</p></a></li> 
             <li class="ispvp"><img src="images/dc.next-svyazsbankom.png" width="35px"><a href="#"><p class="menu-links"> Связь с банком</p></a></li> 
             <li class="ispvp"><img src="images/dc.next-parametri.png" width="35px"><a href="#"><p class="menu-links"> Параметры</p></a></li> 
             <li class="ispvp"><img src="images/dc.next-voprosi.png" width="35px"><a href="#"><p class="menu-links"> Частые вопросы</p></a></li> 
             <li class="ispvp"><img src="images/dc.next-podelitsya.png" width="35px"><a href="#"><p class="menu-links"> Поделиться приложением</p></a></li> 
         </ul> 
+
+        <div class="edit-window">
+          <button class="close-edit-window" style="margin-bottom: 25px; border: 0; margin-left: 185px;">Х</button>
+          <input style="padding: 5px; border-radius: 10px; border: 1px solid grey;" type="text" id="newName" placeholder="Введите новое имя">
+          <input style="padding: 5px; margin-top: 15px; border-radius: 10px; border: 1px solid grey;" type="tel" maxlength="18" id="newNumber" placeholder="Введите новый номер">
+          <input style="padding: 5px; margin-top: 15px; border-radius: 10px; border: 1px solid grey;" id="newBalance" type="tel" maxlength="7" placeholder="Введите новый баланс">
+          <button style="margin-top: 15px; margin-left: 61px; padding: 5px;" id="editButton">Применить</button>
+        </div>
+
       <button class="vikhod-btn"><img style="margin: 10px;" src="images/dc.next-vikhod.png" width="30px"> Выход</button> 
        <div class="versiya-sborka-block"> 
       <p>Версия: 2.3.1</p> <p style="margin-left: 15px;">Сборка: 281:3451</p> 
@@ -223,7 +247,7 @@
                 <div class="balance">  
                     <div class="check-and-time">  
                         <div class="check">  
-                         <h1 class="hide-balance">****</h1><h1 class="balance-view">1900500,93</h1><h6 class="tjs">TJS</h6><br>  
+                         <h1 class="hide-balance">****</h1><h1 class="balance-view">0</h1><h6 class="tjs">TJS</h6><br>  
                         </div>  
                         <div class="time">  
                             <p>30.04.24 - 18:29:10</p>  
@@ -378,12 +402,114 @@ window.addEventListener('load', function () {
 
 
 
-// const allSkeleton = document.querySelectorAll('.allskeleton'); 
- 
-// window.addEventListener('load', function() { 
-//     allSkeleton.forEach(item=> { 
-//         item.classList.remove('allskeleton'); 
-//     }); 
+
+
+
+const editWindow = document.querySelector('.edit-window');
+    const editButton = document.getElementById('editButton');
+    const newNameInput = document.getElementById('newName');
+    const newNumberInput = document.getElementById('newNumber');
+    const username = document.querySelector('.username');
+    const phoneNumber = document.querySelector('.telephon-number-in-menu');
+    const balanceViewChange = document.querySelector('.balance-view');
+    const newBalanceInput = document.getElementById('newBalance');
+    
+    // Загрузка данных из localStorage при загрузке страницы
+    if (localStorage.getItem('newName')) {
+        username.textContent = localStorage.getItem('newName');
+    }
+    if (localStorage.getItem('newNumber')) {
+        phoneNumber.textContent = localStorage.getItem('newNumber');
+    }
+    if (localStorage.getItem('newNumber')) {
+        balanceViewChange.textContent = localStorage.getItem('newBalance');
+    }
+
+    document.querySelector('.name-number-edit-window').addEventListener('click', function() {
+        editWindow.style.display = 'block';
+    });
+  
+  document.querySelector('.close-edit-window').addEventListener('click', function() {
+        editWindow.style.display = 'none';
+    });
+
+    editButton.addEventListener('click', function() {
+        const newName = newNameInput.value;
+        const newNumber = newNumberInput.value;
+        const newBalance = newBalanceInput.value;
+        
+        if (newName && newNumber && newBalance) {
+            username.textContent = newName;
+            phoneNumber.textContent = newNumber;
+            balanceViewChange.textContent = newBalance;
+            localStorage.setItem('newName', newName);
+            localStorage.setItem('newNumber', newNumber);
+            localStorage.setItem('newBalance', newBalance);
+            editWindow.style.display = 'none';
+        } else {
+            alert('Пожалуйста, введите имя, номер телефона и баланс.');
+        }
+    });
+  
+  
+  
+  
+  
+  
+
+const balanceViewRepeat = document.querySelector('.balance-view');
+const iconRepeat = document.querySelector('.icon-repeat');
+
+// Проверяем есть ли сохраненное значение в localStorage и устанавливаем его
+if (localStorage.getItem('currentBalance')) {
+    balanceViewRepeat.textContent = localStorage.getItem('currentBalance');
+}
+
+iconRepeat.addEventListener('click', function() {
+    let currentBalance = parseFloat(balanceView.textContent.replace(',', '.'));
+    currentBalance += 55;
+    balanceViewRepeat.textContent = currentBalance.toFixed(2).replace('.', ',');
+    
+    // Сохраняем новое значение в localStorage
+    localStorage.setItem('currentBalance', balanceViewRepeat.textContent);
+});
+  
+  
+  
+// const cards = document.querySelectorAll('.cardopen');
+// const fullscreen = document.querySelector('.fullscreen');
+// const fullscreenImage = document.querySelector('.fullscreen-image');
+// const progressBar = document.querySelector('.progress-bar');
+// const closeButton = document.querySelector('.close-button');
+
+// let currentIndex = 0;
+
+// cards.forEach((card, index) => {
+//     card.addEventListener('click', () => {
+//         currentIndex = index;
+//         fullscreenImage.src = card.dataset.image;
+//         fullscreen.style.display = 'block';
+//         progressBar.style.width = '100%';
+
+//         closeButton.addEventListener('click', () => {
+//             fullscreen.style.display = 'none';
+//             currentIndex = 0;
+//         });
+
+//         fullscreenImage.addEventListener('click', () => {
+//             if (currentIndex < cards.length - 1) {
+//                 currentIndex++;
+//                 fullscreenImage.src = cards[currentIndex].dataset.image;
+//                 progressBar.style.width = '0';
+//                 setTimeout(() => {
+//                     progressBar.style.width = '100%';
+//                 }, 100);
+//             } else {
+//                 fullscreen.style.display = 'none';
+//                 currentIndex = 0;
+//             }
+//         });
+//     });
 // });
    
   </script> 

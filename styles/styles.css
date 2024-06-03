@@ -375,19 +375,3 @@ footer{
 a{
     text-decoration: none;
 }
-
-/* .alskeleton{
-    position: relative;
-}
-
-.allskeleton::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 393px;
-    height: 100%;
-    z-index: 10000;
-    background-image: url(images/apploading.jpg);
-    background-size: 100%;
-} */
