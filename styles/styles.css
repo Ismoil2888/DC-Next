@@ -158,6 +158,11 @@ main::-webkit-scrollbar{
     background: #017CFE; 
     border-radius: 15px; 
 } 
+
+.balance-view{
+    font-size: 38px;
+    font-weight: 900;
+}
  
 .check{ 
     display: flex; 
