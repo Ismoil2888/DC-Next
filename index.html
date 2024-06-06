@@ -179,6 +179,18 @@
         border-radius: 5px;
         z-index: 19999;
 }
+
+.input-in-ew{
+  padding: 5px; 
+  border-radius: 10px; 
+  border: 1px solid grey;color: green;
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+
+.input-in-ew:hover {
+  border: 1px solid blue;
+}
   
 </style>  
   
@@ -197,7 +209,7 @@
             <div class="header-bar1">  
               <img src="images/dc.next.menushka.png" class="icon-menu" onclick="toggleSidebar()" width="35"> 
             </div>  
-            <img style="margin-left: 30px;" src="images/dc.next0.png" width="70px" alt="">  
+            <img style="margin-left: 30px;" src="images/dc.nextlogo.png" width="65px" alt="">  
             <div class="header-bar2">  
               <img class="icon1" src="images/dc.next-qr-code.png" width="30px">  
               <img class="icon1 uvedomleniye" src="images/dc.next-uvedomleniye.png" width="26px">  
@@ -220,10 +232,10 @@
 
         <div class="edit-window">
           <button class="close-edit-window" style="margin-bottom: 25px; border: 0; margin-left: 185px;">Х</button>
-          <input style="padding: 5px; border-radius: 10px; border: 1px solid grey;" type="text" id="newName" placeholder="Введите новое имя">
-          <input style="padding: 5px; margin-top: 15px; border-radius: 10px; border: 1px solid grey;" type="tel" maxlength="18" id="newNumber" placeholder="Введите новый номер">
-          <input style="padding: 5px; margin-top: 15px; border-radius: 10px; border: 1px solid grey;" id="newBalance" type="tel" maxlength="7" placeholder="Введите новый баланс">
-          <button style="margin-top: 15px; margin-left: 61px; padding: 5px;" id="editButton">Применить</button>
+          <input class="input-in-ew" type="text" id="newName" placeholder="Введите новое имя">
+          <input class="input-in-ew" type="tel" maxlength="18" id="newNumber" placeholder="Введите новый номер">
+          <input class="input-in-ew" id="newBalance" type="tel" maxlength="7" placeholder="Введите новый баланс">
+          <button style="margin-top: px; margin-left: 61px; padding: 5px;" id="editButton">Применить</button>
         </div>
 
       <button class="vikhod-btn"><img style="margin: 10px;" src="images/dc.next-vikhod.png" width="30px"> Выход</button> 
@@ -354,16 +366,16 @@
     </div>
       
       <div class="form-main">
-        <input class="form-input1" placeholder="Номер телефона поучателя">
+        <input class="form-input1" type="tel" placeholder="Номер телефона поучателя">
         <button class="form-button1">Проверить номер/счет</button>
-        <input class="form-input2" placeholder="TJS Сумма">
+        <input class="form-input2" type="number" placeholder="TJS Сумма">
         <input class="form-input3" placeholder="Коментарий">
         <div class="min-summa"><h5>Мин. сумма: 0 TJS</h5></div>
         
         <div class="form-blocks">
           <div class="form-block1">
             <p>DBS****1248</p>
-            <p style="margin-top: 25px;">0,93</p>
+            <p style="margin-top: 25px;" class="balance-in-card">0,93</p>
           </div>
           
           <div class="form-block2">
@@ -467,11 +479,37 @@ if (localStorage.getItem('currentBalance')) {
 
 iconRepeat.addEventListener('click', function() {
     let currentBalance = parseFloat(balanceView.textContent.replace(',', '.'));
-    currentBalance += 55;
+    currentBalance += 55.32;
     balanceViewRepeat.textContent = currentBalance.toFixed(2).replace('.', ',');
     
     // Сохраняем новое значение в localStorage
     localStorage.setItem('currentBalance', balanceViewRepeat.textContent);
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const input3 = document.getElementById('newBalance');
+    const balanceViewForInCard = document.querySelector('.balance-view');
+    const balanceInCard = document.querySelector('.balance-in-card');
+    const iconRepeat = document.querySelector('.icon-repeat');
+    
+    if(localStorage.getItem('balanceValue')) {
+        balanceInCard.textContent = localStorage.getItem('balanceValue');
+    }
+
+    input3.addEventListener('input', function() {
+        balanceViewForInCard.textContent = input3.value;
+        balanceInCard.textContent = input3.value;
+        localStorage.setItem('balanceValue', input3.value);
+    });
+
+    iconRepeat.addEventListener('click', function() {
+        let currentValue = parseFloat(balanceInCard.textContent.replace(',', '.'));
+        balanceInCard.textContent = currentValue += 55.32;
+        iconRepeat.textContent = currentValue.toFixed(2).replace('.', ',');
+        localStorage.setItem('balanceValue', balanceInCard.textContent);
+    });
 });
   
   
