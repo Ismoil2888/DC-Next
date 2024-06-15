@@ -11,6 +11,9 @@
     <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script> 
     <script src="js/index.js"></script>
     <script src="js/opens.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>  
   
 <style>  
@@ -72,8 +75,9 @@
   border-radius: 15px; 
   margin-top: 12px;
   margin-right: 5px;
-  background: skyblue;
-  color: #017CFE;
+  background: #CBE5FE;
+  color: #2A83BF;
+  font-size: 17px;
 }
 
 .form-input2{
@@ -103,7 +107,7 @@
   margin-top: 5px;
   margin-left: 250px;
   color: grey;
-  font-weight: 00;
+  font-size: 13PX;
 }
 
 .form-blocks{
@@ -145,13 +149,13 @@
 .form-button2{
   border: 0;
   color: white;
-  background: darkorange;
+  background: #F97326;
   border-radius: 15px;
   width: 350px;
   height: 65px;
   margin-top: 165px;
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 500;
   
 }
 
@@ -190,6 +194,11 @@
 
 .input-in-ew:hover {
   border: 1px solid blue;
+}
+
+.rubik {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
 }
   
 </style>  
@@ -259,7 +268,7 @@
                 <div class="balance">  
                     <div class="check-and-time">  
                         <div class="check">  
-                         <h1 class="hide-balance">****</h1><h1 class="balance-view">0,10</h1><h6 class="tjs">TJS</h6><br>  
+                         <h1 class="hide-balance">****</h1><h1 class="balance-view rubik">0,10</h1><h6 class="tjs">TJS</h6><br>  
                         </div>  
                         <div class="time">  
                             <p>30.04.24 - 18:29:10</p>  
@@ -370,11 +379,11 @@
         <button class="form-button1">Проверить номер/счет</button>
         <input class="form-input2" type="number" placeholder="TJS Сумма">
         <input class="form-input3" placeholder="Коментарий">
-        <div class="min-summa"><h5>Мин. сумма: 0 TJS</h5></div>
+        <div class="min-summa"><P>Мин. сумма: 0 TJS</P></div>
         
         <div class="form-blocks">
           <div class="form-block1">
-            <p>DBS****1248</p>
+            <p style="font-size: 12PX;">DBS****1248</p>
             <p style="margin-top: 25px;" class="balance-in-card">0,10</p>
           </div>
           
@@ -555,6 +564,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <script src="js/notifications.js"></script>
 <script src="js/scanner.js"></script>
 
+<img src="images/photo_2024-06-15_04-59-33.jpg" alt="" srcset="">
+<input style="bottom: px; position: ;" type="color">
  
 </body>  
 </html>

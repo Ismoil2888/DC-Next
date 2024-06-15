@@ -161,7 +161,6 @@ main::-webkit-scrollbar{
 
 .balance-view{
     font-size: 38px;
-    font-weight: 900;
 }
  
 .check{ 
@@ -172,7 +171,8 @@ main::-webkit-scrollbar{
  
 .tjs{ 
     margin-left: 2px; 
-    margin-top: 13px; 
+    margin-top: 18px;
+    font-size: 13px; 
 } 
  
 .balance-icons{ 
@@ -186,9 +186,9 @@ main::-webkit-scrollbar{
  
 .time{ 
     color: rgb(227, 216, 216); 
-    font-size: 10px; 
+    font-size: 12px; 
     margin-left: 15px; 
-    margin-top: 5px; 
+    margin-top: px; 
 } 
  
 .card1{ 
