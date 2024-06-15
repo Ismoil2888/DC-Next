@@ -233,6 +233,14 @@ main::-webkit-scrollbar{
     display: flex; 
     margin-top: 110px; 
 } 
+
+.card5, .card6, .card7, .card8, .card9{
+    transition: all 0.5s ease;
+  }
+  
+  .card5:hover, .card6:hover, .card7:hover, .card8:hover, .card9:hover{
+    transform: scale(0.9);
+  }
  
 .razdel5{ 
     display: flex; 

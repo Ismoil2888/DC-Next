@@ -310,7 +310,7 @@
                     </div>  
                 </div>  
   
-                <div class="razdel4">  
+                <div class="razdel4" onclick="vibratePhone()" >  
                     <div class="card7">
                       <img style="margin-left: 15px;" width="118px" src="images/dc.next6.png" alt="">  
                     </div>  
@@ -322,7 +322,7 @@
                     </div>  
                 </div>  
   
-                <div class="razdel5">  
+                <div class="razdel5" onclick="vibratePhone()">  
                     <div class="card7">  
                         <img style="margin-left: 16px; margin-bottom: 1px;" width="116px" src="images/dc.next9.png" alt="">  
                     </div>  
@@ -558,6 +558,17 @@ document.addEventListener('DOMContentLoaded', function() {
 //         });
 //     });
 // });
+
+
+
+function vibratePhone() {
+        if ("vibrate" in navigator) {
+            // Задаем длительность вибрации
+            navigator.vibrate(40); // Продолжительность в миллисекундах
+        } else {
+            alert("Ваше устройство не поддерживает функцию вибрации.");
+        }
+    }
    
   </script> 
 
