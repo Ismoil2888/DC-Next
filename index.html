@@ -377,6 +377,7 @@
       <div class="form-main">
         <input class="form-input1" type="tel" placeholder="Номер телефона поучателя">
         <button class="form-button1">Проверить номер/счет</button>
+        <div id="randomLetters"></div>
         <input class="form-input2" type="number" placeholder="TJS Сумма">
         <input class="form-input3" placeholder="Коментарий">
         <div class="min-summa"><P>Мин. сумма: 0 TJS</P></div>
@@ -403,6 +404,54 @@
         <div>
           <button class="form-button2">Далее</button>
         </div>
+
+        <div class="overlay"></div>
+<div class="popup-menu">
+    <div class="menu-content">
+      <h2>Подтверждение платежа</h2>
+      <h2 class="summa-zachisleniye" style="color: #017CFE;"></h2>
+      <div class="menu-content-boss">
+      <div class="menu-content-1">
+        <p class="razdels-in-form-menu">Поставщик:</p>
+        <p class="razdels-in-form-menu">Номер/счёт:</p>
+        <p class="razdels-in-form-menu">Способ оплаты:</p>
+        <p class="razdels-in-form-menu">Комиссия:</p>
+        <p class="razdels-in-form-menu">Сумма зачисления:</p>
+      </div>
+      <div class="menu-content-2">
+        <p class="razdels-in-form-menu">DC (по номеру телефона)</p>
+        <p class="nomer-schyot razdels-in-form-menu"></p>
+        <p class="razdels-in-form-menu">5678 ** ** 4567</p>
+        <p class="razdels-in-form-menu">0.00 TJS</p>
+        <p class="summa-zachisleniye razdels-in-form-menu"></p>
+      </div>
+        </div>
+        <button class="confirm-button-1">Подтверждаю</button>
+    </div>
+  
+  <div class="popup-menu-2">
+    <div class="menu-content">
+      <h2>Платеж выполнен</h2>
+      <h2 class="summa-zachisleniye" style="color: #017CFE;"></h2>
+      <div class="menu-content-boss">
+      <div class="menu-content-1">
+        <p class="razdels-in-form-menu">Поставщик:</p>
+        <p class="razdels-in-form-menu">Номер/счёт:</p>
+        <p class="razdels-in-form-menu">Способ оплаты:</p>
+        <p class="razdels-in-form-menu">Комиссия:</p>
+        <p class="razdels-in-form-menu">Сумма зачисления:</p>
+      </div>
+      <div class="menu-content-2">
+        <p class="razdels-in-form-menu">DC (по но еру телефона)</p>
+        <p class="nomer-schyot razdels-in-form-menu"></p>
+        <p class="razdels-in-form-menu">5678 ** ** 4567</p>
+        <p class="razdels-in-form-menu">0.00 TJS</p>
+        <p class="summa-zachisleniye razdels-in-form-menu"></p>
+      </div>
+        </div>
+        <button id="toggleAndVibrate" class="confirm-button"  onclick="window.location.reload();">На главную</button>
+        </div>
+</div>
         
       </div>
     </div>
@@ -420,106 +469,87 @@ window.addEventListener('load', function () {
     loader.style.display = 'none';
     content.style.display = 'block';
 });
-
-
-
-
-
+  
+  
+  
+  
+  
 
 const editWindow = document.querySelector('.edit-window');
-    const editButton = document.getElementById('editButton');
-    const newNameInput = document.getElementById('newName');
-    const newNumberInput = document.getElementById('newNumber');
-    const username = document.querySelector('.username');
-    const phoneNumber = document.querySelector('.telephon-number-in-menu');
-    const balanceViewChange = document.querySelector('.balance-view');
-    const newBalanceInput = document.getElementById('newBalance');
-    
-    // Загрузка данных из localStorage при загрузке страницы
-    if (localStorage.getItem('newName')) {
-        username.textContent = localStorage.getItem('newName');
-    }
-    if (localStorage.getItem('newNumber')) {
-        phoneNumber.textContent = localStorage.getItem('newNumber');
-    }
-    if (localStorage.getItem('newNumber')) {
-        balanceViewChange.textContent = localStorage.getItem('newBalance');
-    }
+const editButton = document.getElementById('editButton');
+const newNameInput = document.getElementById('newName');
+const newNumberInput = document.getElementById('newNumber');
+const username = document.querySelector('.username');
+const phoneNumber = document.querySelector('.telephon-number-in-menu');
+const balanceViewChange = document.querySelector('.balance-view');
+const balanceInCard = document.querySelector('.balance-in-card');
+const newBalanceInput = document.getElementById('newBalance');
 
-    document.querySelector('.name-number-edit-window').addEventListener('click', function() {
-        editWindow.style.display = 'block';
-    });
-  
-  document.querySelector('.close-edit-window').addEventListener('click', function() {
-        editWindow.style.display = 'none';
-    });
-
-    editButton.addEventListener('click', function() {
-        const newName = newNameInput.value;
-        const newNumber = newNumberInput.value;
-        const newBalance = newBalanceInput.value;
-        
-        if (newName && newNumber && newBalance) {
-            username.textContent = newName;
-            phoneNumber.textContent = newNumber;
-            balanceViewChange.textContent = newBalance;
-            localStorage.setItem('newName', newName);
-            localStorage.setItem('newNumber', newNumber);
-            localStorage.setItem('newBalance', newBalance);
-            editWindow.style.display = 'none';
-        } else {
-            alert('Пожалуйста, введите имя, номер телефона и баланс.');
-        }
-    });
-  
-  
-  
-  
-  
-  
-
-const balanceViewRepeat = document.querySelector('.balance-view');
-const iconRepeat = document.querySelector('.icon-repeat');
-
-// Проверяем есть ли сохраненное значение в localStorage и устанавливаем его
-if (localStorage.getItem('currentBalance')) {
-    balanceViewRepeat.textContent = localStorage.getItem('currentBalance');
+// Функция для форматирования чисел с запятой
+function formatNumberWithComma(number) {
+    return number.toFixed(2).replace('.', ',');
 }
 
-iconRepeat.addEventListener('click', function() {
-    let currentBalance = parseFloat(balanceView.textContent.replace(',', '.'));
-    currentBalance += 55.32;
-    balanceViewRepeat.textContent = currentBalance.toFixed(2).replace('.', ',');
-    
-    // Сохраняем новое значение в localStorage
-    localStorage.setItem('currentBalance', balanceViewRepeat.textContent);
+// Загрузка данных из localStorage при загрузке страницы
+if (localStorage.getItem('newName')) {
+    username.textContent = localStorage.getItem('newName');
+}
+if (localStorage.getItem('newNumber')) {
+    phoneNumber.textContent = localStorage.getItem('newNumber');
+}
+if (localStorage.getItem('balanceView')) {
+    balanceViewChange.textContent = formatNumberWithComma(parseFloat(localStorage.getItem('balanceView')));
+}
+if (localStorage.getItem('balanceInCard')) {
+    balanceInCard.textContent = formatNumberWithComma(parseFloat(localStorage.getItem('balanceInCard')));
+}
+
+document.querySelector('.name-number-edit-window').addEventListener('click', function() {
+    editWindow.style.display = 'block';
 });
 
+document.querySelector('.close-edit-window').addEventListener('click', function() {
+    editWindow.style.display = 'none';
+});
 
+editButton.addEventListener('click', function() {
+    const newName = newNameInput.value;
+    const newNumber = newNumberInput.value;
+    const newBalance = parseFloat(newBalanceInput.value.replace(',', '.'));
 
-document.addEventListener('DOMContentLoaded', function() {
-    const input3 = document.getElementById('newBalance');
-    const balanceViewForInCard = document.querySelector('.balance-view');
-    const balanceInCard = document.querySelector('.balance-in-card');
-    const iconRepeat = document.querySelector('.icon-repeat');
-    
-    if(localStorage.getItem('balanceValue')) {
-        balanceInCard.textContent = localStorage.getItem('balanceValue');
+    if (newName && newNumber && !isNaN(newBalance)) {
+        username.textContent = newName;
+        phoneNumber.textContent = newNumber;
+        balanceViewChange.textContent = formatNumberWithComma(newBalance);
+        balanceInCard.textContent = formatNumberWithComma(newBalance);
+        localStorage.setItem('newName', newName);
+        localStorage.setItem('newNumber', newNumber);
+        localStorage.setItem('balanceView', newBalance);
+        localStorage.setItem('balanceInCard', newBalance);
+        editWindow.style.display = 'none';
+    } else {
+        alert('Пожалуйста, введите имя, номер телефона и корректное значение баланса.');
     }
-
-    input3.addEventListener('input', function() {
-        balanceViewForInCard.textContent = input3.value;
-        balanceInCard.textContent = input3.value;
-        localStorage.setItem('balanceValue', input3.value);
-    });
-
-    iconRepeat.addEventListener('click', function() {
-        let currentValue = parseFloat(balanceInCard.textContent.replace(',', '.'));
-        balanceInCard.textContent = currentValue += 55.32;
-        iconRepeat.textContent = currentValue.toFixed(2).replace('.', ',');
-        localStorage.setItem('balanceValue', balanceInCard.textContent);
-    });
 });
+
+document.querySelector('.icon-repeat').addEventListener('click', function() {
+    const incrementValue = 55.32;
+    let balanceView = parseFloat(localStorage.getItem('balanceView')) || 0;
+    let balanceInCardValue = parseFloat(localStorage.getItem('balanceInCard')) || 0;
+
+    balanceView += incrementValue;
+    balanceInCardValue += incrementValue;
+
+    balanceViewChange.textContent = formatNumberWithComma(balanceView);
+    balanceInCard.textContent = formatNumberWithComma(balanceInCardValue);
+
+    localStorage.setItem('balanceView', balanceView);
+    localStorage.setItem('balanceInCard', balanceInCardValue);
+});
+
+
+
+
   
   
   
@@ -569,6 +599,149 @@ function vibratePhone() {
             alert("Ваше устройство не поддерживает функцию вибрации.");
         }
     }
+
+
+
+
+
+
+    const button = document.querySelector('.form-button1');
+        const button2 = document.querySelector('.form-button2');
+        const randomLettersContainer = document.getElementById('randomLetters');
+        let lastClickTime = 0;
+
+        button.addEventListener('click', function() {
+            const currentTime = new Date().getTime();
+            const inputText = document.querySelector('.form-input1').value.trim();
+
+            if (inputText === '') {
+                alert('Пожалуйста, заполните поле ввода');
+            } else if (currentTime - lastClickTime < 15000) {
+                alert('Подождите немного...');
+            } else {
+                lastClickTime = currentTime;
+
+                const randomLetter1 = String.fromCharCode(65 + Math.floor(Math.random() * 26)); // Генерация первой буквы (A-Z)
+                const randomLetter2 = String.fromCharCode(65 + Math.floor(Math.random() * 26)); // Генерация второй буквы (A-Z)
+                const randomLetters = `${randomLetter1}.${randomLetter2}.`; // Форматирование случайных букв
+
+                const randomLettersElement = document.createElement('div');
+                randomLettersElement.textContent = randomLetters;
+                randomLettersElement.classList.add('random-field'); // Добавление класса для стилизации
+                randomLettersContainer.appendChild(randomLettersElement);
+
+                setTimeout(function() {
+                    randomLettersElement.remove(); // Удаление элемента после 20 секунд
+                    button2.style.marginTop = '165px';
+                }, 10000);
+
+                randomLettersElement.style.display = 'block'; // Показать поле после создания
+                button2.style.marginTop = '117px'; // Изменить отступ кнопки form-button2
+            }
+        });
+  
+  
+   
+  
+  
+
+
+const formInput1 = document.querySelector('.form-input1');
+const formInput2 = document.querySelector('.form-input2');
+const formButton2 = document.querySelector('.form-button2');
+const overlay = document.querySelector('.overlay');
+const popupMenu = document.querySelector('.popup-menu');
+const nomerSchyots = document.querySelectorAll('.nomer-schyot');
+const summaZachisleniye = document.querySelectorAll('.summa-zachisleniye');
+
+formButton2.addEventListener('click', function() {
+    if (formInput1.value && formInput2.value) {
+        overlay.style.display = 'block';
+        popupMenu.style.display = 'block';
+        setTimeout(() => {
+            popupMenu.style.bottom = '0';
+        }, 100);
+
+        nomerSchyots.forEach(element => {
+            element.textContent = formInput1.value;
+        });
+
+        summaZachisleniye.forEach(element => {
+            element.textContent = formInput2.value + ' TJS';
+        });
+    }
+});
+
+document.querySelector('.confirm-button').addEventListener('click', function() {
+    popupMenu.style.bottom = '-50%';
+    setTimeout(() => {
+        popupMenu.style.display = 'none';
+        overlay.style.display = 'none';
+    }, 500);
+});
+
+
+
+
+
+const confirmButton1 = document.querySelector('.confirm-button-1');
+const popupMenu2 = document.querySelector('.popup-menu-2');
+const popupMessage = popupMenu2.querySelector('h2');
+const confirmButton = popupMenu2.querySelector('.confirm-button');
+
+// Функция для форматирования чисел с запятой
+function formatNumberWithComma(number) {
+    return number.toFixed(2).replace('.', ',');
+}
+
+// Функция для парсинга чисел с запятой
+function parseNumberWithComma(numberStr) {
+    return parseFloat(numberStr.replace(',', '.'));
+}
+
+// Загрузка данных из localStorage при загрузке страницы
+if (localStorage.getItem('balanceView')) {
+    balanceViewChange.textContent = formatNumberWithComma(parseFloat(localStorage.getItem('balanceView')));
+}
+if (localStorage.getItem('balanceInCard')) {
+    balanceInCard.textContent = formatNumberWithComma(parseFloat(localStorage.getItem('balanceInCard')));
+}
+
+confirmButton1.addEventListener('click', function() {
+    const inputAmount = parseNumberWithComma(formInput2.value);
+    const balanceView = parseNumberWithComma(balanceViewChange.textContent);
+    const balanceInCardValue = parseNumberWithComma(balanceInCard.textContent);
+
+    if (inputAmount > balanceView || inputAmount > balanceInCardValue) {
+        popupMessage.textContent = 'Ошибка';
+        alert('Недостаточно средств на балансе');
+    } else {
+        popupMessage.textContent = 'Платёж выполнен';
+    }
+
+    popupMenu2.style.display = 'block';
+    setTimeout(() => popupMenu2.classList.add('show'), 10);
+});
+
+confirmButton.addEventListener('click', function() {
+    const inputAmount = parseNumberWithComma(formInput2.value);
+    let balanceView = parseNumberWithComma(balanceViewChange.textContent);
+    let balanceInCardValue = parseNumberWithComma(balanceInCard.textContent);
+
+    if (popupMessage.textContent === 'Платёж выполнен') {
+        balanceView -= inputAmount;
+        balanceInCardValue -= inputAmount;
+
+        balanceViewChange.textContent = formatNumberWithComma(balanceView);
+        balanceInCard.textContent = formatNumberWithComma(balanceInCardValue);
+
+        localStorage.setItem('balanceView', balanceView);
+        localStorage.setItem('balanceInCard', balanceInCardValue);
+    }
+
+    location.reload();
+});
+
    
   </script> 
 
