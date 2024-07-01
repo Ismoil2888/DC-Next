@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
 *{ 
     margin: 0; 
     padding: 0; 
@@ -28,7 +30,8 @@ header{
     justify-content: space-between; 
     align-items: center; 
     width: 393px; 
-    border-bottom: 1px solid rgb(216, 214, 214); 
+    /* border-bottom: 1px solid rgb(216, 214, 214);  */
+    border-bottom: 1px solid #E6E6E8; 
     position: fixed; 
     background: #F1F1F3; 
     z-index: 100; 
@@ -130,6 +133,10 @@ main::-webkit-scrollbar{
     outline: none; 
     border-radius: 10px; 
 } 
+
+.poisk::placeholder{
+    color: #909090;
+}
  
 .input-poisk{ 
     background: white; 
@@ -189,7 +196,7 @@ main::-webkit-scrollbar{
 } 
  
 .time{ 
-    color: rgb(227, 216, 216); 
+    color: #85C5FF; 
     font-size: 12px; 
     margin-left: 15px; 
 } 
@@ -252,7 +259,7 @@ footer{
     display: flex; 
     justify-content: space-between; 
     position: fixed; 
-    height: 8%; 
+    height: 7.5%; 
     bottom: 0; 
     background: #F1F1F3; 
     width: 393px; 
@@ -345,10 +352,18 @@ footer{
   border-radius: 15px;
   z-index: 9999;
   transition: all 0.5s ease;
-  background: transparent;
-  backdrop-filter: blur(20px);
+  background-color: rgba(201, 199, 199, 0.3);
+  backdrop-filter: blur(10px);
   width: 350px;
   height: 60px;
+}
+
+.spo {
+  font-family: "Roboto Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 250;
+  font-style: normal;
+  margin-top: 5px; 
 }
 
 .telephon-number-in-menu{
