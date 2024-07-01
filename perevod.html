@@ -867,6 +867,19 @@ window.addEventListener('load', function() {
     document.querySelector('header').style.zIndex = '100';
   }
 }
+
+
+
+
+
+function vibratePhone() {
+        if ("vibrate" in navigator) {
+            // Задаем длительность вибрации
+            navigator.vibrate(40); // Продолжительность в миллисекундах
+        } else {
+            alert("Ваше устройство не поддерживает функцию вибрации.");
+        }
+    }
    
   </script> 
    
