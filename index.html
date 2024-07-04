@@ -443,12 +443,14 @@
         <p class="razdels-in-form-menu">Сумма:</p>
         <p class="razdels-in-form-menu">Комиссия:</p>
         <p class="razdels-in-form-menu">Дата:</p>
+        <p class="razdels-in-form-menu">Время:</p>
       </div>
       <div class="menu-content-2">
         <p class="nomer-schyot razdels-in-form-menu"></p>
         <p class="summa-zachisleniye razdels-in-form-menu"></p>
         <p class="razdels-in-form-menu">0.00 TJS</p>
-        <p class="razdels-in-form-menu">04.07.24</p>
+        <p class="razdels-in-form-menu" id="dateinCheck"></p>
+        <p class="razdels-in-form-menu" id="timeinCheck"></p>
       </div>
         </div>
         <button id="toggleAndVibrate" class="confirm-button"  onclick="window.location.reload();">На главную</button>
@@ -692,7 +694,13 @@ const confirmButton1 = document.querySelector('.confirm-button-1');
 const popupMenu2 = document.querySelector('.popup-menu-2');
 const popupMessage = popupMenu2.querySelector('h2');
 const confirmButton = popupMenu2.querySelector('.confirm-button');
-const uspekhOsibka = document.querySelector('.uspeshno-oshibka') 
+const uspekhOsibka = document.querySelector('.uspeshno-oshibka');
+const currentDate = new Date();
+
+const formattedDate = `${currentDate.getDate().toString().padStart(2, '0')}.${(currentDate.getMonth() + 1).toString().padStart(2, '0')}.${currentDate.getFullYear().toString().slice(-2)}`;
+// Получаем элемент popupMassage и устанавливаем значение даты
+const popupDateElement = document.getElementById('dateinCheck');
+popupDateElement.textContent = formattedDate;
 
 // Функция для форматирования чисел с запятой
 function formatNumberWithComma(number) {
@@ -747,6 +755,30 @@ confirmButton.addEventListener('click', function() {
 
     location.reload();
 });
+
+function updateTime() {
+  // Получаем текущее время
+  const currentTime = new Date();
+
+  // Генерируем случайное число секунд при загрузке страницы
+  const randomSeconds = localStorage.getItem('randomSeconds') || Math.floor(Math.random() * 60);
+
+  // Сохраняем сгенерированные секунды в localStorage
+  localStorage.setItem('randomSeconds', randomSeconds);
+
+  // Форматируем время в нужном формате
+  const formattedTime = `${currentTime.getHours()}:${currentTime.getMinutes().toString().padStart(2, '0')}:${randomSeconds.toString().padStart(2, '0')}`;
+
+  // Получаем элемент popupTime и устанавливаем значение времени
+  const popupTimeElement = document.getElementById('timeinCheck');
+  popupTimeElement.textContent = formattedTime;
+}
+
+// Вызываем функцию updateTime() при загрузке страницы
+window.onload = updateTime;
+
+// Обновляем время каждую минуту
+setInterval(updateTime, 60000);
 
    
   </script> 
