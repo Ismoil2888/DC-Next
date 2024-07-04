@@ -3,6 +3,10 @@
 <head>  
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">  
+    <meta name="description" content="Удиви своих друзей балансом богача">
+    <meta property="og:image" content="images/dc-image1">
+    <meta property="og:title" content="Пранк DC">
+    <meta property="og:url" content="dcwalletprank.pp.ua">
     <link rel="stylesheet" href="styles/styles.css"> 
     <link rel="website icon" type="png" href="images/logoapp.png"> 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>  
@@ -431,22 +435,20 @@
   
   <div class="popup-menu-2">
     <div class="menu-content">
+      <img class="uspeshno-oshibka" src="images/uspeshnopl.png" style="margin-bottom: 10px;" width="50px" alt="">
       <h2>Платеж выполнен</h2>
-      <h2 class="summa-zachisleniye" style="color: #017CFE;"></h2>
       <div class="menu-content-boss">
       <div class="menu-content-1">
-        <p class="razdels-in-form-menu">Поставщик:</p>
-        <p class="razdels-in-form-menu">Номер/счёт:</p>
-        <p class="razdels-in-form-menu">Способ оплаты:</p>
+        <p class="razdels-in-form-menu">Получатель:</p>
+        <p class="razdels-in-form-menu">Сумма:</p>
         <p class="razdels-in-form-menu">Комиссия:</p>
-        <p class="razdels-in-form-menu">Сумма зачисления:</p>
+        <p class="razdels-in-form-menu">Дата:</p>
       </div>
       <div class="menu-content-2">
-        <p class="razdels-in-form-menu">DC (по но еру телефона)</p>
         <p class="nomer-schyot razdels-in-form-menu"></p>
-        <p class="razdels-in-form-menu">5678 ** ** 4567</p>
-        <p class="razdels-in-form-menu">0.00 TJS</p>
         <p class="summa-zachisleniye razdels-in-form-menu"></p>
+        <p class="razdels-in-form-menu">0.00 TJS</p>
+        <p class="razdels-in-form-menu">04.07.24</p>
       </div>
         </div>
         <button id="toggleAndVibrate" class="confirm-button"  onclick="window.location.reload();">На главную</button>
@@ -690,6 +692,7 @@ const confirmButton1 = document.querySelector('.confirm-button-1');
 const popupMenu2 = document.querySelector('.popup-menu-2');
 const popupMessage = popupMenu2.querySelector('h2');
 const confirmButton = popupMenu2.querySelector('.confirm-button');
+const uspekhOsibka = document.querySelector('.uspeshno-oshibka') 
 
 // Функция для форматирования чисел с запятой
 function formatNumberWithComma(number) {
@@ -716,6 +719,7 @@ confirmButton1.addEventListener('click', function() {
 
     if (inputAmount > balanceView || inputAmount > balanceInCardValue) {
         popupMessage.textContent = 'Ошибка';
+        uspekhOsibka.src = "images/oshibkapl.png"
         alert('Недостаточно средств на балансе');
     } else {
         popupMessage.textContent = 'Платёж выполнен';
