@@ -511,3 +511,58 @@ a{
     font-size: 20px;
     font-weight: 500;
 }
+
+@media (width > 394px) {
+    .container{ 
+        width: 100%;
+    } 
+     
+    .prilozhenie{ 
+        width: 100%; 
+    } 
+
+    header{
+        width: 100%;
+    }
+
+    .menu2{
+        width: 200px;
+    }
+
+    main{
+        width: 100%;
+    }
+
+    footer{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .footer-block1, .footer-block2{
+        display: flex;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .scanner{
+        left: 45%;
+    }
+}
+
+@media (width < 984px) {
+
+    .info-and-button{
+        display: none;
+    }
+
+    .logo-width-text{
+        margin-right: 25px;
+    }
+
+    .folow{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

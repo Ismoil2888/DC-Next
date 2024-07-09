@@ -425,7 +425,7 @@
       <div class="menu-content-2">
         <p class="razdels-in-form-menu">DC (по номеру телефона)</p>
         <p class="nomer-schyot razdels-in-form-menu"></p>
-        <p class="razdels-in-form-menu">5678 ** ** 4567</p>
+        <p class="razdels-in-form-menu">5678 **** **** 4567</p>
         <p class="razdels-in-form-menu">0.00 TJS</p>
         <p class="summa-zachisleniye razdels-in-form-menu"></p>
       </div>
@@ -448,7 +448,7 @@
       <div class="menu-content-2">
         <p class="nomer-schyot razdels-in-form-menu"></p>
         <p class="summa-zachisleniye razdels-in-form-menu"></p>
-        <p class="razdels-in-form-menu">0.00 TJS</p>
+        <p class="razdels-in-form-menu">0.00</p>
         <p class="razdels-in-form-menu" id="dateinCheck"></p>
         <p class="razdels-in-form-menu" id="timeinCheck"></p>
       </div>
@@ -673,7 +673,7 @@ formButton2.addEventListener('click', function() {
         });
 
         summaZachisleniye.forEach(element => {
-            element.textContent = formInput2.value + ' TJS';
+            element.textContent = formInput2.value;
         });
     }
 });
