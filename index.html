@@ -63,11 +63,12 @@
 
 .form-input1{
   border: 0;
-  width: 350px;
+  width: 240px;
   height: 45px;
-  border-radius: 10px; 
+  border-top-left-radius: 10px; 
+  border-bottom-left-radius: 10px;
   margin-top: 20px;
-  margin-right: 5px;
+  margin-right: px;
   padding: 10px;
   font-size: 16px;
 }
@@ -379,7 +380,9 @@
     </div>
       
       <div class="form-main">
-        <input class="form-input1" type="tel" placeholder="Номер телефона поучателя">
+        <div style="display: flex;" class="form-input1-block">
+        <input class="form-input1" type="tel" placeholder="Номер телефона поучателя"><div style="width: 115px; height: 55px; background-color: white; margin-top: 20px; margin-right: 15px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; padding-top: 10px;" class="vibor-img-bg"><img style="margin-right: 15px;" src="images/viboriscontact.png" height="40px" width="80px" alt=""></div>
+        </div>
         <button class="form-button1">Проверить номер/счет</button>
         <div id="randomLetters"></div>
         <input class="form-input2" type="number" placeholder="TJS Сумма">
@@ -388,8 +391,10 @@
         
         <div class="form-blocks">
           <div class="form-block1">
-            <p style="font-size: 12PX;">DBS****1248</p>
-            <p style="margin-top: 25px;" class="balance-in-card">0,10</p>
+            <p style="font-size: 14PX;">DBS****1248</p>
+            <div style="display: flex; align-items: center; justify-content: center; font-size: 15px;" class="balance-in-card-block">
+            <p style="margin-top: 25px; margin-right: 5px;" class="balance-in-card">0,10</p><p style="margin-top: 25px; margin-right: 8px;">TJS</p>
+          </div>
           </div>
           
           <div class="form-block2">
@@ -435,7 +440,7 @@
   
   <div class="popup-menu-2">
     <div class="menu-content">
-      <img class="uspeshno-oshibka" src="images/uspeshnopl.png" style="margin-bottom: 10px;" width="50px" alt="">
+      <img class="uspeshno-oshibka" src="images/uspeshnopl.png" style="margin-bottom: 15px;" width="50px" alt="">
       <h2>Платеж выполнен</h2>
       <div class="menu-content-boss">
       <div class="menu-content-1">
