@@ -24,6 +24,11 @@
     background-color: #F1F1F3; 
     height: 100%;
 } 
+
+input:focus {
+    outline: none;
+    caret-color: #017CFE; 
+ }
  
 header{ 
     display: flex; 
