@@ -15,198 +15,11 @@
     <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script> 
     <script src="js/index.js"></script>
     <script src="js/opens.js"></script>
+    <link rel="manifest" href="/manifest.json">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-</head>
-  
-<style>  
-  
- .form.openn {
-    bottom: 0;
-}
-
-
-.form{
-  border-radius: 5px;
-  height: 820px;
-  width: 100%;
-  bottom: -850px;
-  position: absolute;
-  transition: bottom 0.4s;
-  background: #F1F1F3;
-  z-index: 700 !important;
-  overflow-y: hidden;
-}
-
-.form-header{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background: #017CFE;
-  height: 40px;
-  padding-top: 30px;
-  color: white;
-}
-
-.form-back-icon{
-  font-size: 30px;
-  margin-bottom: 7px;
-}
-
-.form-main{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.form-input1{
-  border: 0;
-  width: 250px;
-  height: 45px;
-  border-top-left-radius: 10px; 
-  border-bottom-left-radius: 10px;
-  margin-top: 20px;
-  margin-left: 5px;
-  padding: 10px;
-  font-size: 16px;
-}
-
-.form-button1{
-  border: 0;
-  width: 350px;
-  height: 50px;
-  border-radius: 15px; 
-  margin-top: 12px;
-  margin-right: 5px;
-  background: #CBE5FE;
-  color: #2A83BF;
-  font-size: 17px;
-}
-
-.form-input2{
-  border: 0;
-  width: 350px;
-  height: 45px;
-  border-radius: 10px; 
-  margin-top: 12px;
-  margin-right: 5px;
-  padding: 10px;
-  font-size: 15px;
-  font-weight: 500;
-}
-
- .form-input3{
-  border: 0;
-  width: 350px;
-  height: 45px;
-  border-radius: 10px; 
-  margin-top: 10px;
-  margin-right: 5px;
-   padding: 10px;
-   font-size: 16px;
-}
-
-.min-summa{
-  margin-top: 5px;
-  margin-left: 250px;
-  color: grey;
-  font-size: 13PX;
-}
-
-.form-blocks{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin-top: 15px;
-}
-
-.form-block1{
-  background: #017CFE;
-  color: white;
-  border-radius: 15px;
-  width: 90px;
-  height: 60px;
-  padding: 10px;
-  margin-right: 7px;
-}
-
-.form-block2{
-  background: white;
-  color: grey;
-  border-radius: 15px;
-  width: 90px;
-  height: 60px;
-  padding: 10px;
-  margin-left: 7px;
-  font-weight: 700;
-}
-
-.form-text{
-  margin-left: 5px;
-  margin-top: 12px;
-  font-size: 14px;
-  color: grey;
-}
-
-.form-button2{
-  border: 0;
-  color: white;
-  background: #F97326;
-  border-radius: 15px;
-  width: 350px;
-  height: 65px;
-  margin-top: 165px;
-  font-size: 20px;
-  font-weight: 500;
-  
-}
-
-.loader {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 393px;
-    height: 100%;
-    background-image: url(images/apploading.jpg);
-    background-position: center;
-    background-size: cover;
-    z-index: 9999;
-}
-
-.edit-window {
-        display: none;
-        position: absolute;
-        top: 50%;
-        left: 70%;
-        transform: translate(-50%, -50%);
-        padding: 20px;
-        background-color: #f9f9f9;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        z-index: 19999;
-}
-
-.input-in-ew{
-  padding: 5px; 
-  border-radius: 10px; 
-  border: 1px solid grey;color: green;
-  margin-bottom: 15px;
-  margin-left: 10px;
-}
-
-.input-in-ew:hover {
-  border: 1px solid blue;
-}
-
-.rubik {
-  font-family: "Rubik", sans-serif;
-  font-optical-sizing: auto;
-}
-  
-</style>  
+</head> 
   
 <body>  
 
@@ -250,6 +63,7 @@
           <input class="input-in-ew" type="tel" maxlength="18" id="newNumber" placeholder="Введите новый номер">
           <input class="input-in-ew" id="newBalance" type="tel" maxlength="7" placeholder="Введите новый баланс">
           <button style="margin-top: px; margin-left: 61px; padding: 5px;" id="editButton">Применить</button>
+          <button id="installButton" style="display: none;">Install App</button>
         </div>
 
       <button class="vikhod-btn"><img style="margin: 10px;" src="images/dc.next-vikhod.png" width="30px"> Выход</button> 
@@ -381,7 +195,7 @@
       
       <div class="form-main">
         <div style="display: flex;" class="form-input1-block">
-        <input class="form-input1" type="tel" placeholder="Номер телефона поучателя"><div style="width: 95px; height: 50px; background-color: white; margin-top: 20px; margin-right: 15px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; padding-top: 15px;" class="vibor-img-bg"><img style="margin-right: 15px;" src="images/viboriscontact.png" height="33px" width="80px" alt=""></div>
+        <input class="form-input1" type="tel" placeholder="Номер телефона поучателя"><div class="vibor-img-bg"><img style="margin-right: 15px;" src="images/viboriscontact.png" height="33px" width="80px" alt=""></div>
         </div>
         <button class="form-button1">Проверить номер/счет</button>
         <div id="randomLetters"></div>
@@ -392,8 +206,8 @@
         <div class="form-blocks">
           <div class="form-block1">
             <p style="font-size: 14PX;">DBS****1248</p>
-            <div style="display: flex; align-items: center; justify-content: center; font-size: 15px;" class="balance-in-card-block">
-            <p style="margin-top: 25px; margin-right: 5px;" class="balance-in-card rubik">0,10</p><p style="margin-top: 25px; margin-right: 8px;">TJS</p>
+            <div class="balance-in-card-block">
+            <p style="margin-top: 25px; margin-right: 5px;" class="balance-in-card rubik">0,10</p><p class="rubik" style="margin-top: 25px; margin-right: 8px;">TJS</p>
           </div>
           </div>
           
@@ -784,6 +598,42 @@ window.onload = updateTime;
 
 // Обновляем время каждую минуту
 setInterval(updateTime, 60000);
+
+
+
+
+
+
+
+
+let deferredPrompt;
+const installButton = document.getElementById('installButton');
+
+// Обработчик события beforeinstallprompt
+window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    deferredPrompt = event;
+    installButton.style.display = 'block';
+
+    installButton.addEventListener('click', () => {
+        installButton.style.display = 'none';
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the A2HS prompt');
+            } else {
+                console.log('User dismissed the A2HS prompt');
+            }
+            deferredPrompt = null;
+        });
+    });
+});
+
+// Обработчик события appinstalled (опционально)
+window.addEventListener('appinstalled', (event) => {
+    console.log('PWA was installed');
+});
+
 
    
   </script> 
