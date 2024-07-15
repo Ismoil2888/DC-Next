@@ -20,36 +20,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head> 
-
-<style>
-  #loading-screen {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
-#loading-image {
-    width: 100px;
-    height: 100px;
-}
-
-#app-content {
-    display: none;
-}
-</style>
   
 <body>  
-
-  <div id="loading-screen">
-    <img src="images/apploading.jpg" alt="Loading" id="loading-image">
-  </div>
 
   <div id="loader" class="loader"></div>
   <div id="content" class="content">
@@ -634,40 +606,32 @@ setInterval(updateTime, 60000);
 
 
 
+let deferredPrompt;
+const installButton = document.getElementById('installButton');
 
-document.addEventListener("DOMContentLoaded", function() {
-    const loadingScreen = document.getElementById('loading-screen');
-    const appContent = document.getElementById('app-content');
-    loadingScreen.style.display = 'none';
-    appContent.style.display = 'block';
+// Обработчик события beforeinstallprompt
+window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    deferredPrompt = event;
+    installButton.style.display = 'block';
 
-    let deferredPrompt;
-    const installButton = document.getElementById('installButton');
-
-    // Обработчик события beforeinstallprompt
-    window.addEventListener('beforeinstallprompt', (event) => {
-        event.preventDefault();
-        deferredPrompt = event;
-        installButton.style.display = 'block';
-
-        installButton.addEventListener('click', () => {
-            installButton.style.display = 'none';
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted the A2HS prompt');
-                } else {
-                    console.log('User dismissed the A2HS prompt');
-                }
-                deferredPrompt = null;
-            });
+    installButton.addEventListener('click', () => {
+        installButton.style.display = 'none';
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the A2HS prompt');
+            } else {
+                console.log('User dismissed the A2HS prompt');
+            }
+            deferredPrompt = null;
         });
     });
+});
 
-    // Обработчик события appinstalled (опционально)
-    window.addEventListener('appinstalled', (event) => {
-        console.log('PWA was installed');
-    });
+// Обработчик события appinstalled (опционально)
+window.addEventListener('appinstalled', (event) => {
+    console.log('PWA was installed');
 });
 
 
