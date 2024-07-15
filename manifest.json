@@ -2,7 +2,7 @@
     "name": "DC Next",
     "short_name": "DC Next App",
     "theme_color": "#F1F1F3",
-    "background_color": "#F1F1F3",
+    "background_color": "#ffffff",
     "display": "standalone",
     "orientation": "portrait",
     "start_url": ".",
@@ -19,19 +19,5 @@
             "src":"/icon512_rounded.png",
             "type":"image/png"
         }
-    ],
-    "splash_screens": [
-    {
-      "src": "/apploading.jpg",
-      "sizes": "1080x2350",
-      "type": "image/jpg",
-      "background_color": "#ffffff"
-    },
-    {
-      "src": "/apploading.jpg",
-      "sizes": "1280x720",
-      "type": "image/jpg",
-      "background_color": "#ffffff"
-    }
-  ]
+    ]
   }
