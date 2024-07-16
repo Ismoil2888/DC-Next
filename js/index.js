@@ -1,3 +1,15 @@
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').then(registration => {
+      console.log('Service Worker зарегистрирован с областью:', registration.scope);
+    }).catch(error => {
+      console.log('Регистрация Service Worker завершилась неудачей:', error);
+    });
+  });
+}
+
+
+
 let startY = 0; 
 let currentY = 0; 
 let isScrolling = false; 
