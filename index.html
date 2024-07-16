@@ -250,6 +250,7 @@
           <input class="input-in-ew" type="tel" maxlength="18" id="newNumber" placeholder="Введите новый номер">
           <input class="input-in-ew" id="newBalance" type="tel" maxlength="7" placeholder="Введите новый баланс">
           <button style="margin-top: px; margin-left: 61px; padding: 5px;" id="editButton">Применить</button>
+          <button id="installButton" style="display: none;">Install App</button>
         </div>
 
       <button class="vikhod-btn"><img style="margin: 10px;" src="images/dc.next-vikhod.png" width="30px"> Выход</button> 
@@ -785,6 +786,40 @@ window.onload = updateTime;
 
 // Обновляем время каждую минуту
 setInterval(updateTime, 60000);
+
+
+
+
+
+
+let deferredPrompt;
+const installButton = document.getElementById('installButton');
+
+// Обработчик события beforeinstallprompt
+window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    deferredPrompt = event;
+    installButton.style.display = 'block';
+
+    installButton.addEventListener('click', () => {
+        installButton.style.display = 'none';
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the A2HS prompt');
+            } else {
+                console.log('User dismissed the A2HS prompt');
+            }
+            deferredPrompt = null;
+        });
+    });
+});
+
+// Обработчик события appinstalled (опционально)
+window.addEventListener('appinstalled', (event) => {
+    console.log('PWA was installed');
+});
+
 
    
   </script> 
