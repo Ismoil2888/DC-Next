@@ -27,3 +27,93 @@ document.addEventListener('touchend', () => {
   document.querySelector('main').classList.remove('elastic-effect'); 
   document.querySelector('main').style.transform = 'translateY(0)'; 
 }); 
+
+// {
+//   "name": "DC Next",
+//   "short_name": "DC Next App",
+//   "theme_color": "#F1F1F3",
+//   "background_color": "#F1F1F3",
+//   "display": "standalone",
+//   "orientation": "portrait",
+//   "start_url": ".",
+//   "icons": [
+//       {
+//           "purpose":"maskable",
+//           "sizes":"512x512",
+//           "src":"/icon512_maskable.png",
+//           "type":"image/png"
+//       },
+//       {
+//           "purpose":"any",
+//           "sizes":"512x512",
+//           "src":"/icon512_rounded.png",
+//           "type":"image/png"
+//       }
+//   ],
+//   "splash_screens": [
+//   {
+//     "src": "/apploading.jpg",
+//     "sizes": "1080x2350",
+//     "type": "image/jpg",
+//     "background_color": "#ffffff"
+//   },
+//   {
+//     "src": "/apploading.jpg",
+//     "sizes": "1280x720",
+//     "type": "image/jpg",
+//     "background_color": "#ffffff"
+//   }
+// ]
+// }
+
+
+
+
+// const CACHE_NAME = 'site-cache-v1';
+// const urlsToCache = [
+//   '/',
+//   '/styles/styles.css',
+//   '/js/index.js',
+//   '/js/notifications.js',
+//   '/js/opens.js',
+//   '/js/scanner.js',
+//   '/index.html',
+//   '/large-image.jpg',
+//   // Добавьте сюда другие файлы, которые вы хотите кэшировать
+// ];
+
+// self.addEventListener('install', event => {
+//   event.waitUntil(
+//     caches.open(CACHE_NAME)
+//       .then(cache => {
+//         return cache.addAll(urlsToCache);
+//       })
+//   );
+// });
+
+// self.addEventListener('fetch', event => {
+//   event.respondWith(
+//     caches.match(event.request)
+//       .then(response => {
+//         if (response) {
+//           return response; // Возвращаем кэшированный ресурс
+//         }
+//         return fetch(event.request); // Запрашиваем ресурс из сети
+//       })
+//   );
+// });
+
+// self.addEventListener('activate', event => {
+//   const cacheWhitelist = [CACHE_NAME];
+//   event.waitUntil(
+//     caches.keys().then(cacheNames => {
+//       return Promise.all(
+//         cacheNames.map(cacheName => {
+//           if (!cacheWhitelist.includes(cacheName)) {
+//             return caches.delete(cacheName);
+//           }
+//         })
+//       );
+//     })
+//   );
+// });
