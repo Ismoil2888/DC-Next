@@ -13,6 +13,8 @@ const urlsToCache = [
   '/sw.js',
   '/cacheList.json',
   '/generateCacheList.js',
+  '/htaccess',
+  '/error.html',
   'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js',
   'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js',
   'https://fonts.googleapis.com',
