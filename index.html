@@ -7,6 +7,7 @@
     <meta property="og:image" content="images/dc-image1.jpg">
     <meta property="og:title" content="Пранк DC">
     <meta property="og:url" content="dcwalletprank.pp.ua">
+    <meta name="google" content="notranslate">
     <link rel="stylesheet" href="styles/styles.css"> 
     <link rel="website icon" type="png" href="images/logoapp.png"> 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>  
@@ -821,6 +822,17 @@ window.addEventListener('appinstalled', (event) => {
     console.log('PWA was installed');
 });
 
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.documentElement.setAttribute('translate', 'no');
+    document.querySelectorAll('*').forEach(function(node) {
+        node.setAttribute('translate', 'no');
+    });
+});
 
    
   </script> 
