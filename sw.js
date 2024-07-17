@@ -1,4 +1,5 @@
 const CACHE_NAME = 'site-cache-v1';
+const OFFLINE_URL = 'error.html';
 const urlsToCache = [
   '/',
   '/styles/styles.css',
@@ -21,7 +22,8 @@ const urlsToCache = [
   'https://fonts.gstatic.com',
   'https://rawgit.com/schmich/instascan-builds/master/instascan.min.js',
   'https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap',
-  'https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap'
+  'https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap',
+  OFFLINE_URL
   // Добавьте сюда другие файлы, которые вы хотите кэшировать
 ];
 
@@ -42,13 +44,11 @@ self.addEventListener('install', event => {
 
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        if (response) {
-          return response; // Возвращаем кэшированный ресурс
-        }
-        return fetch(event.request); // Запрашиваем ресурс из сети
-      })
+    fetch(event.request).catch(() => {
+      return caches.match(event.request).then(response => {
+        return response || caches.match(OFFLINE_URL);
+      });
+    })
   );
 });
 
