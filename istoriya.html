@@ -22,21 +22,16 @@
     display: none; 
 } 
   
-.container{  
-    width: 393px;  
-}  
-  
 .prilozhenie{  
-    width: 393;  
-    background-color: #F1F1F3;  
+    background-color: white;  
     height: 100%; 
 }  
   
 header{  
     display: flex;  
-    justify-content: center;  
+    justify-content: space-around;  
     align-items: center;  
-    width: 393px;  
+    width: 100%;  
     border-bottom: 1px solid rgb(216, 214, 214);  
     position: fixed;  
     background: #F1F1F3;  
@@ -57,7 +52,7 @@ header{
 } 
   
 main{  
-  height: 298vh; 
+  height: 100vh; 
   overflow: hidden; 
 }  
   
@@ -94,11 +89,6 @@ main::-webkit-scrollbar{
     margin-left: 10px; 
 } 
  
-.gerb-image{  
-    width: 42px;  
-    margin-left: 15px; 
-}  
- 
 .card2{  
     display: flex;  
     justify-content: space-between;  
@@ -110,112 +100,7 @@ main::-webkit-scrollbar{
     font-size: 8px;  
     border-radius: 10px;   
     margin-top: 15px; 
-}  
- 
-.card2-text{ 
-    margin-left: 6px; 
 } 
- 
-.card3{  
-    display: flex;  
-    align-items: center;  
-    width: 350px;  
-    height: 70px;  
-    background: white;  
-    font-size: 8px;  
-    border-radius: 10px;   
-    margin-top: 15px;  
-}  
- 
-.card3-text{ 
-    margin-left: 10px; 
-} 
-  
-.karta-mir{ 
-    width: 40px; 
-    margin-left: 15px; 
-} 
-  
-.card4{ 
-    display: flex;  
-    align-items: center;  
-    width: 350px;  
-    height: 100px;  
-    background: white;  
-    font-size: 8px;  
-    border-radius: 10px;   
-    margin-top: 15px; 
-} 
- 
-.dc-business{ 
-    width: 40px; 
-    margin-left: 15px; 
-} 
- 
-.card6{ 
-    display: flex;  
-    align-items: center;  
-    width: 350px;  
-    height: 135px;  
-    background: white;  
-    font-size: 10px;  
-    border-radius: 10px;   
-    margin-top: 15px; 
-} 
- 
-.unionpay{ 
-    width: 42px; 
-    margin-left: 15px; 
-} 
- 
-.sepa-zone{ 
-    width: 40px; 
-    margin-left: 15px; 
-} 
- 
-.card14{ 
-    display: flex;  
-    align-items: center;  
-    width: 350px;  
-    height: 100px;  
-    background: white;  
-    font-size: 8px;  
-    border-radius: 10px;   
-    margin-top: 15px; 
-} 
- 
-.card15{ 
-    display: flex;  
-    align-items: center;  
-    width: 350px;  
-    height: 100px;  
-    background: white;  
-    font-size: 8px;  
-    border-radius: 10px;   
-    margin-top: 15px; 
-} 
- 
-.card22{  
-    display: flex;  
-    align-items: center;  
-    width: 350px;  
-    height: 65px;  
-    background: white;  
-    font-size: 8px;  
-    border-radius: 10px;   
-    margin-top: 15px;  
-} 
- 
-.card24{  
-    display: flex;  
-    align-items: center;  
-    width: 350px;
-    height: 65px;  
-    background: white;  
-    font-size: 8px;  
-    border-radius: 10px;   
-    margin-top: 15px;  
-}  
   
 footer{  
     display: flex;  
@@ -508,6 +393,54 @@ a{
   font-weight: 700;
   
 }
+
+.h2-block1{
+  height: 40px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 5px solid #017CFE;
+  margin-right: 100px;
+}
+
+@media (width > 394px) {
+    .container{ 
+        width: 100%;
+    } 
+     
+    .prilozhenie{ 
+        width: 100%; 
+    } 
+
+    header{
+        width: 100%;
+    }
+
+    .menu2{
+        width: 200px;
+    }
+
+    main{
+        width: 100%;
+    }
+
+    footer{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .footer-block1, .footer-block2{
+        display: flex;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .scanner{
+        left: 45%;
+    }
+}
   
 </style>  
   
@@ -516,7 +449,10 @@ a{
 <div class="container skeleton">  
     <div class="prilozhenie" onclick="vibratePhone()">  
         <header>  
-         <h2 class="h2-perevodi">Операции</h2> 
+          <div class="h2-block1">
+         <h2 class="h2-perevodi">Операции</h2>
+          </div>
+         <h2 class="h2-perevodi">Выписка</h2>
         </header>  
   
         <video id="scanner" style="display: none;"></video> 

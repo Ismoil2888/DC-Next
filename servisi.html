@@ -22,12 +22,7 @@
     display: none; 
 } 
   
-.container{  
-    width: 393px;  
-}  
-  
 .prilozhenie{  
-    width: 393;  
     background-color: #F1F1F3;  
     height: 100%; 
 }  
@@ -36,7 +31,7 @@ header{
     display: flex;  
     justify-content: center;  
     align-items: center;  
-    width: 393px;  
+    width: 100%;  
     border-bottom: 1px solid rgb(216, 214, 214);  
     position: fixed;  
     background: #F1F1F3;  
@@ -57,7 +52,7 @@ header{
 } 
   
 main{  
-  height: 298vh; 
+  height: 130vh; 
   overflow: hidden; 
 }  
   
@@ -76,35 +71,24 @@ main::-webkit-scrollbar{
     display: flex;      
     align-items: center;  
     width: 350px;  
-    height: 125px;  
+    height: 120px;  
     background: white;  
     font-size: 8px;  
     border-radius: 10px;   
     margin-top: 63px;  
 }  
-  
-.dc-image1{  
-    border: 1px solid grey;  
-    border-radius: 50px;  
-    width: 35px;  
-    margin-left: 15px; 
-}  
  
 .card1-text{ 
-    margin-left: 10px; 
+    margin-left: 13px;
+    margin-bottom: 25px; 
 } 
- 
-.gerb-image{  
-    width: 42px;  
-    margin-left: 15px; 
-}  
  
 .card2{  
     display: flex;  
     justify-content: space-between;  
     align-items: center;  
     width: 350px;  
-    height: 85px;  
+    height: 120px;  
     background: white;  
     font-size: 8px;  
     border-radius: 10px;   
@@ -112,14 +96,15 @@ main::-webkit-scrollbar{
 }  
  
 .card2-text{ 
-    margin-left: 6px; 
+    margin-left: 13px; 
+    margin-bottom: 25px; 
 } 
  
 .card3{  
     display: flex;  
     align-items: center;  
     width: 350px;  
-    height: 70px;  
+    height: 120px;  
     background: white;  
     font-size: 8px;  
     border-radius: 10px;   
@@ -127,179 +112,120 @@ main::-webkit-scrollbar{
 }  
  
 .card3-text{ 
-    margin-left: 10px; 
-} 
-  
-.karta-mir{ 
-    width: 40px; 
-    margin-left: 15px; 
+    margin-left: 13px; 
+    margin-bottom: 25px; 
 } 
   
 .card4{ 
     display: flex;  
     align-items: center;  
     width: 350px;  
-    height: 100px;  
+    height: 120px;  
     background: white;  
     font-size: 8px;  
     border-radius: 10px;   
     margin-top: 15px; 
 } 
- 
-.dc-business{ 
-    width: 40px; 
-    margin-left: 15px; 
-} 
- 
+
 .card6{ 
     display: flex;  
     align-items: center;  
     width: 350px;  
-    height: 135px;  
+    height: 120px;  
     background: white;  
     font-size: 10px;  
     border-radius: 10px;   
     margin-top: 15px; 
 } 
- 
-.unionpay{ 
-    width: 42px; 
-    margin-left: 15px; 
-} 
- 
-.sepa-zone{ 
-    width: 40px; 
-    margin-left: 15px; 
-} 
- 
-.card14{ 
-    display: flex;  
-    align-items: center;  
-    width: 350px;  
-    height: 100px;  
-    background: white;  
-    font-size: 8px;  
-    border-radius: 10px;   
-    margin-top: 15px; 
-} 
- 
-.card15{ 
-    display: flex;  
-    align-items: center;  
-    width: 350px;  
-    height: 100px;  
-    background: white;  
-    font-size: 8px;  
-    border-radius: 10px;   
-    margin-top: 15px; 
-} 
- 
-.card22{  
-    display: flex;  
-    align-items: center;  
-    width: 350px;  
-    height: 65px;  
-    background: white;  
-    font-size: 8px;  
-    border-radius: 10px;   
-    margin-top: 15px;  
-} 
- 
-.card24{  
-    display: flex;  
-    align-items: center;  
-    width: 350px;
-    height: 65px;  
-    background: white;  
-    font-size: 8px;  
-    border-radius: 10px;   
-    margin-top: 15px;  
-}  
+
+.card1:hover, .card2:hover, .card3:hover, .card4:hover, .card5:hover, .card6:hover{
+  opacity: 0.7;
+}
   
-footer{  
-    display: flex;  
-    justify-content: space-between;  
-    position: fixed;  
-    height: 7.5%;  
-    bottom: 0;  
-    background: #F1F1F3;  
-    width: 393px;  
-}  
-  
-.footer-block1{  
-    display: flex;  
-    border-top: 1px solid gainsboro;  
-    border-radius: 25px;  
-    padding-right: 25px;  
-    padding-top: 10px;  
-}  
-  
-.footer-block2{  
-    display: flex;  
-    border-top: 1px solid gainsboro;  
-    border-radius: 25px;  
-    padding-left: 25px;  
-    padding-top: 10px;  
-}  
-  
-.footer-razdel1{ 
+footer{ 
     display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    flex-direction: column; 
-    width: 75px; 
+    justify-content: space-between; 
+    position: fixed; 
+    height: 7.5%; 
+    bottom: 0; 
+    background: #F1F1F3; 
+    width: 393px; 
 } 
  
-.footer-razdel2{ 
+.footer-block1{ 
     display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    flex-direction: column; 
-    width: 90px; 
+    border-top: 1px solid gainsboro; 
+    border-radius: 25px; 
+    padding-right: 25px; 
+    padding-top: 10px; 
 } 
  
-.footer-razdel3{ 
+.footer-block2{ 
     display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    flex-direction: column; 
-    width: 50px; 
-    margin-right: 25px; 
+    border-top: 1px solid gainsboro; 
+    border-radius: 25px; 
+    padding-left: 25px; 
+    padding-top: 10px; 
 } 
+
+.footer-razdel1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 75px;
+}
+
+.footer-razdel2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90px;
+}
+
+.footer-razdel3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50px;
+    margin-right: 25px;
+}
+
+.footer-razdel5{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 70px;
+    margin-right: 15px;
+}
  
-.footer-razdel5{ 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    flex-direction: column; 
-    width: 70px; 
-    margin-right: 15px; 
+.footer-razdel4{ 
+  height: 200px;
+  border-bottom: 2px solid gainsboro;
+  border-radius: 25px;
+  width: 100px;
 } 
-  
-.footer-razdel4{  
-  height: 200px; 
-  border-bottom: 2px solid gainsboro; 
-  border-radius: 25px; 
-  width: 100px; 
-}  
+
+.scanner{
+  z-index: 200;
+  position: absolute;
+  right: 175px;
+  bottom: 30px; 
+  padding-bottom: 5px;
+  border-bottom: 2px solid gainsboro;
+  border-radius: 25px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.3);
+  background: #cacaca;
+}
  
-.scanner{ 
-  z-index: 200; 
-  position: absolute; 
-  right: 175px; 
-  bottom: 30px;  
-  padding-bottom: 5px; 
-  border-bottom: 2px solid gainsboro; 
-  border-radius: 25px; 
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.3); 
-  background: #cacaca; 
+.footer-undertext{ 
+    font-size: 10px; 
+    font-weight: 700; 
+    color: rgb(161, 159, 159); 
 } 
-  
-.footer-undertext{  
-    font-size: 10px;  
-    font-weight: 700;  
-    color: rgb(161, 159, 159);  
-}  
  
 .notification { 
   display: none; 
@@ -507,6 +433,44 @@ a{
   font-weight: 700;
   
 }
+
+@media (width > 394px) {
+    .container{ 
+        width: 100%;
+    } 
+     
+    .prilozhenie{ 
+        width: 100%; 
+    } 
+
+    header{
+        width: 100%;
+    }
+
+    .menu2{
+        width: 200px;
+    }
+
+    main{
+        width: 100%;
+    }
+
+    footer{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .footer-block1, .footer-block2{
+        display: flex;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .scanner{
+        left: 45%;
+    }
+}
   
 </style>  
   
@@ -523,52 +487,52 @@ a{
         <main>
             <div class="main-header">  
             <div class="card1" onclick="toggleForm()">  
-                <img class="dc-image1" src="images/dc-image1.jpg" alt="dc"> 
                 <div class="card1-text"> 
                 <h1>Карта банкоматов</h1><br> 
-                <p style="font-size: 12px; color: #8F8F8F;">Посмотрите наиболее<br>ближайший банкомат</p> 
+                <p style="font-size: 14px; color: #8F8F8F;">Посмотрите наиболее<br>ближайший банкомат</p> 
                 </div> 
+                <img style="margin-left: 93px; margin-top: 2px;" width="95" src="images/dcbankomat.png" alt="dc"> 
             </div>  
 
             <div class="card2">  
-                <img class="gerb-image" src="images/gerbtj.png" alt="">       
                 <div class="card2-text"> 
                     <h1>Neru</h1><br> 
-                    <p style="font-size: 12px;">Быстрая зарядка для<br>электрокаров по всему городу</p> 
-                </div>          
+                    <p style="font-size: 14px; color: #8F8F8F;">Быстрая зарядка для<br>электрокаров по всему городу</p> 
+                </div>     
+                <img style="margin-right: 10px;" width="84" src="images/dcneru.png" alt="">            
             </div>  
 
             <div class="card3">  
-                    <img class="karta-mir" src="images/karta-mir.png" alt="dc"> 
-                    <div class="card3-text">  
-                    <h1 style="margin-bottom: 10px;">CityParking</h1>  
-                    <p style="font-size: 12px; color: #8F8F8F;">Оплата платных парковок</p> 
-                    </div>  
+                  <div class="card3-text" style="margin-bottom: 40px;">  
+                  <h1 style="margin-bottom: 10px;">CityParking</h1>  
+                  <p style="font-size: 14px; color: #8F8F8F;">Оплата платных парковок</p> 
+                  </div>  
+                  <img style="margin-left: 85px;" width="55" src="images/cityparking.png" alt="dc"> 
             </div>  
 
             <div class="card4">  
-                <img class="dc-image1" src="images/dc-image1.jpg" alt="dc"> 
-                <div class="card1-text"> 
+                <div class="card1-text" style="margin-top: 10px;"> 
                 <h1>Авиабилеты</h1><br> 
-                <p style="font-size: 12px; color: #8F8F8F;">платформа для приобретения<br>авиабилетов по всем<br>направлениям</p> 
-                </div>                 
+                <p style="font-size: 14px; color: #8F8F8F;">платформа для приобретения<br>авиабилетов по всем<br>направлениям</p> 
+                </div>  
+                <img style="margin-left: 38.50px;" width="101" src="images/dcavia.png" alt="dc">                
             </div>  
 
             <div class="5 card3">  
-                    <img class="dc-business" src="images/dc-buisnes.png" alt="">  
-                    <div class="card3-text">  
-                    <h1 style="margin-bottom: 10px;">Перевозки</h1>
-                    <p style="font-size: 11.7px; color: #8F8F8F;">Перевозка грузов со многих<br>стран</p>   
-                    </div> 
+                <div class="card3-text">  
+                <h1 style="margin-bottom: 10px;">Перевозки</h1>
+                <p style="font-size: 14px; color: #8F8F8F;">Перевозка грузов со многих<br>стран</p>   
+                </div> 
+                <img style="margin-left: 51px; margin-top: 1px;" width="104" width="80" src="images/dccargo.png" alt="">  
             </div>  
 
             <div class="card6">  
-                <img class="unionpay" src="images/unionpay.png" alt="dc">
-                <div class="card1-text"> 
+                <div class="card3-text"> 
                     <h2>Заказать карту</h2><br> 
-                    <p style="font-size: 11.7px; color: #8F8F8F;">Закажите карту с самыми<br>крутыми дизайными</p> 
-                    </div>  
-                </div>  
+                    <p style="font-size: 14px; color: #8F8F8F;">Закажите карту с самыми<br>крутыми дизайными</p> 
+                    </div> 
+                    <img style="margin-left: 64px;" width="105" src="images/zakazkart.png" alt="dc"> 
+            </div>  
         </div>
         </main>  
   

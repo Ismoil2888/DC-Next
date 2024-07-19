@@ -375,7 +375,6 @@ a{
 
 
 .form{
-  border: 2px solid grey;
   border-radius: 5px;
   height: 820px;
   width: 100%;
@@ -398,7 +397,8 @@ a{
 }
 
 .form-back-icon{
-  font-size: 35px;
+  font-size: 30px;
+  margin-bottom: 7px;
 }
 
 .form-main{
@@ -410,11 +410,12 @@ a{
 
 .form-input1{
   border: 0;
-  width: 350px;
+  width: 250px;
   height: 45px;
-  border-radius: 10px; 
+  border-top-left-radius: 10px; 
+  border-bottom-left-radius: 10px;
   margin-top: 20px;
-  margin-right: 5px;
+  margin-left: 5px;
   padding: 10px;
   font-size: 16px;
 }
@@ -426,8 +427,9 @@ a{
   border-radius: 15px; 
   margin-top: 12px;
   margin-right: 5px;
-  background: skyblue;
-  color: #017CFE;
+  background: #CBE5FE;
+  color: #2A83BF;
+  font-size: 17px;
 }
 
 .form-input2{
@@ -442,7 +444,7 @@ a{
   font-weight: 500;
 }
 
-.form-input3{
+ .form-input3{
   border: 0;
   width: 350px;
   height: 45px;
@@ -457,7 +459,7 @@ a{
   margin-top: 5px;
   margin-left: 250px;
   color: grey;
-  font-weight: 00;
+  font-size: 13PX;
 }
 
 .form-blocks{
@@ -499,14 +501,51 @@ a{
 .form-button2{
   border: 0;
   color: white;
-  background: darkorange;
+  background: #F97326;
   border-radius: 15px;
   width: 350px;
   height: 65px;
   margin-top: 165px;
-  font-size: 17px;
-  font-weight: 700;
-  
+  font-size: 20px;
+  font-weight: 500;
+}
+
+@media (width > 394px) {
+    .container{ 
+        width: 100%;
+    } 
+     
+    .prilozhenie{ 
+        width: 100%; 
+    } 
+
+    header{
+        width: 100%;
+    }
+
+    .menu2{
+        width: 200px;
+    }
+
+    main{
+        width: 100%;
+    }
+
+    footer{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .footer-block1, .footer-block2{
+        display: flex;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .scanner{
+        left: 45%;
+    }
 }
   
 </style>  
@@ -738,43 +777,97 @@ a{
               </a> 
             </div>  
           
-          <div class="form">
-    <div class="form-header">
-      <div class="form-back-icon" onclick="toggleForm()"><</div><h3>DC (по номеру телефона)</h3><div style="font-size: 50px; margin-top: 15px;">*</div>
-    </div>
-      
-      <div class="form-main">
-        <input class="form-input1" placeholder="Номер телефона поучателя">
-        <button class="form-button1">Проверить номер/счет</button>
-        <input class="form-input2" placeholder="TJS Сумма">
-        <input class="form-input3" placeholder="Коментарий">
-        <div class="min-summa"><h5>Мин. сумма: 0 TJS</h5></div>
-        
-        <div class="form-blocks">
-          <div class="form-block1">
-            <p>DBS****1248</p>
-            <p style="margin-top: 25px;">0,93</p>
-          </div>
+            <div class="form">
+              <div class="form-header">
+                <ion-icon class="form-back-icon" onclick="toggleForm()" name="chevron-back-outline"></ion-icon><h3 style="font-weight: 500;">DC (по номеру телефона)</h3><div style="font-size: 50px; margin-top: 15px;"><ion-icon style="width: 30px; margin-bottom: 7px;" name="star-outline"></ion-icon></div>
+              </div>
+                
+                <div class="form-main">
+                  <div style="display: flex;" class="form-input1-block">
+                  <input class="form-input1" type="tel" placeholder="Номер телефона поучателя"><div style="width: 95px; height: 50px; background-color: white; margin-top: 20px; margin-right: 15px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; padding-top: 15px;" class="vibor-img-bg"><img style="margin-right: 15px;" src="images/viboriscontact.png" height="33px" width="80px" alt=""></div>
+                  </div>
+                  <button class="form-button1">Проверить номер/счет</button>
+                  <div id="randomLetters"></div>
+                  <input class="form-input2" type="number" placeholder="TJS Сумма">
+                  <input class="form-input3" placeholder="Коментарий">
+                  <div class="min-summa"><P>Мин. сумма: 0 TJS</P></div>
+                  
+                  <div class="form-blocks">
+                    <div class="form-block1">
+                      <p style="font-size: 14PX;">DBS****1248</p>
+                      <div style="display: flex; align-items: center; justify-content: center; font-size: 15px;" class="balance-in-card-block">
+                      <p style="margin-top: 25px; margin-right: 5px;" class="balance-in-card rubik">0,10</p><p style="margin-top: 25px; margin-right: 8px;">TJS</p>
+                    </div>
+                    </div>
+                    
+                    <div class="form-block2">
+                      <p>Оплатить<br>карты РФ</p>
+                    </div>
+                  </div>
+                  
+                  <div class="form-text">
+                    <p>Для перевода на карту Душанбе Сити укажите<br>
+                      номер кошелька и введите сумму перевода. Без <br>
+                      комиссии. Если вы отправили деньги не тому <br>
+                      человеку, обратитесь к получателю перевода.<br>
+                      Деньги может вернуть только получатель.</p>
+                  </div>
+                  
+                  <div>
+                    <button class="form-button2">Далее</button>
+                  </div>
           
-          <div class="form-block2">
-            <p>Оплатить<br>карты РФ</p>
+                  <div class="overlay"></div>
+          <div class="popup-menu">
+              <div class="menu-content">
+                <h3>Подтверждение платежа</h3>
+                <h2 class="summa-zachisleniye" style="color: #017CFE; margin-top: 8px; font-weight: 500;"></h2>
+                <div class="menu-content-boss">
+                <div class="menu-content-1">
+                  <p class="razdels-in-form-menu">Поставщик:</p>
+                  <p class="razdels-in-form-menu">Номер/счёт:</p>
+                  <p class="razdels-in-form-menu">Способ оплаты:</p>
+                  <p class="razdels-in-form-menu">Комиссия:</p>
+                  <p class="razdels-in-form-menu">Сумма зачисления:</p>
+                </div>
+                <div class="menu-content-2">
+                  <p class="razdels-in-form-menu">DC (по номеру телефона)</p>
+                  <p class="nomer-schyot razdels-in-form-menu"></p>
+                  <p class="razdels-in-form-menu">5678 **** **** 4567</p>
+                  <p class="razdels-in-form-menu">0.00 TJS</p>
+                  <p class="summa-zachisleniye razdels-in-form-menu"></p>
+                </div>
+                  </div>
+                  <button class="confirm-button-1">Подтверждаю</button>
+              </div>
+            
+            <div class="popup-menu-2">
+              <div class="menu-content">
+                <img class="uspeshno-oshibka" src="images/uspeshnopl.png" style="margin-bottom: 15px;" width="50px" alt="">
+                <h2>Платеж выполнен</h2>
+                <div class="menu-content-boss">
+                <div class="menu-content-1">
+                  <p class="razdels-in-form-menu">Получатель:</p>
+                  <p class="razdels-in-form-menu">Сумма:</p>
+                  <p class="razdels-in-form-menu">Комиссия:</p>
+                  <p class="razdels-in-form-menu">Дата:</p>
+                  <p class="razdels-in-form-menu">Время:</p>
+                </div>
+                <div class="menu-content-2">
+                  <p class="nomer-schyot razdels-in-form-menu"></p>
+                  <p class="summa-zachisleniye razdels-in-form-menu"></p>
+                  <p class="razdels-in-form-menu">0.00</p>
+                  <p class="razdels-in-form-menu" id="dateinCheck"></p>
+                  <p class="razdels-in-form-menu" id="timeinCheck"></p>
+                </div>
+                  </div>
+                  <button id="toggleAndVibrate" class="confirm-button"  onclick="window.location.reload();">На главную</button>
+                  </div>
           </div>
-        </div>
-        
-        <div class="form-text">
-          <p>Для перевода на карту Душанбе Сити укажите<br>
-            номер кошелька и введите сумму перевода. Без <br>
-            комиссии. Если вы отправили деньги не тому <br>
-            человеку, обратитесь к получателю перевода.<br>
-            Деньги может вернуть только получатель.</p>
-        </div>
-        
-        <div>
-          <button class="form-button2">Далее</button>
-        </div>
-        
-      </div>
-    </div>
+                  
+                </div>
+              </div>
+              </div>
           
         </footer>  
     </div>  
