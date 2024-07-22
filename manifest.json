@@ -19,5 +19,13 @@
             "src":"/icon512_rounded.png",
             "type":"image/png"
         }
-    ]
+    ],
+    "splash_screens": [
+       {
+         "src": "/apploading.jpg",
+         "sizes": "1080x2350",
+         "type": "image/jpeg",
+         "background_color": "#ffffff"
+       }
+     ]
   }
