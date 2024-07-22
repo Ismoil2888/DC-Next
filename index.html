@@ -381,7 +381,7 @@
       <ion-icon class="form-back-icon" onclick="toggleForm()" name="chevron-back-outline"></ion-icon><h3 style="font-weight: 500;">DC (по номеру телефона)</h3><div style="font-size: 50px; margin-top: 15px;"><ion-icon style="width: 30px; margin-bottom: 7px;" name="star-outline"></ion-icon></div>
     </div>
       
-      <div class="form-main">
+      <div class="form-main" id="paymentForm">
         <div style="display: flex;" class="form-input1-block">
         <input class="form-input1" type="tel" placeholder="Номер телефона поучателя"><div style="width: 95px; height: 50px; background-color: white; margin-top: 20px; margin-right: 15px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; padding-top: 15px;" class="vibor-img-bg"><img style="margin-right: 15px;" src="images/viboriscontact.png" height="33px" width="80px" alt=""></div>
         </div>
@@ -858,6 +858,51 @@ window.addEventListener('load', () => {
   }, { passive: false });
 });
 
+
+
+
+
+
+
+
+
+function getCurrentDate() {
+      const date = new Date();
+      const day = String(date.getDate()).padStart(2, '0');
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const year = String(date.getFullYear()).slice(-2);
+      return `${day}.${month}.${year}`;
+    }
+
+    function getCurrentTime() {
+      const date = new Date();
+      const hours = String(date.getHours()).padStart(2, '0');
+      const minutes = String(date.getMinutes()).padStart(2, '0');
+      const seconds = String(date.getSeconds()).padStart(2, '0');
+      return `${hours}:${minutes}:${seconds}`;
+    }
+
+    document.querySelector('.confirm-button').addEventListener('click', function() {
+      const phoneNumber = document.querySelector('.form-input1').value;
+      const amount = document.querySelector('.form-input2').value;
+      const date = getCurrentDate();
+      const time = getCurrentTime();
+
+      const paymentData = {
+        phoneNumber,
+        amount,
+        date,
+        time
+      };
+
+      // Save payment data to localStorage
+      let payments = JSON.parse(localStorage.getItem('payments')) || [];
+      payments.push(paymentData);
+      localStorage.setItem('payments', JSON.stringify(payments));
+
+      // Redirect to istoriya.html
+      window.location.href = 'istoriya.html';
+    });
    
   </script> 
 
