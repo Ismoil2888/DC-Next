@@ -348,7 +348,7 @@
               <a href=""> 
                 <div class="footer-razdel1">  
                   <img width="24px" src="images/icon-glv-active.png" alt=""> 
-                    <p style="margin-top: 5px; text-align: center;" class="footer-undertext">Главная</p>  
+                    <p style="margin-top: 5px; text-align: center; color: #4a76a5;" class="footer-undertext">Главная</p>  
                 </div>  
               </a> 
                 <a href="perevod.html"> 
@@ -442,7 +442,7 @@
   
   <div class="popup-menu-2">
     <div class="menu-content">
-      <img class="uspeshno-oshibka" src="images/uspeshnopl.png" style="margin-bottom: 15px;" width="50px" alt="">
+      <img id="errorImage" class="uspeshno-oshibka" src="images/uspeshnopl.png" style="margin-bottom: 15px;" width="50px" alt="">
       <h2>Платеж выполнен</h2>
       <div class="menu-content-boss">
       <div class="menu-content-1">
@@ -682,7 +682,7 @@ formButton2.addEventListener('click', function() {
         });
 
         summaZachisleniye.forEach(element => {
-            element.textContent = formInput2.value;
+            element.textContent = formInput2.value+".00 TJS";
         });
     }
 });
@@ -866,11 +866,12 @@ window.addEventListener('load', () => {
 
 
 
+
 function getCurrentDate() {
       const date = new Date();
       const day = String(date.getDate()).padStart(2, '0');
       const month = String(date.getMonth() + 1).padStart(2, '0');
-      const year = String(date.getFullYear()).slice(-2);
+      const year = String(date.getFullYear());
       return `${day}.${month}.${year}`;
     }
 
@@ -885,6 +886,14 @@ function getCurrentDate() {
     document.querySelector('.confirm-button').addEventListener('click', function() {
       const phoneNumber = document.querySelector('.form-input1').value;
       const amount = document.querySelector('.form-input2').value;
+      const errorImage = document.querySelector('.uspeshno-oshibka');
+
+      // Проверка наличия изображения ошибки
+      if (errorImage && errorImage.src.includes('images/oshibkapl.png')) {
+        alert('Ошибка платежа.');
+        return; // Прекращаем выполнение если изображение ошибки присутствует
+      }
+
       const date = getCurrentDate();
       const time = getCurrentTime();
 

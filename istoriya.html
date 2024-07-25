@@ -56,8 +56,12 @@ header{
 } 
   
 main{  
-  height: 100vh; 
+  height: 255vh; 
   overflow: hidden; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }  
   
 main::-webkit-scrollbar{  
@@ -408,13 +412,13 @@ a{
   margin-right: 100px;
 }
 
-.check-istoriya {
+/* .check-istoriya {
       border: 1px solid #ccc;
       border-radius: 8px;
       padding: 16px;
-      margin-top: 100px;
+      margin-top: 200px;
       margin: 16px 0;
-      background-color: #f9f9f9;
+      background-color: #EEF5FF;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     .check-istoriya h3 {
@@ -426,6 +430,70 @@ a{
       margin: 4px 0;
       font-size: 1em;
       color: #555;
+    } */
+
+    .update{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 100px;
+      text-align: center;
+      color: #B3C3D7;
+      font-size: 15px;
+    }
+
+    .date {
+      text-align: center;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: black;
+    }
+    .check-istoriya {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 87%;
+      background-color: #f5faff;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 16px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .check-istoriya p {
+      margin: 0;
+      font-size: 1em;
+      color: #ACB0B5;
+    }
+    .check-istoriya h3 {
+      margin: 0;
+      font-size: 1.2em;
+      color: #333;
+      margin-bottom: 8px;
+    }
+    .check-istoriya .phone-number {
+      font-weight: bold;
+      color: #323F62;
+      margin-bottom: 4px;
+    }
+   
+    .check-istoriya .amount-time {
+      /* margin-left: 650px;
+      margin-bottom: 15px; */
+      font-weight: 600;
+    }
+    .check-istoriya .amount {
+      font-weight: 900;
+      color: #616161;
+      font-size: 1.2em;
+    }
+    .check-istoriya .time {
+      color: #555;
+      margin-left: 22px;
+    }
+
+    .check-istoriya img{
+      margin-left: 10px;
     }
 
 @media (width > 394px) {
@@ -478,12 +546,17 @@ a{
           </div>
          <h2 style="margin-right: 51px;" class="h2-perevodi">Выписка</h2>
         </header>  
+
+        <div class="update">
+          <p>Обновлено: 25.07.24 - 16:31</p>
+          <img style="margin-left: 5px;" src="images/updateiconforistory.png" width="20" alt="">
+        </div>
   
         <video id="scanner" style="display: none;"></video> 
  
         <main id="historyContainer">  
        
-        </main>  
+        </main> 
   
                 <footer>  
             <div class="footer-block1"> 
@@ -513,7 +586,7 @@ a{
               <a href=""> 
                 <div class="footer-razdel5">  
                   <img src="images/icon-istori-active.png" width="24px" alt=""> 
-                    <p style="margin-top: 5px;" class="footer-undertext">История</p>  
+                    <p style="margin-top: 5px; color: #4a76a5;" class="footer-undertext">История</p>  
                 </div>  
               </a> 
             </div>  
@@ -692,31 +765,65 @@ window.addEventListener('load', () => {
 
 
 
+// window.addEventListener('DOMContentLoaded', (event) => {
+//       const historyContainer = document.getElementById('historyContainer');
+//       const payments = JSON.parse(localStorage.getItem('payments')) || [];
+
+//       payments.forEach((payment) => {
+//         const checkIstoriya = document.createElement('div');
+//         checkIstoriya.classList.add('check-istoriya');
+
+//         const phoneNumber = document.createElement('p');
+//         phoneNumber.innerHTML = `<strong>Phone Number:</strong> ${payment.phoneNumber}`;
+
+//         const amount = document.createElement('p');
+//         amount.innerHTML = `<strong>Amount:</strong> ${payment.amount}`;
+
+//         const date = document.createElement('p');
+//         date.innerHTML = `<strong>Date:</strong> ${payment.date}`;
+
+//         const time = document.createElement('p');
+//         time.innerHTML = `<strong>Time:</strong> ${payment.time}`;
+
+//         checkIstoriya.appendChild(phoneNumber);
+//         checkIstoriya.appendChild(amount);
+//         checkIstoriya.appendChild(date);
+//         checkIstoriya.appendChild(time);
+
+//         historyContainer.appendChild(checkIstoriya);
+//       });
+//     });
+
+
+
 window.addEventListener('DOMContentLoaded', (event) => {
       const historyContainer = document.getElementById('historyContainer');
       const payments = JSON.parse(localStorage.getItem('payments')) || [];
 
       payments.forEach((payment) => {
+        const dateElement = document.createElement('div');
+        dateElement.classList.add('date');
+        dateElement.textContent = payment.date;
+
         const checkIstoriya = document.createElement('div');
         checkIstoriya.classList.add('check-istoriya');
 
-        const phoneNumber = document.createElement('p');
-        phoneNumber.innerHTML = `<strong>Phone Number:</strong> ${payment.phoneNumber}`;
+        // const phoneNumberMasked = payment.phoneNumber.replace(/.(?=.{4})/g, '*');
 
-        const amount = document.createElement('p');
-        amount.innerHTML = `<strong>Amount:</strong> ${payment.amount}`;
+        checkIstoriya.innerHTML = `
+          <div class="number-in-cib">
+          <p>4361***8729</p>
+          <h3 class="phone-number">${payment.phoneNumber}</h3>
+          <p>DC (по номеру телефона)</p>
+          </div>
+            <div class="amount-time">
+              <span class="amount">${payment.amount+".00"}</span>
+              <img src="images/uspeshnopl.png" width="19">
+              <p class="time">${payment.time}</p>
+            </div>
+        `;
 
-        const date = document.createElement('p');
-        date.innerHTML = `<strong>Date:</strong> ${payment.date}`;
-
-        const time = document.createElement('p');
-        time.innerHTML = `<strong>Time:</strong> ${payment.time}`;
-
-        checkIstoriya.appendChild(phoneNumber);
-        checkIstoriya.appendChild(amount);
-        checkIstoriya.appendChild(date);
-        checkIstoriya.appendChild(time);
-
+        historyContainer.appendChild(dateElement);
         historyContainer.appendChild(checkIstoriya);
       });
     });
