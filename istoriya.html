@@ -507,30 +507,36 @@ a{
       transform: translateY(100%);
       z-index: 1000;
     }
-    .modal-content {
+
+    .modal-block{
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      height: 70%;
+      border-radius: 10px 10px 0 0;
       background: #fff;
       color: #000;
       padding: 20px;
-      border-radius: 10px 10px 0 0;
-      width: 100%;
-      height: 50%;
       box-sizing: border-box;
     }
-    .modal-content p {
+
+    .modal-block p {
       margin: 10px 0;
     }
+
     .modal-content .close {
       cursor: pointer;
       text-align: center;
-      margin-top: 20px;
+      margin-top: 150px;
+      margin-left: 50%;
       border: 0;
-  color: white;
-  background: darkorange;
-  border-radius: 15px;
-  width: 350px;
-  height: 55px;
-  font-size: 17px;
-  font-weight: 500;
+      color: white;
+      background: darkorange;
+      border-radius: 15px;
+      width: 350px;
+      height: 55px;
+      font-size: 17px;
+      font-weight: 500;
     }
     .show {
       transform: translateY(0);
@@ -673,17 +679,29 @@ a{
 
 
     <div class="modal" id="modal">
+      <div class="modal-block">
       <div class="modal-content">
-        <p id="modal-date"></p>
-        <p id="modal-time"></p>
-        <p>Номер операции: 984521325/894045</p>
-        <p>Поставщик: DC (по номеру телефона)</p>
-        <p>Счет отправителя: 8546****8945</p>
-        <p id="modal-phone"></p>
-        <p id="modal-amount"></p>
-        <p>Статус: Успешный</p>
+        <p>Дата операции:</p>
+        <p>Время операции:</p>
+        <p>Номер операции:</p>
+        <p>Поставщик:</p>
+        <p>Счет отправителя:</p>
+        <p>Счет получателя:</p>
+        <p>Сумма операции:</p>
+        <p>Статус:</p>
         <button class="close" id="modal-close">Назад</button>
       </div>
+      <div class="modal-content2">
+        <p id="modal-date"></p>
+        <p id="modal-time"></p>
+        <p>984521325/894045</p>
+        <p>DC (по номеру телефона)</p>
+        <p>8546****8945</p>
+        <p id="modal-phone"></p>
+        <p id="modal-amount"></p>
+        <p>Успешный</p>
+      </div>
+    </div>
     </div>
           
         </footer>  
@@ -907,10 +925,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const modalClose = document.getElementById('modal-close');
 
     function showModal(payment) {
-      modalDate.textContent = `Дата операции:  ${payment.date}`;
-      modalPhone.textContent = `Счет получателя: 992${payment.phoneNumber}`;
-      modalAmount.textContent = `Сумма операции: ${payment.amount}.00`;
-      modalTime.textContent = `Время операции: ${payment.time}`;
+      modalDate.textContent = ` ${payment.date}`;
+      modalPhone.textContent = ` 992${payment.phoneNumber}`;
+      modalAmount.textContent = ` ${payment.amount}.00`;
+      modalTime.textContent = ` ${payment.time}`;
       modal.classList.add('show');
     }
 
