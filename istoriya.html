@@ -57,7 +57,6 @@ header{
   
 main{  
   height: 200vh; 
-  padding-top: 10px;
   overflow: hidden; 
   display: flex;
   flex-direction: column;
@@ -400,7 +399,6 @@ a{
   margin-top: 165px;
   font-size: 17px;
   font-weight: 700;
-  
 }
 
 .h2-block1{
@@ -501,7 +499,7 @@ a{
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(136, 136, 136, 0.5);
       display: flex;
       justify-content: flex-end;
       flex-direction: column;
@@ -525,7 +523,14 @@ a{
       cursor: pointer;
       text-align: center;
       margin-top: 20px;
-      color: #0066cc;
+      border: 0;
+  color: white;
+  background: darkorange;
+  border-radius: 15px;
+  width: 350px;
+  height: 55px;
+  font-size: 17px;
+  font-weight: 500;
     }
     .show {
       transform: translateY(0);
@@ -669,10 +674,15 @@ a{
 
     <div class="modal" id="modal">
       <div class="modal-content">
+        <p id="modal-date"></p>
+        <p id="modal-time"></p>
+        <p>Номер операции: 984521325/894045</p>
+        <p>Поставщик: DC (по номеру телефона)</p>
+        <p>Счет отправителя: 8546****8945</p>
         <p id="modal-phone"></p>
         <p id="modal-amount"></p>
-        <p id="modal-time"></p>
-        <div class="close" id="modal-close">Закрыть</div>
+        <p>Статус: Успешный</p>
+        <button class="close" id="modal-close">Назад</button>
       </div>
     </div>
           
@@ -890,15 +900,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 
     const modal = document.getElementById('modal');
+    const modalDate = document.getElementById('modal-date');
     const modalPhone = document.getElementById('modal-phone');
     const modalAmount = document.getElementById('modal-amount');
     const modalTime = document.getElementById('modal-time');
     const modalClose = document.getElementById('modal-close');
 
     function showModal(payment) {
-      modalPhone.textContent = `Поставщик: ${payment.phoneNumber}`;
-      modalAmount.textContent = `Сумма: ${payment.amount}`;
-      modalTime.textContent = `Время: ${payment.time}`;
+      modalDate.textContent = `Дата операции:  ${payment.date}`;
+      modalPhone.textContent = `Счет получателя: 992${payment.phoneNumber}`;
+      modalAmount.textContent = `Сумма операции: ${payment.amount}.00`;
+      modalTime.textContent = `Время операции: ${payment.time}`;
       modal.classList.add('show');
     }
 
