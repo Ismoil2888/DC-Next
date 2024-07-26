@@ -56,7 +56,8 @@ header{
 } 
   
 main{  
-  height: 255vh; 
+  height: 200vh; 
+  padding-top: 230px;
   overflow: hidden; 
   display: flex;
   flex-direction: column;
@@ -478,8 +479,6 @@ a{
     }
    
     .check-istoriya .amount-time {
-      /* margin-left: 650px;
-      margin-bottom: 15px; */
       font-weight: 600;
     }
     .check-istoriya .amount {
@@ -548,7 +547,7 @@ a{
         </header>  
 
         <div class="update">
-          <p>Обновлено: 25.07.24 - 16:31</p>
+          <p>Обновлено: <span class="update-date"></span> - <span class="update-time"></span></p>
           <img style="margin-left: 5px;" src="images/updateiconforistory.png" width="20" alt="">
         </div>
   
@@ -623,10 +622,11 @@ a{
         </div>
         
         <div>
-          <button class="form-button2">Далее</button>
+          <button class="form-button2" onclick="toggleForm()">Назад</button>
         </div>
         
       </div>
+    </div>
     </div>
           
         </footer>  
@@ -711,15 +711,15 @@ window.addEventListener('load', function() {
   
   
   
-  function toggleForm() {
-    var form = document.querySelector('.form');
-     form.classList.toggle('openn');
-      if (form.classList.contains('openn')) {
-        document.querySelector('header').style.zIndex = '-1';
-  } else {
-    document.querySelector('header').style.zIndex = '100';
-  }
-}
+//   function toggleForm() {
+//     var form = document.querySelector('.form');
+//      form.classList.toggle('openn');
+//       if (form.classList.contains('openn')) {
+//         document.querySelector('header').style.zIndex = '-1';
+//   } else {
+//     document.querySelector('header').style.zIndex = '100';
+//   }
+// }
 
 
 
@@ -811,12 +811,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
         // const phoneNumberMasked = payment.phoneNumber.replace(/.(?=.{4})/g, '*');
 
         checkIstoriya.innerHTML = `
-          <div class="number-in-cib">
+          <div class="number-in-cib" onclick="toggleForm()">
           <p>4361***8729</p>
           <h3 class="phone-number">${payment.phoneNumber}</h3>
           <p>DC (по номеру телефона)</p>
           </div>
-            <div class="amount-time">
+            <div class="amount-time" onclick="toggleForm()">
               <span class="amount">${payment.amount+".00"}</span>
               <img src="images/uspeshnopl.png" width="19">
               <p class="time">${payment.time}</p>
@@ -827,6 +827,39 @@ window.addEventListener('DOMContentLoaded', (event) => {
         historyContainer.appendChild(checkIstoriya);
       });
     });
+
+
+
+
+
+
+
+
+
+    function updateDateTime() {
+  const now = new Date();
+
+  // Форматирование даты
+  const day = String(now.getDate()).padStart(2, '0');
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const year = String(now.getFullYear()).slice(-2);
+  const formattedDate = `${day}.${month}.${year}`;
+
+  // Форматирование времени
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const formattedTime = `${hours}:${minutes}`;
+
+  // Поиск элементов с заданными классами и установка текста
+  const dateElement = document.querySelector('.update-date');
+  const timeElement = document.querySelector('.update-time');
+  dateElement.textContent = formattedDate;
+  timeElement.textContent = formattedTime;
+}
+
+// Вызываем функцию при загрузке страницы
+updateDateTime();
+
    
   </script> 
    
