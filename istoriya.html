@@ -57,7 +57,7 @@ header{
   
 main{  
   height: 200vh; 
-  padding-top: 70px;
+  padding-top: 10px;
   overflow: hidden; 
   display: flex;
   flex-direction: column;
@@ -495,6 +495,42 @@ a{
       margin-left: 10px;
     }
 
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+      transform: translateY(100%);
+      z-index: 1000;
+    }
+    .modal-content {
+      background: #fff;
+      color: #000;
+      padding: 20px;
+      border-radius: 10px 10px 0 0;
+      width: 100%;
+      height: 50%;
+      box-sizing: border-box;
+    }
+    .modal-content p {
+      margin: 10px 0;
+    }
+    .modal-content .close {
+      cursor: pointer;
+      text-align: center;
+      margin-top: 20px;
+      color: #0066cc;
+    }
+    .show {
+      transform: translateY(0);
+    }
+
 @media (width > 394px) {
     .container{ 
         width: 100%;
@@ -627,6 +663,17 @@ a{
         
       </div>
     </div>
+    </div>
+
+
+
+    <div class="modal" id="modal">
+      <div class="modal-content">
+        <p id="modal-phone"></p>
+        <p id="modal-amount"></p>
+        <p id="modal-time"></p>
+        <div class="close" id="modal-close">Закрыть</div>
+      </div>
     </div>
           
         </footer>  
@@ -823,10 +870,67 @@ window.addEventListener('DOMContentLoaded', (event) => {
             </div>
         `;
 
+        checkIstoriya.addEventListener('click', () => {
+          showModal(payment);
+        });
+
         historyContainer.appendChild(dateElement);
         historyContainer.appendChild(checkIstoriya);
       });
     });
+
+
+
+
+
+
+
+
+
+
+
+    const modal = document.getElementById('modal');
+    const modalPhone = document.getElementById('modal-phone');
+    const modalAmount = document.getElementById('modal-amount');
+    const modalTime = document.getElementById('modal-time');
+    const modalClose = document.getElementById('modal-close');
+
+    function showModal(payment) {
+      modalPhone.textContent = `Поставщик: ${payment.phoneNumber}`;
+      modalAmount.textContent = `Сумма: ${payment.amount}`;
+      modalTime.textContent = `Время: ${payment.time}`;
+      modal.classList.add('show');
+    }
+
+    modalClose.addEventListener('click', () => {
+      closeModal();
+    });
+
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    function closeModal() {
+      modal.classList.remove('show');
+    }
+
+    let StartY;
+
+    modal.addEventListener('touchstart', (event) => {
+      StartY = event.touches[0].clientY;
+    });
+
+    modal.addEventListener('touchmove', (event) => {
+      const currentY = event.touches[0].clientY;
+      if (currentY - StartY > 50) {
+        closeModal();
+      }
+    });
+
+
+
 
 
 
