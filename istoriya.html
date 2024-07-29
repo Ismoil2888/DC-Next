@@ -456,7 +456,7 @@ a{
       border-radius: 12px;
       padding: 16px;
       margin: 16px 0;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
     }
 
     .check-istoriya p {
@@ -474,6 +474,7 @@ a{
       font-weight: bold;
       color: #323F62;
       margin-bottom: 4px;
+      font-size: 18px;
     }
    
     .check-istoriya .amount-time {
@@ -543,6 +544,52 @@ a{
 
     .show {
       transform: translateY(0);
+    }
+
+    .delete-confirmation {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      display: none;
+      z-index: 1001;
+    }
+    .delete-confirmation p {
+      margin: 0 0 20px 0;
+    }
+    .delete-confirmation .buttons {
+      display: flex;
+      justify-content: space-around;
+    }
+    .delete-confirmation .btn {
+      border: none;
+      padding: 10px 20px;
+      border-radius: 50%;
+      font-size: 1em;
+      cursor: pointer;
+      color: white;
+    }
+    .delete-confirmation .btn-yes {
+      background-color: #007bff;
+    }
+    .delete-confirmation .btn-no {
+      background-color: #dc3545;
+    }
+    /* Стилизация анимации удаления */
+    @keyframes explode {
+      from {
+        transform: scale(1);
+        opacity: 1;
+      }
+      to {
+        transform: scale(1.5);
+        opacity: 0;
+      }
     }
 
 @media (width > 394px) {
@@ -639,47 +686,7 @@ a{
                 </div>  
               </a> 
             </div>  
-          
-          <div class="form">
-    <div class="form-header">
-      <div class="form-back-icon" onclick="toggleForm()"><</div><h3>DC (по номеру телефона)</h3><div style="font-size: 50px; margin-top: 15px;">*</div>
-    </div>
-      
-      <div class="form-main">
-        <input class="form-input1" placeholder="Номер телефона поучателя">
-        <button class="form-button1">Проверить номер/счет</button>
-        <input class="form-input2" placeholder="TJS Сумма">
-        <input class="form-input3" placeholder="Коментарий">
-        <div class="min-summa"><h5>Мин. сумма: 0 TJS</h5></div>
-        
-        <div class="form-blocks">
-          <div class="form-block1">
-            <p>DBS****1248</p>
-            <p style="margin-top: 25px;">0,93</p>
-          </div>
-          
-          <div class="form-block2">
-            <p>Оплатить<br>карты РФ</p>
-          </div>
-        </div>
-        
-        <div class="form-text">
-          <p>Для перевода на карту Душанбе Сити укажите<br>
-            номер кошелька и введите сумму перевода. Без <br>
-            комиссии. Если вы отправили деньги не тому <br>
-            человеку, обратитесь к получателю перевода.<br>
-            Деньги может вернуть только получатель.</p>
-        </div>
-        
-        <div>
-          <button class="form-button2" onclick="toggleForm()">Назад</button>
-        </div>
-        
-      </div>
-    </div>
-    </div>
-
-
+    
 
     <div class="modal" id="modal">
       <div class="modal-block">
@@ -705,6 +712,15 @@ a{
         <p>Успешный</p>
       </div>
     </div>
+    </div>
+
+
+    <div class="delete-confirmation" id="delete-confirmation">
+      <p>Вы уверены что хотите удалить чек?</p>
+      <div class="buttons">
+        <button class="btn btn-yes">Да</button>
+        <button class="btn btn-no">Нет</button>
+      </div>
     </div>
           
         </footer>  
@@ -890,7 +906,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         checkIstoriya.innerHTML = `
           <div class="number-in-cib" onclick="toggleForm()">
-          <p>4361***8729</p>
+          <p style="font-size: 15px">4361***8729</p>
           <h3 class="phone-number">${payment.phoneNumber}</h3>
           <p>DC (по номеру телефона)</p>
           </div>
@@ -901,19 +917,30 @@ window.addEventListener('DOMContentLoaded', (event) => {
             </div>
         `;
 
+        let holdTimeout;
+
         checkIstoriya.addEventListener('click', () => {
           showModal(payment);
+        });
+
+        checkIstoriya.addEventListener('mousedown', () => {
+          holdTimeout = setTimeout(() => {
+            showDeleteConfirmation(checkIstoriya, payment);
+          }, 6000);
+        });
+
+        checkIstoriya.addEventListener('mouseup', () => {
+          clearTimeout(holdTimeout);
+        });
+
+        checkIstoriya.addEventListener('mouseleave', () => {
+          clearTimeout(holdTimeout);
         });
 
         historyContainer.appendChild(dateElement);
         historyContainer.appendChild(checkIstoriya);
       });
     });
-
-
-
-
-
 
 
 
@@ -961,6 +988,40 @@ window.addEventListener('DOMContentLoaded', (event) => {
         closeModal();
       }
     });
+
+
+
+    const deleteConfirmation = document.getElementById('delete-confirmation');
+    let targetCheckIstoriya;
+
+    function showDeleteConfirmation(element, payment) {
+      deleteConfirmation.style.display = 'block';
+      targetCheckIstoriya = element;
+
+      document.querySelector('.btn-yes').onclick = function() {
+        deleteCheckIstoriya(payment);
+        closeDeleteConfirmation();
+      };
+
+      document.querySelector('.btn-no').onclick = function() {
+        closeDeleteConfirmation();
+      };
+    }
+
+    function closeDeleteConfirmation() {
+      deleteConfirmation.style.display = 'none';
+    }
+
+    function deleteCheckIstoriya(payment) {
+      const payments = JSON.parse(localStorage.getItem('payments')) || [];
+      const updatedPayments = payments.filter(p => p.phoneNumber !== payment.phoneNumber);
+      localStorage.setItem('payments', JSON.stringify(updatedPayments));
+
+      targetCheckIstoriya.style.animation = 'explode 0.5s forwards';
+      setTimeout(() => {
+        targetCheckIstoriya.remove();
+      }, 500);
+    }
 
 
 
