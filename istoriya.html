@@ -917,24 +917,26 @@ window.addEventListener('DOMContentLoaded', (event) => {
             </div>
         `;
 
-        let holdTimeout;
+        let startX;
 
         checkIstoriya.addEventListener('click', () => {
           showModal(payment);
         });
 
-        checkIstoriya.addEventListener('mousedown', () => {
-          holdTimeout = setTimeout(() => {
-            showDeleteConfirmation(checkIstoriya, payment);
-          }, 6000);
+        checkIstoriya.addEventListener('touchstart', (event) => {
+          startX = event.touches[0].clientX;
         });
 
-        checkIstoriya.addEventListener('mouseup', () => {
-          clearTimeout(holdTimeout);
-        });
+        checkIstoriya.addEventListener('touchmove', (event) => {
+          const touch = event.touches[0];
+          const change = startX - touch.clientX;
 
-        checkIstoriya.addEventListener('mouseleave', () => {
-          clearTimeout(holdTimeout);
+          if (change > 50) {
+            checkIstoriya.classList.add('swipe-left');
+            setTimeout(() => {
+              showDeleteConfirmation(checkIstoriya, payment);
+            }, 300);
+          }
         });
 
         historyContainer.appendChild(dateElement);
@@ -992,11 +994,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 
     const deleteConfirmation = document.getElementById('delete-confirmation');
-    let targetCheckIstoriya;
+    let targetCheckIstoriya = null;
 
-    function showDeleteConfirmation(element, payment) {
+    function showDeleteConfirmation(checkIstoriya, payment) {
+      targetCheckIstoriya = checkIstoriya;
       deleteConfirmation.style.display = 'block';
-      targetCheckIstoriya = element;
 
       document.querySelector('.btn-yes').onclick = function() {
         deleteCheckIstoriya(payment);
@@ -1010,6 +1012,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     function closeDeleteConfirmation() {
       deleteConfirmation.style.display = 'none';
+      targetCheckIstoriya.classList.remove('swipe-left');
     }
 
     function deleteCheckIstoriya(payment) {
