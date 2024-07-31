@@ -56,7 +56,7 @@ header{
 } 
   
 main{  
-  height: 100vh; 
+  height: 80vh; 
   overflow: hidden; 
   display: flex;
   flex-direction: column;
@@ -546,7 +546,7 @@ a{
       transform: translateY(0);
     }
 
-    .delete-confirmation {
+    /* .delete-confirmation {
       position: fixed;
       top: 50%;
       left: 50%;
@@ -585,7 +585,7 @@ a{
     }
     .delete-confirmation .btn-no {
       background-color: #dc3545;
-    }
+    } */
     /* Стилизация анимации удаления */
     @keyframes explode {
       from {
@@ -635,6 +635,163 @@ a{
         left: 45%;
     }
 }
+
+
+/* .delete-confirmationt {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      z-index: 1001;
+      width: 300px;
+      height: 200px;
+    }
+    .delete-confirmationt p {
+      font-size: 20px;
+      margin: 0 0 20px 0;
+    }
+    .delete-confirmationt .buttonst {
+      display: flex;
+      justify-content: space-around;
+    }
+    .delete-confirmationt .btnt {
+      border: none;
+      padding: 10px 20px;
+      border-radius: 50%;
+      font-size: 1.5em;
+      cursor: pointer;
+      color: white;
+      width: 80px;
+      height: 70px;
+      margin-top: 70px;
+    }
+    .delete-confirmationt .btn-yest {
+      background-color: #007bff;
+    }
+    .delete-confirmationt .btn-not {
+      background-color: #dc3545;
+    } */
+
+
+
+
+
+
+.overlayt {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modaltt {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 370px;
+    height: 220px;
+    display: none;
+}
+
+.modaltt h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.modaltt p {
+    margin: 20px 0;
+    font-size: 1em;
+    color: #333;
+}
+
+.button-containertt {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btntt {
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5em;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blue-btntt {
+    background-color: #007BFF;
+}
+
+.red-btntt {
+    border-radius: 50%;
+    border: 4px solid white;
+    background-color: #DC3545;
+}
+
+.bx{
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border: 3px solid #DC3545;
+}
+
+
+.p-b{
+  width: 370px;
+  height: 80px;
+  background-color: #cfcbcb;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) inset,
+        0 -4px 8px rgba(0, 0, 0, 0.2) inset;
+}
+
+.circle{
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.outer{
+  width: 48px;
+  height: 48px;
+  background-color: white;
+  border: 3px solid #0066cc;
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.middle{
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  border: 7px solid #0066cc;
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.inner{
+  width: 15px;
+  height: 15px;
+  background-color: #0066cc;
+  border: 3px solid white;
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.5);
+}
   
 </style>  
   
@@ -657,8 +814,31 @@ a{
         <video id="scanner" style="display: none;"></video> 
  
         <main id="historyContainer">  
+
+
+
+          <div class="overlaytt" id="overlaytt" id="delete-confirmation">
+            <div class="modaltt">
+                <h2>Alert</h2>
+              <div class="p-b">
+                <p>グランドクエスト<<世界樹の守護者>>に挑戦しますか？</p>
+              </div>
+                <div class="button-containertt">
+                  <div class="btn-yes">
+                  <div class="circle outer">
+                    <div class="circle middle">
+                      <div class="circle inner"></div>
+                    </div>
+                  </div>
+                  </div>
+                     <div class="bx btn-no">
+                    <button class="btntt red-btntt">&#x2716;</button>
+                     </div>
+                </div>
+            </div>
+        </div>
        
-        </main> 
+        </main>
   
                 <footer>  
             <div class="footer-block1"> 
@@ -721,13 +901,13 @@ a{
     </div>
 
 
-    <div class="delete-confirmation" id="delete-confirmation">
+    <!-- <div class="delete-confirmation" id="delete-confirmation">
       <p>Вы уверены что хотите удалить чек?</p>
       <div class="buttons">
         <button class="btn btn-yes">Да</button>
         <button class="btn btn-no">Нет</button>
       </div>
-    </div>
+    </div> -->
           
         </footer>  
     </div>  
