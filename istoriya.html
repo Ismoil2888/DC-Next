@@ -693,13 +693,7 @@ a{
       width: 80px;
       height: 70px;
       margin-top: 70px;
-    }
-    .delete-confirmationt .btn-yest {
-      background-color: #007bff;
-    }
-    .delete-confirmationt .btn-not {
-      background-color: #dc3545;
-    } */
+    }*/
 
 
 
@@ -1217,7 +1211,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 
     const deleteConfirmation = document.getElementById('delete-confirmation');
-    const overLaytBack = document.getElementsByClassName('overlayt');
+    const overLaytBack = document.querySelector('.overlayt');
     let targetCheckIstoriya = null;
 
     function showDeleteConfirmation(checkIstoriya, payment) {
@@ -1237,7 +1231,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     function closeDeleteConfirmation() {
       deleteConfirmation.style.display = 'none';
-      overLaytBack.style.display ='none';
+      overLaytBack.style.display = 'none';
       targetCheckIstoriya.classList.remove('swipe-left');
     }
 
