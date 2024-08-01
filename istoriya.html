@@ -517,7 +517,7 @@ a{
       border-radius: 10px 10px 0 0;
       background: #fff;
       color: #000;
-      padding-left: 5px;
+      padding: 15px;
       /* box-sizing: border-box; */
     }
 
@@ -545,6 +545,7 @@ a{
 
     .modal-content2{
       margin-top: 80px;
+      width: 250px;
     }
 
     .show {
@@ -715,9 +716,13 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
 }
 
 .modaltt {
+    position: fixed;
+    top: 50%;
+    left: 50%;
     background: rgba(242, 241, 241, 0.7);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -728,9 +733,6 @@ a{
     height: 250px;
     display: none;
     z-index: 1999;
-    position: fixed;
-    top: 50%;
-    left: 50%;
     transform: translate(-50%, -50%);
 }
 
@@ -844,6 +846,7 @@ a{
  
         <main id="historyContainer">  
 
+          <div class="overlayt">
           <div class="modaltt" id="delete-confirmation">
             <h2>Alert</h2>
           <div class="p-b">
@@ -863,6 +866,7 @@ a{
                 </div>
             </div>
           </div>
+        </div>
 
         </main>
   
@@ -1213,11 +1217,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 
     const deleteConfirmation = document.getElementById('delete-confirmation');
+    const overLaytBack = document.getElementsByClassName('overlayt');
     let targetCheckIstoriya = null;
 
     function showDeleteConfirmation(checkIstoriya, payment) {
       targetCheckIstoriya = checkIstoriya;
       deleteConfirmation.style.display = 'block';
+      overLaytBack.style.display = 'block';
 
       document.querySelector('.btn-yes').onclick = function() {
         deleteCheckIstoriya(payment);
@@ -1231,6 +1237,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     function closeDeleteConfirmation() {
       deleteConfirmation.style.display = 'none';
+      overLaytBack.style.display ='none';
       targetCheckIstoriya.classList.remove('swipe-left');
     }
 
