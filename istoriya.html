@@ -56,7 +56,7 @@ header{
 } 
   
 main{  
-  height: 70vh; 
+  /* height: 70vh;  */
   overflow: hidden; 
   display: flex;
   flex-direction: column;
@@ -527,7 +527,7 @@ a{
     .modal-content .close {
       cursor: pointer;
       text-align: center;
-      margin-top: 150px;
+      margin-top: 60px;
       border: 0;
       color: white;
       background: darkorange;
@@ -540,10 +540,35 @@ a{
 
     .modal-content{
       width: 185px;
+      margin-top: 80px;
+    }
+
+    .modal-content2{
+      margin-top: 80px;
     }
 
     .show {
       transform: translateY(0);
+    }
+
+    .line-in-modal{
+      border: 2px solid gray;
+      width: 90%;
+      margin-left: 2%;
+      margin-bottom: 0px;
+      position: absolute;
+    }
+
+    .line-in-modal-2{
+      border: 2px solid gray;
+      width: 90%;
+      margin-top: 50px;
+      position: absolute;
+      margin-left: 2%;
+    }
+
+    .mbimg{
+      display: flex;
     }
 
     /* .delete-confirmation {
@@ -695,14 +720,14 @@ a{
 }
 
 .modaltt {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(242, 241, 241, 0.7);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
     width: 370px;
-    height: 220px;
+    height: 250px;
     display: none;
 }
 
@@ -756,8 +781,8 @@ a{
 
 .p-b{
   width: 370px;
-  height: 80px;
-  background-color: #cfcbcb;
+  height: 110px;
+  background-color: #dfdede;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) inset,
         0 -4px 8px rgba(0, 0, 0, 0.2) inset;
 }
@@ -815,27 +840,6 @@ a{
  
         <main id="historyContainer">  
 
-
-
-            <div class="modaltt" id="delete-confirmation">
-                <h2>Alert</h2>
-              <div class="p-b">
-                <p>グランドクエスト<<世界樹の守護者>>に挑戦しますか？</p>
-              </div>
-                <div class="button-containertt">
-                  <div class="btn-yes">
-                  <div class="circle outer">
-                    <div class="circle middle">
-                      <div class="circle inner"></div>
-                    </div>
-                  </div>
-                  </div>
-                     <div class="bx btn-no">
-                    <button class="btntt red-btntt">&#x2716;</button>
-                     </div>
-                </div>
-            </div>
-       
         </main>
   
                 <footer>  
@@ -874,7 +878,12 @@ a{
 
     <div class="modal" id="modal">
       <div class="modal-block">
+        <div class="mbimg">
+        <img style="margin-left: 15px; position: absolute;" src="images/dc.nextlogo.png" height="70" width="100" alt="">
+        <img style="margin-left: 220px; position: absolute;" src="images/cbtximg.tpng.png" height="70" width="125" alt="">
+      </div>
       <div class="modal-content">
+        <span class="line-in-modal"></span>
         <p>Дата операции:</p>
         <p>Время операции:</p>
         <p>Номер операции:</p>
@@ -883,6 +892,8 @@ a{
         <p>Счет получателя:</p>
         <p>Сумма операции:</p>
         <p>Статус:</p>
+        <span class="line-in-modal-2"></span>
+        <img style="margin-top: 60px;" src="images/psvp.png" width="300" alt="">
         <button class="close" id="modal-close">Назад</button>
       </div>
       <div class="modal-content2">
@@ -896,6 +907,27 @@ a{
         <p>Успешный</p>
       </div>
     </div>
+    </div>
+
+
+    <div class="modaltt" id="delete-confirmation">
+      <h2>Alert</h2>
+    <div class="p-b">
+      <p>グランドクエスト<<世界樹の守護者>>に挑戦しますか？</p>
+      <p>Вы уверены что хотите удалить чек?</p>
+    </div>
+      <div class="button-containertt">
+        <div class="btn-yes">
+        <div class="circle outer">
+          <div class="circle middle">
+            <div class="circle inner"></div>
+          </div>
+        </div>
+        </div>
+          <div class="bx btn-no">
+          <button class="btntt red-btntt">&#x2716;</button>
+          </div>
+      </div>
     </div>
 
 
