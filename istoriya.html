@@ -537,7 +537,6 @@ a{
       width: 355px;
       height: 60px;
       font-size: 18px;
-      font-weight: 500;
     }
 
     .modal-content{
@@ -556,7 +555,6 @@ a{
     .line-in-modal{
       border: 1.5px solid rgb(156, 153, 153);
       width: 90%;
-      margin-left: 1%;
       margin-bottom: 0px;
       position: absolute;
     }
@@ -566,7 +564,6 @@ a{
       width: 90%;
       margin-top: 10px;
       position: absolute;
-      margin-left: 1%;
     }
 
     .mbimg{
@@ -732,7 +729,11 @@ a{
     height: 250px;
     display: none;
     margin-top: 50%;
-    z-index: 1777;
+    z-index: 1001;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .modaltt h2 {
@@ -903,7 +904,7 @@ a{
     <div class="modal" id="modal">
       <div class="modal-block">
         <div class="mbimg">
-        <img style="margin-left: 15px; position: absolute;" src="images/dc.nextlogo.png" height="70" width="120" alt="">
+        <img style="margin-left: 10px; position: absolute;" src="images/dcimgforcb.png" height="70" width="135" alt="">
         <img style="margin-left: 220px; position: absolute;" src="images/cbtximg.tpng.png" height="75" width="140" alt="">
       </div>
       <div class="modal-content">
@@ -917,7 +918,7 @@ a{
         <p>Сумма операции:</p>
         <p>Статус:</p>
         <span class="line-in-modal-2"></span>
-        <img style="margin-top: 30px;" src="images/psvp.png" width="300" alt="">
+        <img style="margin-top: 30px; margin-left: 20px;" src="images/psvp.png" width="300" alt="">
         <button class="close" id="modal-close">Назад</button>
       </div>
       <div class="modal-content2">
