@@ -700,7 +700,7 @@ a{
 
 
 
-.overlayt {
+/* .overlayt {
     position: fixed;
     top: 0;
     left: 0;
@@ -711,7 +711,7 @@ a{
     justify-content: center;
     align-items: center;
     display: none;
-}
+} */
 
 .modaltt {
     position: fixed;
@@ -727,7 +727,7 @@ a{
     height: 250px;
     display: none;
     z-index: 1999;
-    transform: translate(-50%, -50%);
+    /* transform: translate(-50%, -50%); */
 }
 
 .modaltt h2 {
@@ -840,28 +840,6 @@ a{
  
         <main id="historyContainer">  
 
-          <div class="overlayt">
-          <div class="modaltt" id="delete-confirmation">
-            <h2>Alert</h2>
-          <div class="p-b">
-            <p>グランドクエスト<<世界樹の守護者>>に挑戦しますか？</p>
-            <p>Вы уверены что хотите удалить чек?</p>
-          </div>
-            <div class="button-containertt">
-              <div class="btn-yes">
-              <div class="circle outer">
-                <div class="circle middle">
-                  <div class="circle inner"></div>
-                </div>
-              </div>
-              </div>
-                <div class="bx btn-no">
-                <button class="btntt red-btntt">&#x2716;</button>
-                </div>
-            </div>
-          </div>
-        </div>
-
         </main>
   
                 <footer>  
@@ -929,6 +907,27 @@ a{
         <p>Успешный</p>
       </div>
     </div>
+    </div>
+
+
+    <div class="modaltt" id="delete-confirmation">
+      <h2>Alert</h2>
+    <div class="p-b">
+      <p>グランドクエスト<<世界樹の守護者>>に挑戦しますか？</p>
+      <p>Вы уверены что хотите удалить чек?</p>
+    </div>
+      <div class="button-containertt">
+        <div class="btn-yes">
+        <div class="circle outer">
+          <div class="circle middle">
+            <div class="circle inner"></div>
+          </div>
+        </div>
+        </div>
+          <div class="bx btn-no">
+          <button class="btntt red-btntt">&#x2716;</button>
+          </div>
+      </div>
     </div>
 
 
@@ -1211,13 +1210,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 
     const deleteConfirmation = document.getElementById('delete-confirmation');
-    const overLaytBack = document.querySelector('.overlayt');
     let targetCheckIstoriya = null;
 
     function showDeleteConfirmation(checkIstoriya, payment) {
       targetCheckIstoriya = checkIstoriya;
       deleteConfirmation.style.display = 'block';
-      overLaytBack.style.display = 'block';
 
       document.querySelector('.btn-yes').onclick = function() {
         deleteCheckIstoriya(payment);
@@ -1231,7 +1228,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     function closeDeleteConfirmation() {
       deleteConfirmation.style.display = 'none';
-      overLaytBack.style.display = 'none';
       targetCheckIstoriya.classList.remove('swipe-left');
     }
 
