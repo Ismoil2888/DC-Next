@@ -519,7 +519,7 @@ a{
       background: #fff;
       color: #000;
       padding: 15px;
-      box-sizing: border-box;
+      box-sizing: content-box;
     }
 
     .modal-block p {
@@ -529,7 +529,7 @@ a{
     .modal-content .close {
       cursor: pointer;
       text-align: center;
-      margin-top: 60px;
+      margin-top: 50px;
       border: 0;
       color: white;
       background: darkorange;
@@ -582,6 +582,14 @@ a{
       width: 90%;
       margin-top: 10px;
       position: absolute;
+    }
+
+    .swipe-line{
+      border: 2px solid grey;
+      width: 60px;
+      margin-left: 150px;
+      position: absolute;
+      bottom: 545px;
     }
 
     .mbimg{
@@ -895,8 +903,9 @@ a{
     
 
     <div class="modal" id="modal">
-      <div class="modal-block">
-        <div class="mbimg">
+           <div class="swipe-line"></div>
+   <div class="modal-block">
+      <div class="mbimg">
         <img style="margin-left: 10px; position: absolute;" src="images/dcimgforcb.png" height="70" width="135" alt="">
         <img style="margin-left: 200px; position: absolute;" src="images/cbtximg.tpng.png" height="75" width="140" alt="">
       </div>
