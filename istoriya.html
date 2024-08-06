@@ -62,6 +62,7 @@ main{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 5px;
 }  
   
 main::-webkit-scrollbar{  
@@ -539,13 +540,30 @@ a{
     }
 
     .modal-content{
-      width: 185px;
+      width: 165px;
       margin-top: 80px;
+    }
+
+    .modal-content p{
+      width: 165px;
+      text-align: start;
     }
 
     .modal-content2{
       margin-top: 80px;
-      width: 250px;
+      width: 210px;
+      text-align: end;
+    }
+
+    .modal-content2 p{
+      margin-right: 25px;
+    }
+
+    .dcpt{
+      text-align: start !important;
+      width: 195px;
+      margin-right: 50px;
+      font-size: 14.5px;
     }
 
     .show {
@@ -824,7 +842,7 @@ a{
       
 <div class="container skeleton">  
     <div class="prilozhenie" onclick="vibratePhone()">  
-        <header>  
+        <header class="header">  
           <div class="h2-block1">
          <h2 class="h2-perevodi">Операции</h2>
           </div>
@@ -900,7 +918,7 @@ a{
         <p id="modal-date"></p>
         <p id="modal-time"></p>
         <p>984521325/894045</p>
-        <p>DC (по номеру телефона)</p>
+        <p class="dcpt">DC (по номеру телефона)</p>
         <p>8546****8945</p>
         <p id="modal-phone"></p>
         <p id="modal-amount"></p>
@@ -1178,6 +1196,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
       modalAmount.textContent = ` ${payment.amount}.00`;
       modalTime.textContent = ` ${payment.time}`;
       modal.classList.add('show');
+
+  if (modal.classList.contains('show')) {
+        document.querySelector('header').style.zIndex = '0';
+  } else {
+    document.querySelector('header').style.zIndex = '100';
+  }
     }
 
     modalClose.addEventListener('click', () => {
