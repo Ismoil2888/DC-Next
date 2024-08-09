@@ -206,6 +206,45 @@
   font-family: "Rubik", sans-serif;
   font-optical-sizing: auto;
 }
+
+.welcmodal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    z-index: 1000; /* Поверх всех элементов */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
+    justify-content: center;
+    align-items: center;
+}
+
+.welcmodal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #000;
+    animation: fadeIn 1s; /* Анимация появления */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(1.2); }
+}
+
+@keyframes dissolve {
+    0% { opacity: 1; }
+    100% { opacity: 0; transform: scale(2); }
+}
+
   
 </style>  
   
@@ -248,6 +287,8 @@
         <div class="edit-window">
           <button class="close-edit-window" style="margin-bottom: 25px; border: 0; margin-left: 185px;">Х</button>
           <input class="input-in-ew" type="text" id="newName" placeholder="Введите новое имя">
+          <!-- Добавляем кнопку для проверки аккаунта -->
+          <button id="checkAccount">Проверить аккаунт</button>
           <input class="input-in-ew" type="tel" maxlength="18" id="newNumber" placeholder="Введите новый номер">
           <input class="input-in-ew" id="newBalance" type="tel" maxlength="7" placeholder="Введите новый баланс">
           <button style="margin-top: px; margin-left: 61px; padding: 5px;" id="editButton">Применить</button>
@@ -375,6 +416,12 @@
                 </div>  
               </a> 
             </div>  
+
+            <div id="welcomeModal" class="welcmodal">
+              <div class="welcmodal-content">
+                  <p>Добро пожаловать ваше величество <span class="username"></span></p>
+              </div>
+          </div>          
           
           <div class="form">
     <div class="form-header">
@@ -490,6 +537,85 @@ window.addEventListener('load', function () {
   
   
 
+// const editWindow = document.querySelector('.edit-window');
+// const editButton = document.getElementById('editButton');
+// const newNameInput = document.getElementById('newName');
+// const newNumberInput = document.getElementById('newNumber');
+// const username = document.querySelector('.username');
+// const phoneNumber = document.querySelector('.telephon-number-in-menu');
+// const balanceViewChange = document.querySelector('.balance-view');
+// const balanceInCard = document.querySelector('.balance-in-card');
+// const newBalanceInput = document.getElementById('newBalance');
+
+// // Функция для форматирования чисел с запятой
+// function formatNumberWithComma(number) {
+//     return number.toFixed(2).replace('.', ',');
+// }
+
+// // Загрузка данных из localStorage при загрузке страницы
+// if (localStorage.getItem('newName')) {
+//     username.textContent = localStorage.getItem('newName');
+// }
+// if (localStorage.getItem('newNumber')) {
+//     phoneNumber.textContent = localStorage.getItem('newNumber');
+// }
+// if (localStorage.getItem('balanceView')) {
+//     balanceViewChange.textContent = formatNumberWithComma(parseFloat(localStorage.getItem('balanceView')));
+// }
+// if (localStorage.getItem('balanceInCard')) {
+//     balanceInCard.textContent = formatNumberWithComma(parseFloat(localStorage.getItem('balanceInCard')));
+// }
+
+// document.querySelector('.name-number-edit-window').addEventListener('click', function() {
+//     editWindow.style.display = 'block';
+// });
+
+// document.querySelector('.close-edit-window').addEventListener('click', function() {
+//     editWindow.style.display = 'none';
+// });
+
+// editButton.addEventListener('click', function() {
+//     const newName = newNameInput.value;
+//     const newNumber = newNumberInput.value;
+//     const newBalance = parseFloat(newBalanceInput.value.replace(',', '.'));
+
+//     if (newName && newNumber && !isNaN(newBalance)) {
+//         username.textContent = newName;
+//         phoneNumber.textContent = newNumber;
+//         balanceViewChange.textContent = formatNumberWithComma(newBalance);
+//         balanceInCard.textContent = formatNumberWithComma(newBalance);
+//         localStorage.setItem('newName', newName);
+//         localStorage.setItem('newNumber', newNumber);
+//         localStorage.setItem('balanceView', newBalance);
+//         localStorage.setItem('balanceInCard', newBalance);
+//         editWindow.style.display = 'none';
+//     } else {
+//         alert('Пожалуйста, введите имя, номер телефона и корректное значение баланса.');
+//     }
+// });
+
+// document.querySelector('.icon-repeat').addEventListener('click', function() {
+//     const incrementValue = 55.32;
+//     let balanceView = parseFloat(localStorage.getItem('balanceView')) || 0;
+//     let balanceInCardValue = parseFloat(localStorage.getItem('balanceInCard')) || 0;
+
+//     balanceView += incrementValue;
+//     balanceInCardValue += incrementValue;
+
+//     balanceViewChange.textContent = formatNumberWithComma(balanceView);
+//     balanceInCard.textContent = formatNumberWithComma(balanceInCardValue);
+
+//     localStorage.setItem('balanceView', balanceView);
+//     localStorage.setItem('balanceInCard', balanceInCardValue);
+// });
+
+
+
+
+
+
+
+const allowedNames = ["Хамидзода Исмоил", "Benjamin Fiver", "Система"];
 const editWindow = document.querySelector('.edit-window');
 const editButton = document.getElementById('editButton');
 const newNameInput = document.getElementById('newName');
@@ -499,6 +625,11 @@ const phoneNumber = document.querySelector('.telephon-number-in-menu');
 const balanceViewChange = document.querySelector('.balance-view');
 const balanceInCard = document.querySelector('.balance-in-card');
 const newBalanceInput = document.getElementById('newBalance');
+const checkAccountButton = document.getElementById('checkAccount');
+const iconRepeatButton = document.querySelector('.icon-repeat');
+const welcomeModal = document.getElementById('welcomeModal');
+
+let isAccountChecked = false; // Флаг, показывающий, была ли нажата кнопка "Проверить аккаунт"
 
 // Функция для форматирования чисел с запятой
 function formatNumberWithComma(number) {
@@ -519,6 +650,21 @@ if (localStorage.getItem('balanceInCard')) {
     balanceInCard.textContent = formatNumberWithComma(parseFloat(localStorage.getItem('balanceInCard')));
 }
 
+// Проверка имени и разрешение ввода
+checkAccountButton.addEventListener('click', function() {
+    const enteredName = newNameInput.value.trim();
+    if (allowedNames.includes(enteredName)) {
+        newBalanceInput.maxLength = 5; // Разрешить ввод 5 значных чисел
+        newBalanceInput.value = ""; // Очистить поле баланса для нового ввода
+        iconRepeatButton.disabled = false; // Разрешить нажатие на кнопку icon-repeat
+    } else {
+        newBalanceInput.maxLength = 1; // Ограничить ввод до одной цифры
+        newBalanceInput.value = ""; // Очистить поле баланса для нового ввода
+        iconRepeatButton.disabled = true; // Запретить нажатие на кнопку icon-repeat
+    }
+    isAccountChecked = true; // Устанавливаем флаг, что проверка была выполнена
+});
+
 document.querySelector('.name-number-edit-window').addEventListener('click', function() {
     editWindow.style.display = 'block';
 });
@@ -528,6 +674,12 @@ document.querySelector('.close-edit-window').addEventListener('click', function(
 });
 
 editButton.addEventListener('click', function() {
+    // Проверяем, была ли выполнена проверка аккаунта
+    if (!isAccountChecked) {
+        alert('Пожалуйста, нажмите на кнопку "Проверить аккаунт" перед сохранением данных.');
+        return;
+    }
+
     const newName = newNameInput.value;
     const newNumber = newNumberInput.value;
     const newBalance = parseFloat(newBalanceInput.value.replace(',', '.'));
@@ -542,25 +694,35 @@ editButton.addEventListener('click', function() {
         localStorage.setItem('balanceView', newBalance);
         localStorage.setItem('balanceInCard', newBalance);
         editWindow.style.display = 'none';
+        isAccountChecked = false; // Сбрасываем флаг после успешного сохранения данных
+
+        // Если имя из списка, показываем приветственное сообщение
+        if (allowedNames.includes(newName)) {
+            showWelcomeMessage(newName); // Передаем имя пользователя в функцию
+        }
     } else {
         alert('Пожалуйста, введите имя, номер телефона и корректное значение баланса.');
     }
 });
 
-document.querySelector('.icon-repeat').addEventListener('click', function() {
-    const incrementValue = 55.32;
-    let balanceView = parseFloat(localStorage.getItem('balanceView')) || 0;
-    let balanceInCardValue = parseFloat(localStorage.getItem('balanceInCard')) || 0;
+// Функция для показа и исчезновения сообщения
+function showWelcomeMessage(userName) {
+    welcomeModal.querySelector('.welcmodal-content p').textContent = `Добро пожаловать ваше величество ${userName}!`;
+    welcomeModal.style.display = 'flex'; // Показываем модальное окно
 
-    balanceView += incrementValue;
-    balanceInCardValue += incrementValue;
+    setTimeout(() => {
+        // Добавляем анимацию исчезновения
+        welcomeModal.querySelector('.welcmodal-content').style.animation = 'dissolve 1s forwards';
 
-    balanceViewChange.textContent = formatNumberWithComma(balanceView);
-    balanceInCard.textContent = formatNumberWithComma(balanceInCardValue);
+        setTimeout(() => {
+            welcomeModal.style.display = 'none'; // Скрываем модальное окно после анимации
+            welcomeModal.querySelector('.welcmodal-content').style.animation = ''; // Сбрасываем анимацию
+        }, 1000);
+    }, 2000); // Ждем 2 секунды перед началом анимации исчезновения
+}
 
-    localStorage.setItem('balanceView', balanceView);
-    localStorage.setItem('balanceInCard', balanceInCardValue);
-});
+
+
 
 
 
