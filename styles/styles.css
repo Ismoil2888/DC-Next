@@ -83,6 +83,10 @@ header{
     transform: translateX(1px);
 }
 
+.sidebar.close{
+    transform: translateX(-900px);
+}
+
 .menu2{
     height: 100vh;
     width: 102px;

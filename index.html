@@ -190,6 +190,10 @@
         z-index: 19999;
 }
 
+.verification-msg{
+  font-size: 14px;
+}
+
 .input-in-ew{
   padding: 5px; 
   border-radius: 10px; 
@@ -291,6 +295,7 @@
           <button id="checkAccount">Проверить аккаунт</button>
           <input class="input-in-ew" type="tel" maxlength="18" id="newNumber" placeholder="Введите новый номер">
           <input class="input-in-ew" id="newBalance" type="tel" maxlength="7" placeholder="Введите новый баланс">
+          <div class="verification-msg"></div>
           <button style="margin-top: px; margin-left: 61px; padding: 5px;" id="editButton">Применить</button>
           <button id="installButton" style="display: none;">Install App</button>
         </div>
@@ -419,7 +424,7 @@
 
             <div id="welcomeModal" class="welcmodal">
               <div class="welcmodal-content">
-                  <p>Добро пожаловать ваше величество <span class="username"></span></p>
+                  <p>С возвращением ваше величество <span class="username"></span></p>
               </div>
           </div>          
           
@@ -628,6 +633,8 @@ const newBalanceInput = document.getElementById('newBalance');
 const checkAccountButton = document.getElementById('checkAccount');
 const iconRepeatButton = document.querySelector('.icon-repeat');
 const welcomeModal = document.getElementById('welcomeModal');
+const verificationMsg = document.querySelector('.verification-msg');
+const sidebarCloseForWm = document.querySelector('.sidebar');
 
 let isAccountChecked = false; // Флаг, показывающий, была ли нажата кнопка "Проверить аккаунт"
 
@@ -657,10 +664,14 @@ checkAccountButton.addEventListener('click', function() {
         newBalanceInput.maxLength = 5; // Разрешить ввод 5 значных чисел
         newBalanceInput.value = ""; // Очистить поле баланса для нового ввода
         iconRepeatButton.disabled = false; // Разрешить нажатие на кнопку icon-repeat
+        verificationMsg.textContent = "аккаунт с правами админа успешно подключен!";
+        verificationMsg.style.color = "green"; // Текст будет зеленым для подтверждения успешности
     } else {
         newBalanceInput.maxLength = 1; // Ограничить ввод до одной цифры
         newBalanceInput.value = ""; // Очистить поле баланса для нового ввода
         iconRepeatButton.disabled = true; // Запретить нажатие на кнопку icon-repeat
+        verificationMsg.textContent = "установлено!";
+        verificationMsg.style.color = "orange"; // Текст будет оранжевым для обычного аккаунта
     }
     isAccountChecked = true; // Устанавливаем флаг, что проверка была выполнена
 });
@@ -705,9 +716,29 @@ editButton.addEventListener('click', function() {
     }
 });
 
+// Функция для обработки нажатия на кнопку icon-repeat
+iconRepeatButton.addEventListener('click', function() {
+    if (!iconRepeatButton.disabled) { // Проверяем, доступна ли кнопка
+        const incrementValue = 55.32;
+        let balanceView = parseFloat(localStorage.getItem('balanceView')) || 0;
+        let balanceInCardValue = parseFloat(localStorage.getItem('balanceInCard')) || 0;
+
+        balanceView += incrementValue;
+        balanceInCardValue += incrementValue;
+
+        balanceViewChange.textContent = formatNumberWithComma(balanceView);
+        balanceInCard.textContent = formatNumberWithComma(balanceInCardValue);
+
+        localStorage.setItem('balanceView', balanceView);
+        localStorage.setItem('balanceInCard', balanceInCardValue);
+    }
+});
+
 // Функция для показа и исчезновения сообщения
 function showWelcomeMessage(userName) {
-    welcomeModal.querySelector('.welcmodal-content p').textContent = `Добро пожаловать ваше величество ${userName}!`;
+    welcomeModal.querySelector('.welcmodal-content p').textContent = `С возвращением ваше величество ${userName}!`;
+    // sidebarCloseForWm.style.display = 'none';
+    sidebarCloseForWm.style.transform = 'translateX(-900px)';
     welcomeModal.style.display = 'flex'; // Показываем модальное окно
 
     setTimeout(() => {
@@ -716,6 +747,8 @@ function showWelcomeMessage(userName) {
 
         setTimeout(() => {
             welcomeModal.style.display = 'none'; // Скрываем модальное окно после анимации
+            // sidebarCloseForWm.style.display = '';
+            sidebarCloseForWm.style.transform = '';
             welcomeModal.querySelector('.welcmodal-content').style.animation = ''; // Сбрасываем анимацию
         }, 1000);
     }, 2000); // Ждем 2 секунды перед началом анимации исчезновения
