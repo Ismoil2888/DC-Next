@@ -190,8 +190,17 @@
         z-index: 19999;
 }
 
+#checkAccount{
+  margin-left: 32px;
+  margin-bottom: 15px;
+  padding: 3px;
+}
+
 .verification-msg{
-  font-size: 14px;
+  font-size: 14.1px;
+  margin: 10px 10px;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(2, 204, 207, 0.5);
 }
 
 .input-in-ew{
@@ -230,9 +239,10 @@
     border-radius: 10px;
     text-align: center;
     font-size: 1.5rem;
-    color: #000;
+    color: #0258a3;
     animation: fadeIn 1s; /* Анимация появления */
-}
+    filter: drop-shadow(1px 1px 20px rgb(31, 254, 235));
+  }
 
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.8); }
@@ -296,7 +306,7 @@
           <input class="input-in-ew" type="tel" maxlength="18" id="newNumber" placeholder="Введите новый номер">
           <input class="input-in-ew" id="newBalance" type="tel" maxlength="7" placeholder="Введите новый баланс">
           <div class="verification-msg"></div>
-          <button style="margin-top: px; margin-left: 61px; padding: 5px;" id="editButton">Применить</button>
+          <button style="margin-top: px; margin-left: 50px; padding: 5px;" id="editButton">Применить</button>
           <button id="installButton" style="display: none;">Install App</button>
         </div>
 
