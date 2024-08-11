@@ -191,7 +191,7 @@
 }
 
 #checkAccount{
-  margin-left: 32px;
+  margin-left: 40px;
   margin-bottom: 15px;
   padding: 3px;
 }
@@ -306,7 +306,7 @@
           <input class="input-in-ew" type="tel" maxlength="18" id="newNumber" placeholder="Введите новый номер">
           <input class="input-in-ew" id="newBalance" type="tel" maxlength="7" placeholder="Введите новый баланс">
           <div class="verification-msg"></div>
-          <button style="margin-top: px; margin-left: 50px; padding: 5px;" id="editButton">Применить</button>
+          <button style="margin-top: px; margin-left: 60px; padding: 5px;" id="editButton">Применить</button>
           <button id="installButton" style="display: none;">Install App</button>
         </div>
 
@@ -645,6 +645,7 @@ const iconRepeatButton = document.querySelector('.icon-repeat');
 const welcomeModal = document.getElementById('welcomeModal');
 const verificationMsg = document.querySelector('.verification-msg');
 const sidebarCloseForWm = document.querySelector('.sidebar');
+const menuLinks = document.querySelector('.menu-links');
 
 let isAccountChecked = false; // Флаг, показывающий, была ли нажата кнопка "Проверить аккаунт"
 
@@ -675,6 +676,13 @@ function loadUserData() {
         iconRepeatButton.disabled = false;
     } else {
         iconRepeatButton.disabled = true;
+    }
+
+    // Установка статуса идентификации при загрузке страницы
+    if (allowedNames.includes(localStorage.getItem('newName'))) {
+        menuLinks.textContent = "Идентифицирован";
+    } else {
+        menuLinks.textContent = "Не идентифицирован";
     }
 }
 
@@ -733,7 +741,10 @@ editButton.addEventListener('click', function() {
 
         // Если имя из списка, показываем приветственное сообщение
         if (allowedNames.includes(newName)) {
-            showWelcomeMessage(newName); // Передаем имя пользователя в функцию
+        menuLinks.textContent = "Идентифицирован"; // Устанавливаем текстовое значение для идентифицированного аккаунта
+        showWelcomeMessage(newName); // Передаем имя пользователя в функцию
+        } else {
+            menuLinks.textContent = "Не идентифицирован"; // Устанавливаем текстовое значение для неидентифицированного аккаунта
         }
     } else {
         alert('Пожалуйста, введите имя, номер телефона и корректное значение баланса.');
