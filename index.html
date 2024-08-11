@@ -644,18 +644,32 @@ function formatNumberWithComma(number) {
 }
 
 // Загрузка данных из localStorage при загрузке страницы
-if (localStorage.getItem('newName')) {
-    username.textContent = localStorage.getItem('newName');
+function loadUserData() {
+    if (localStorage.getItem('newName')) {
+        username.textContent = localStorage.getItem('newName');
+        newNameInput.value = localStorage.getItem('newName');
+    }
+    if (localStorage.getItem('newNumber')) {
+        phoneNumber.textContent = localStorage.getItem('newNumber');
+        newNumberInput.value = localStorage.getItem('newNumber');
+    }
+    if (localStorage.getItem('balanceView')) {
+        balanceViewChange.textContent = formatNumberWithComma(parseFloat(localStorage.getItem('balanceView')));
+    }
+    if (localStorage.getItem('balanceInCard')) {
+        balanceInCard.textContent = formatNumberWithComma(parseFloat(localStorage.getItem('balanceInCard')));
+    }
+
+    // Проверка на наличие сохраненных данных и заполненность полей
+    if (newNameInput.value && newNumberInput.value) {
+        iconRepeatButton.disabled = false;
+    } else {
+        iconRepeatButton.disabled = true;
+    }
 }
-if (localStorage.getItem('newNumber')) {
-    phoneNumber.textContent = localStorage.getItem('newNumber');
-}
-if (localStorage.getItem('balanceView')) {
-    balanceViewChange.textContent = formatNumberWithComma(parseFloat(localStorage.getItem('balanceView')));
-}
-if (localStorage.getItem('balanceInCard')) {
-    balanceInCard.textContent = formatNumberWithComma(parseFloat(localStorage.getItem('balanceInCard')));
-}
+
+// Вызов функции при загрузке страницы
+loadUserData();
 
 // Проверка имени и разрешение ввода
 checkAccountButton.addEventListener('click', function() {
@@ -737,7 +751,6 @@ iconRepeatButton.addEventListener('click', function() {
 // Функция для показа и исчезновения сообщения
 function showWelcomeMessage(userName) {
     welcomeModal.querySelector('.welcmodal-content p').textContent = `С возвращением ваше величество ${userName}!`;
-    // sidebarCloseForWm.style.display = 'none';
     sidebarCloseForWm.style.transform = 'translateX(-900px)';
     welcomeModal.style.display = 'flex'; // Показываем модальное окно
 
@@ -747,7 +760,6 @@ function showWelcomeMessage(userName) {
 
         setTimeout(() => {
             welcomeModal.style.display = 'none'; // Скрываем модальное окно после анимации
-            // sidebarCloseForWm.style.display = '';
             sidebarCloseForWm.style.transform = '';
             welcomeModal.querySelector('.welcmodal-content').style.animation = ''; // Сбрасываем анимацию
         }, 1000);
