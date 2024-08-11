@@ -259,6 +259,45 @@
     100% { opacity: 0; transform: scale(2); }
 }
 
+.notificationalrt {
+  position: fixed;
+  top: 200px;
+  right: 20px;
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 9999; /* Устанавливаем высокий z-index, чтобы уведомление было поверх других элементов */
+  display: none; /* Скрываем по умолчанию */
+}
+
+.notificationalrt.alrtshow {
+  display: block;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.notificationalrt-text {
+  font-size: 16px;
+}
+
+.alrtclose {
+  float: right;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
   
 </style>  
   
@@ -436,7 +475,12 @@
               <div class="welcmodal-content">
                   <p>С возвращением ваше величество <span class="username"></span></p>
               </div>
-          </div>          
+          </div>       
+          
+          <div id="notificationalrt" class="notificationalrt">
+            <span class="notificationalrt-text"></span>
+            <button class="alrtclose">Закрыть</button>
+          </div>
           
           <div class="form">
     <div class="form-header">
@@ -626,6 +670,24 @@ window.addEventListener('load', function () {
 
 
 
+const notificationContainer = document.querySelector('.notificationalrt');
+const notificationText = document.querySelector('.notificationalrt-text');   
+const closeButton = document.querySelector('.alrtclose');
+
+function showNotification(message) {
+  notificationText.textContent = message;
+  notificationContainer.classList.add('alrtshow');
+  // Добавьте анимацию для появления и исчезновения уведомления
+  setTimeout(() => {
+    notificationContainer.classList.remove('alrtshow');
+  }, 4000); // Скрыть уведомление через 3 секунды
+}
+closeButton.addEventListener('click', () => {
+  notification.classList.remove('alrtshow');
+});
+
+
+
 
 
 
@@ -719,7 +781,7 @@ document.querySelector('.close-edit-window').addEventListener('click', function(
 editButton.addEventListener('click', function() {
     // Проверяем, была ли выполнена проверка аккаунта
     if (!isAccountChecked) {
-        alert('Пожалуйста, нажмите на кнопку "Проверить аккаунт" перед сохранением данных.');
+      showNotification('Пожалуйста, нажмите на кнопку "Проверить аккаунт" перед сохранением данных.');
         return;
     }
 
@@ -747,7 +809,7 @@ editButton.addEventListener('click', function() {
             menuLinks.textContent = "Не идентифицирован"; // Устанавливаем текстовое значение для неидентифицированного аккаунта
         }
     } else {
-        alert('Пожалуйста, введите имя, номер телефона и корректное значение баланса.');
+      showNotification('Пожалуйста, введите имя, номер телефона и корректное значение баланса.');
     }
 });
 
@@ -858,9 +920,9 @@ function vibratePhone() {
             const inputText = document.querySelector('.form-input1').value.trim();
 
             if (inputText === '') {
-                alert('Пожалуйста, заполните поле ввода');
+              showNotification('Пожалуйста, заполните поле ввода');
             } else if (currentTime - lastClickTime < 15000) {
-                alert('Подождите немного...');
+              showNotification('Подождите немного...');
             } else {
                 lastClickTime = currentTime;
 
@@ -965,7 +1027,7 @@ confirmButton1.addEventListener('click', function() {
     if (inputAmount > balanceView || inputAmount > balanceInCardValue) {
         popupMessage.textContent = 'Ошибка';
         uspekhOsibka.src = "images/oshibkapl.png"
-        alert('Недостаточно средств на балансе');
+        showNotification('Недостаточно средств на балансе');
     } else {
         popupMessage.textContent = 'Платёж выполнен';
     }
@@ -1118,7 +1180,7 @@ function getCurrentDate() {
 
       // Проверка наличия изображения ошибки
       if (errorImage && errorImage.src.includes('images/oshibkapl.png')) {
-        alert('Ошибка платежа.');
+        showNotification('Ошибка платежа.');
         return; // Прекращаем выполнение если изображение ошибки присутствует
       }
 
