@@ -191,7 +191,7 @@
 }
 
 #checkAccount{
-  margin-left: 40px;
+  margin-left: 45px;
   margin-bottom: 15px;
   padding: 3px;
 }
@@ -263,12 +263,14 @@
   position: fixed;
   top: 200px;
   right: 20px;
+  height: 100px;
+  width: 250px;
   background-color: #f0f0f0;
   padding: 15px;
   border-radius: 5px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-  z-index: 9999; /* Устанавливаем высокий z-index, чтобы уведомление было поверх других элементов */
-  display: none; /* Скрываем по умолчанию */
+  z-index: 12825; /* Устанавливаем высокий z-index, чтобы уведомление было поверх других элементов */
+  display: none; 
 }
 
 .notificationalrt.alrtshow {
@@ -283,6 +285,10 @@
 .alrtclose {
   float: right;
   cursor: pointer;
+  color: #017CFE;
+  border: 0;
+  background-color: #f0f0f0;
+  margin-top: 55px;
 }
 
 @keyframes fadeIn {
@@ -309,6 +315,11 @@
   <div id="notification" class="notification"> 
   <div class="notification-content"><h4>Успешно</h4><p class="spo">Список поставщиков обновлён</p></div> 
   </div> 
+
+  <div id="notificationalrt" class="notificationalrt">
+    <span class="notificationalrt-text"></span>
+    <button class="alrtclose">OK</button>
+  </div>
       
 <div id="container" class="container allskeleton">  
     <div class="prilozhenie">  
@@ -345,7 +356,7 @@
           <input class="input-in-ew" type="tel" maxlength="18" id="newNumber" placeholder="Введите новый номер">
           <input class="input-in-ew" id="newBalance" type="tel" maxlength="7" placeholder="Введите новый баланс">
           <div class="verification-msg"></div>
-          <button style="margin-top: px; margin-left: 60px; padding: 5px;" id="editButton">Применить</button>
+          <button style="margin-top: px; margin-left: 65px; padding: 5px;" id="editButton">Применить</button>
           <button id="installButton" style="display: none;">Install App</button>
         </div>
 
@@ -477,10 +488,6 @@
               </div>
           </div>       
           
-          <div id="notificationalrt" class="notificationalrt">
-            <span class="notificationalrt-text"></span>
-            <button class="alrtclose">Закрыть</button>
-          </div>
           
           <div class="form">
     <div class="form-header">
@@ -579,8 +586,6 @@
 </div>  
   </div>
   
-<!-- <img src="dc.next111.jpg" alt="" width="400"><input style="margin-bottom: 500px; Position: absolute;" type="color"> -->
-
   <script> 
 
 window.addEventListener('load', function () {
@@ -593,86 +598,13 @@ window.addEventListener('load', function () {
   
   
   
-  
-  
 
-// const editWindow = document.querySelector('.edit-window');
-// const editButton = document.getElementById('editButton');
-// const newNameInput = document.getElementById('newName');
-// const newNumberInput = document.getElementById('newNumber');
-// const username = document.querySelector('.username');
-// const phoneNumber = document.querySelector('.telephon-number-in-menu');
-// const balanceViewChange = document.querySelector('.balance-view');
-// const balanceInCard = document.querySelector('.balance-in-card');
-// const newBalanceInput = document.getElementById('newBalance');
-
-// // Функция для форматирования чисел с запятой
-// function formatNumberWithComma(number) {
-//     return number.toFixed(2).replace('.', ',');
-// }
-
-// // Загрузка данных из localStorage при загрузке страницы
-// if (localStorage.getItem('newName')) {
-//     username.textContent = localStorage.getItem('newName');
-// }
-// if (localStorage.getItem('newNumber')) {
-//     phoneNumber.textContent = localStorage.getItem('newNumber');
-// }
-// if (localStorage.getItem('balanceView')) {
-//     balanceViewChange.textContent = formatNumberWithComma(parseFloat(localStorage.getItem('balanceView')));
-// }
-// if (localStorage.getItem('balanceInCard')) {
-//     balanceInCard.textContent = formatNumberWithComma(parseFloat(localStorage.getItem('balanceInCard')));
-// }
-
-// document.querySelector('.name-number-edit-window').addEventListener('click', function() {
-//     editWindow.style.display = 'block';
-// });
-
-// document.querySelector('.close-edit-window').addEventListener('click', function() {
-//     editWindow.style.display = 'none';
-// });
-
-// editButton.addEventListener('click', function() {
-//     const newName = newNameInput.value;
-//     const newNumber = newNumberInput.value;
-//     const newBalance = parseFloat(newBalanceInput.value.replace(',', '.'));
-
-//     if (newName && newNumber && !isNaN(newBalance)) {
-//         username.textContent = newName;
-//         phoneNumber.textContent = newNumber;
-//         balanceViewChange.textContent = formatNumberWithComma(newBalance);
-//         balanceInCard.textContent = formatNumberWithComma(newBalance);
-//         localStorage.setItem('newName', newName);
-//         localStorage.setItem('newNumber', newNumber);
-//         localStorage.setItem('balanceView', newBalance);
-//         localStorage.setItem('balanceInCard', newBalance);
-//         editWindow.style.display = 'none';
-//     } else {
-//         alert('Пожалуйста, введите имя, номер телефона и корректное значение баланса.');
-//     }
-// });
-
-// document.querySelector('.icon-repeat').addEventListener('click', function() {
-//     const incrementValue = 55.32;
-//     let balanceView = parseFloat(localStorage.getItem('balanceView')) || 0;
-//     let balanceInCardValue = parseFloat(localStorage.getItem('balanceInCard')) || 0;
-
-//     balanceView += incrementValue;
-//     balanceInCardValue += incrementValue;
-
-//     balanceViewChange.textContent = formatNumberWithComma(balanceView);
-//     balanceInCard.textContent = formatNumberWithComma(balanceInCardValue);
-
-//     localStorage.setItem('balanceView', balanceView);
-//     localStorage.setItem('balanceInCard', balanceInCardValue);
-// });
 
 
 
 const notificationContainer = document.querySelector('.notificationalrt');
 const notificationText = document.querySelector('.notificationalrt-text');   
-const closeButton = document.querySelector('.alrtclose');
+const closeButtonAlert = document.querySelector('.alrtclose');
 
 function showNotification(message) {
   notificationText.textContent = message;
@@ -682,8 +614,8 @@ function showNotification(message) {
     notificationContainer.classList.remove('alrtshow');
   }, 4000); // Скрыть уведомление через 3 секунды
 }
-closeButton.addEventListener('click', () => {
-  notification.classList.remove('alrtshow');
+closeButtonAlert.addEventListener('click', () => {
+  notificationalrt.classList.remove('alrtshow');
 });
 
 
