@@ -27,6 +27,30 @@ const urlsToCache = [
   // Добавьте сюда другие файлы, которые вы хотите кэшировать
 ];
 
+// Хранение флага приветствия в IndexedDB
+const DB_NAME = 'user-data';
+const STORE_NAME = 'user';
+const HAS_SEEN_WELCOME = 'hasSeenWelcome';
+
+// Функция для проверки, видел ли пользователь приветствие
+async function hasSeenWelcomeMessage() {
+  const db = await caches.open(DB_NAME);
+  const transaction = db.transaction(STORE_NAME, 'readonly');
+  const objectStore = transaction.objectStore(STORE_NAME);
+  const request = objectStore.get(HAS_SEEN_WELCOME);   
+
+  const result = await request;
+  return result?.value;
+}
+
+// Функция для сохранения флага приветствия
+async function setHasSeenWelcomeMessage() {
+  const db = await caches.open(DB_NAME);
+  const transaction = db.transaction(STORE_NAME, 'readwrite');
+  const objectStore = transaction.objectStore(STORE_NAME);
+  await objectStore.put(true, HAS_SEEN_WELCOME);
+}
+
 fetch('cacheList.json')
   .then(response => response.json())
   .then(images => {
@@ -73,7 +97,7 @@ self.addEventListener('install', async (event) => {
   if (!hasSeen) {
     // Показать приветственное сообщение
     // Используйте Notifications API или сервис для уведомлений
-    console.log('Приветствие: Добро пожаловать в dcprank!'); // Замените на нужный способ показа
+    alert('Приветствие: Добро пожаловать в dcprank!'); // Замените на нужный способ показа
     await setHasSeenWelcomeMessage();
   }
 });
