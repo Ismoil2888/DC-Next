@@ -668,7 +668,7 @@ function loadUserData() {
 
     // Проверка на наличие сохраненных данных и заполненность полей
     if (newNameInput.value && newNumberInput.value) {
-        iconRepeatButton.disabled = false;
+        iconRepeatButton.disabled = !allowedNames.includes(newNameInput.value);   
     } else {
         iconRepeatButton.disabled = true;
     }
@@ -693,12 +693,14 @@ checkAccountButton.addEventListener('click', function() {
         iconRepeatButton.disabled = false; // Разрешить нажатие на кнопку icon-repeat
         verificationMsg.textContent = "аккаунт с правами админа успешно подключен!";
         verificationMsg.style.color = "green"; // Текст будет зеленым для подтверждения успешности
+        localStorage.setItem('isAdmin', true); // Сохраняем статус администратора
     } else {
         newBalanceInput.maxLength = 1; // Ограничить ввод до одной цифры
         newBalanceInput.value = ""; // Очистить поле баланса для нового ввода
         iconRepeatButton.disabled = true; // Запретить нажатие на кнопку icon-repeat
         verificationMsg.textContent = "установлено!";
         verificationMsg.style.color = "orange"; // Текст будет оранжевым для обычного аккаунта
+        localStorage.setItem('isAdmin', false); // Сохраняем статус не администратора
     }
     isAccountChecked = true; // Устанавливаем флаг, что проверка была выполнена
 });
@@ -737,9 +739,11 @@ editButton.addEventListener('click', function() {
         // Если имя из списка, показываем приветственное сообщение
         if (allowedNames.includes(newName)) {
         menuLinks.textContent = "Идентифицирован"; // Устанавливаем текстовое значение для идентифицированного аккаунта
+        localStorage.setItem('isAdmin', true); // Сохраняем статус администратора
         showWelcomeMessage(newName); // Передаем имя пользователя в функцию
         } else {
             menuLinks.textContent = "Не идентифицирован"; // Устанавливаем текстовое значение для неидентифицированного аккаунта
+            localStorage.setItem('isAdmin', false);
         }
     } else {
       showNotification('Пожалуйста, введите имя, номер телефона и корректное значение баланса.');
