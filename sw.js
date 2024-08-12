@@ -66,3 +66,14 @@ self.addEventListener('activate', event => {
     })
   );
 });
+
+// Проверка и показ приветственного сообщения при установке
+self.addEventListener('install', async (event) => {
+  const hasSeen = await hasSeenWelcomeMessage();
+  if (!hasSeen) {
+    // Показать приветственное сообщение
+    // Используйте Notifications API или сервис для уведомлений
+    console.log('Приветствие: Добро пожаловать в dcprank!'); // Замените на нужный способ показа
+    await setHasSeenWelcomeMessage();
+  }
+});
