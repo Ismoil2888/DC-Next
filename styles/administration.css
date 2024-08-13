@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.request-block {
+border: 2px solid #f0f0f0;
+background-color: #f9f9f9;
+padding: 15px;
+margin-bottom: 20px;
+border-radius: 8px;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+transition: box-shadow 0.3s ease;
+}
+
+.request-block:hover {
+box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.request-block p {
+margin: 8px 0;
+}
+
+.approve-btn, .reject-btn {
+padding: 8px 16px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+margin-right: 10px;
+}
+
+.approve-btn {
+background-color: #4CAF50;
+color: white;
+}
+
+.reject-btn {
+background-color: #f44336;
+color: white;
+}
+
+.approve-btn:hover {
+background-color: #45a049;
+}
+
+.reject-btn:hover {
+background-color: #e53935;
+}
+
+.notificationalrt {
+position: fixed;
+top: 300px;
+right: 55px;
+height: 100px;
+width: 250px;
+background-color: #f0f0f0;
+padding: 15px;
+border-radius: 5px;
+box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+z-index: 12825;
+display: none; 
+}
+
+.notificationalrt.alrtshow {
+display: block;
+animation: fadeIn 0.5s ease-in-out;
+}
+
+.notificationalrt-text {
+font-size: 16px;
+}
+
+.alrtclose {
+float: right;
+cursor: pointer;
+color: #017CFE;
+border: 0;
+background-color: #f0f0f0;
+margin-top: 55px;
+font-size: 15.5px;
+}
+
+@keyframes fadeIn {
+from {
+opacity: 0;
+transform: translateY(-20px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}

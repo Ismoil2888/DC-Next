@@ -376,7 +376,7 @@
             <li><p class="username" href="#">Имя Фамилия</p></li> 
             <p class="telephon-number-in-menu">+992 (00) 000-0000</p><br>
           </div>
-            <li class="ispvp"><img src="images/dc.next-identification.png" width="35px"><a href="perevod.html"><p class="menu-links"></p></a></li> 
+            <li class="ispvp"><img src="images/dc.next-identification.png" width="35px"><a href="administration.html"><p class="menu-links"></p></a></li> 
             <li class="ispvp"><img src="images/dc.next-svyazsbankom.png" width="35px"><a href="#"><p class="menu-links"> Связь с банком</p></a></li> 
             <li class="ispvp"><img src="images/dc.next-parametri.png" width="35px"><a href="#"><p class="menu-links"> Параметры</p></a></li> 
             <li class="ispvp"><img src="images/dc.next-voprosi.png" width="35px"><a href="#"><p class="menu-links"> Частые вопросы</p></a></li> 
@@ -392,6 +392,7 @@
           <input class="input-in-ew" id="newBalance" type="tel" maxlength="7" placeholder="Введите новый баланс">
           <div class="verification-msg"></div>
           <button style="margin-top: px; margin-left: 65px; padding: 5px;" id="editButton">Применить</button>
+          <button id="submitRequest" disabled>Отправить заявку на досрочное изменение данных</button>
           <button id="installButton" style="display: none;">Install App</button>
         </div>
 
@@ -662,6 +663,7 @@ closeButtonAlert.addEventListener('click', () => {
 const allowedNames = ["Хамидзода Исмоил", "Benjamin Fiver", "Система"];
 const editWindow = document.querySelector('.edit-window');
 const editButton = document.getElementById('editButton');
+const submitRequestButton = document.getElementById('submitRequest'); // Новая кнопка для заявки
 const newNameInput = document.getElementById('newName');
 const newNumberInput = document.getElementById('newNumber');
 const username = document.querySelector('.username');
@@ -677,10 +679,31 @@ const sidebarCloseForWm = document.querySelector('.sidebar');
 const menuLinks = document.querySelector('.menu-links');
 
 let isAccountChecked = false; // Флаг, показывающий, была ли нажата кнопка "Проверить аккаунт"
+let lastChangeDate = localStorage.getItem('lastChangeDate');
 
 // Функция для форматирования чисел с запятой
 function formatNumberWithComma(number) {
     return number.toFixed(2).replace('.', ',');
+}
+
+// Проверка, можно ли изменять данные
+function canEditData() {
+    if (!lastChangeDate) return true;
+
+    const now = new Date();
+    const lastChange = new Date(lastChangeDate);
+    const diffInDays = Math.floor((now - lastChange) / (1000 * 60 * 60 * 24));
+
+    return diffInDays >= 7;
+}
+
+// Функция для проверки заполненности полей и активации кнопки заявки
+function checkFieldsAndActivateSubmitButton() {
+    const allFieldsFilled = newNameInput.value.trim() !== '' &&
+                            newNumberInput.value.trim() !== '' &&
+                            newBalanceInput.value.trim() !== '';
+
+    submitRequestButton.disabled = !allFieldsFilled; // Активировать кнопку, если все поля заполнены
 }
 
 // Загрузка данных из localStorage при загрузке страницы
@@ -713,6 +736,16 @@ function loadUserData() {
     } else {
         menuLinks.textContent = "Не идентифицирован";
     }
+
+        // Проверка возможности изменения данных
+    if (!canEditData()) {
+        editButton.disabled = true;
+        editButton.textContent = "Изменение данных заблокировано на 7 дней";
+    } else {
+        editButton.disabled = false;
+    }
+
+    checkFieldsAndActivateSubmitButton(); // Проверить и активировать кнопку заявки
 }
 
 // Вызов функции при загрузке страницы
@@ -754,6 +787,11 @@ editButton.addEventListener('click', function() {
         return;
     }
 
+    if (!canEditData()) {
+      showNotification('Изменение данных возможно только раз в неделю. Попробуйте позже или отправьте заявку на досрочное изменение.');
+        return;
+    }
+
     const newName = newNameInput.value;
     const newNumber = newNumberInput.value;
     const newBalance = parseFloat(newBalanceInput.value.replace(',', '.'));
@@ -767,6 +805,8 @@ editButton.addEventListener('click', function() {
         localStorage.setItem('newNumber', newNumber);
         localStorage.setItem('balanceView', newBalance);
         localStorage.setItem('balanceInCard', newBalance);
+        lastChangeDate = new Date().toISOString();
+        localStorage.setItem('lastChangeDate', lastChangeDate);
         editWindow.style.display = 'none';
         isAccountChecked = false; // Сбрасываем флаг после успешного сохранения данных
 
@@ -782,6 +822,31 @@ editButton.addEventListener('click', function() {
     } else {
       showNotification('Пожалуйста, введите имя, номер телефона и корректное значение баланса.');
     }
+});
+
+newNameInput.addEventListener('input', checkFieldsAndActivateSubmitButton);
+newNumberInput.addEventListener('input', checkFieldsAndActivateSubmitButton);
+newBalanceInput.addEventListener('input', checkFieldsAndActivateSubmitButton);
+
+// Обработка нажатия на кнопку "Отправить заявку на досрочное изменение данных"
+submitRequestButton.addEventListener('click', function() {
+    if (!newNameInput.value || !newNumberInput.value || !newBalanceInput.value) {
+      showNotification('Пожалуйста, заполните все поля перед отправкой заявки.');
+        return;
+    }
+
+    const requestData = {
+        name: newNameInput.value,
+        number: newNumberInput.value,
+        balance: newBalanceInput.value
+    };
+
+    // Сохранение заявки в localStorage (имитация отправки на сервер)
+    let requests = JSON.parse(localStorage.getItem('changeRequests')) || [];
+    requests.push(requestData);
+    localStorage.setItem('changeRequests', JSON.stringify(requests));
+
+    showNotification('Заявка на досрочное изменение данных отправлена!');
 });
 
 // Функция для обработки нажатия на кнопку icon-repeat
@@ -820,8 +885,11 @@ function showWelcomeMessage(userName) {
     }, 2000); // Ждем 2 секунды перед началом анимации исчезновения
 }
 
-
-
+// На главной странице добавьте функцию для отображения уведомления пользователю
+if (localStorage.getItem('userNotification')) {
+  showNotification(localStorage.getItem('userNotification'));
+    localStorage.removeItem('userNotification');
+}
 
 
 
