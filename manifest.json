@@ -1,7 +1,7 @@
 {
     "name": "DC Next",
     "short_name": "DC Next App",
-    "theme_color": "#F1F1F3",
+    "theme_color": "",
     "background_color": "#F1F1F3",
     "display": "standalone",
     "orientation": "portrait",
