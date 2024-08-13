@@ -303,6 +303,22 @@
   }
 }
 
+.install-prompt {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.install-prompt button {
+  /* Стиль кнопки */
+  color: white;
+}
 
 
   
@@ -321,6 +337,14 @@
     <span class="notificationalrt-text"></span>
     <button class="alrtclose">OK</button>
   </div>
+
+  <div id="installPrompt" class="install-prompt">
+    <h2>Скачайте наше приложение!</h2>
+    <p>Для более удобного использования, скачайте наше приложение на свой домашний экран.</p>
+    <button id="installButton">Установить</button>
+  </div>
+  
+  
       
 <div id="container" class="container allskeleton">  
     <div class="prilozhenie">  
@@ -1139,6 +1163,37 @@ function getCurrentDate() {
       // Redirect to istoriya.html
       window.location.href = 'istoriya.html';
     });
+
+
+
+
+
+
+
+const installPrompt = document.getElementById('installPrompt');
+
+// Проверяем, был ли пользователь на сайте ранее
+const hasSeenPrompt = localStorage.getItem('hasSeenPrompt');
+
+// Если пользователь не видел форму ранее, то показываем ее
+if (!hasSeenPrompt) {
+  installPrompt.style.display = 'flex';
+  localStorage.setItem('hasSeenPrompt', true);
+}
+
+// Остальной ваш JavaScript код (обработчик beforeinstallprompt и т.д.)
+
+// Кнопка "Установить" в форме
+installPrompt.querySelector('button').addEventListener('click', () => {
+  // Скрываем форму
+  installPrompt.style.display = 'none';
+  // Если есть deferredPrompt, то показываем стандартный диалог установки
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    // ... остальной код обработки deferredPrompt
+  }
+});
+
    
   </script> 
 
