@@ -24,8 +24,6 @@
 </head>
   
 <style>  
-
-/* F1F1F3 */
   
  .form.openn {
     bottom: 0;
@@ -193,6 +191,14 @@
         z-index: 19999;
 }
 
+.edit-win-buttons{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 #checkAccount{
   margin-left: 45px;
   margin-bottom: 15px;
@@ -224,9 +230,9 @@
 }
 
 .welcmodal {
-    display: none; /* Скрыто по умолчанию */
+    display: none;
     position: fixed;
-    z-index: 1000; /* Поверх всех элементов */
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
@@ -313,7 +319,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -322,7 +328,6 @@
   font-size: 17px;
 }
 .install-prompt button {
-  /* Стиль кнопки */
   color: rgb(38, 204, 16);
   font-size: 20px;
   border-radius: 25px;
@@ -330,9 +335,8 @@
   margin-top: 15px;
 }
 
-/* Modal styles */
 .psw-modal {
-    display: none; /* Скрыто по умолчанию */
+    display: none;
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -348,7 +352,7 @@
     margin: 15% auto; 
     padding: 20px;
     border: 1px solid #888;
-    width: 30%; 
+    width: 57%; 
     text-align: center;
     position: relative;
     border-radius: 8px;
@@ -438,16 +442,17 @@
         </ul> 
 
         <div class="edit-window">
-          <button class="close-edit-window" style="margin-bottom: 25px; border: 0; margin-left: 185px;">Х</button>
+          <button class="close-edit-window" style="margin-bottom: 25px; border: 0; margin-left: 185px; background: #f9f9f9;">Х</button>
           <input class="input-in-ew" type="text" id="newName" placeholder="Введите новое имя">
-          <!-- Добавляем кнопку для проверки аккаунта -->
-          <button id="checkAccount">Проверить аккаунт</button>
+          <button style="margin-right: 50px;" id="checkAccount">Проверить аккаунт</button>
           <input class="input-in-ew" type="tel" maxlength="18" id="newNumber" placeholder="Введите новый номер">
           <input class="input-in-ew" id="newBalance" type="tel" maxlength="7" placeholder="Введите новый баланс">
           <div class="verification-msg"></div>
-          <button style="margin-top: px; margin-left: 65px; padding: 5px;" id="editButton">Применить</button>
-          <button id="submitRequest" disabled>Отправить заявку на досрочное изменение данных</button>
+        <div class="edit-win-buttons">
+          <button style="padding: 5px;" id="editButton">Применить</button>
+          <button style="margin-top: 10px;" id="submitRequest" disabled>Отправить заявку на досрочное изменение данных</button>
           <button id="installButton" style="display: none;">Install App</button>
+        </div>
         </div>
 
       <button class="vikhod-btn"><img style="margin: 10px;" src="images/dc.next-vikhod.png" width="30px"> Выход</button> 
@@ -794,6 +799,7 @@ function loadUserData() {
     // Проверка возможности изменения данных
     if (!canEditData()) {
         editButton.disabled = true;
+        editButton.style.width = '150px';
         editButton.textContent = "Изменение данных заблокировано на 7 дней";
     } else {
         editButton.disabled = false;
@@ -1195,18 +1201,66 @@ setInterval(updateTime, 60000);
 
 
 
+// let deferredPrompt;
+// const installButton = document.getElementById('installButton');
+// const installPrompt = document.getElementById('installPrompt');
+
+// // Обработчик события beforeinstallprompt
+// window.addEventListener('beforeinstallprompt', (event) => {
+//     event.preventDefault();
+//     deferredPrompt = event;
+//     installButton.style.display = 'block';
+
+//     installButton.addEventListener('click', () => {
+//         installButton.style.display = 'none';
+//         deferredPrompt.prompt();
+//         deferredPrompt.userChoice.then((choiceResult) => {
+//             if (choiceResult.outcome === 'accepted') {
+//                 console.log('User accepted the A2HS prompt');
+//             } else {
+//                 console.log('User dismissed the A2HS prompt');
+//             }
+//             deferredPrompt = null;
+//         });
+//     });
+// });
+
+// // Обработчик события appinstalled (опционально)
+// window.addEventListener('appinstalled', (event) => {
+//     console.log('PWA was installed');
+// });
+
+
+
+
+
+
 let deferredPrompt;
-const installButton = document.getElementById('installButton');
 const installPrompt = document.getElementById('installPrompt');
+const installButton = document.getElementById('installButton');
+const openAppButton = document.createElement('button');
+openAppButton.textContent = 'Открыть приложение';
+openAppButton.id = 'openAppButton';
+document.body.appendChild(openAppButton);
+
+// Изначально скрываем оба элемента
+installPrompt.style.display = 'none';
+openAppButton.style.display = 'none';
 
 // Обработчик события beforeinstallprompt
 window.addEventListener('beforeinstallprompt', (event) => {
     event.preventDefault();
     deferredPrompt = event;
-    installButton.style.display = 'block';
+
+    // Проверяем, установлено ли PWA
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+        openAppButton.style.display = 'block';
+    } else {
+        installPrompt.style.display = 'flex';
+    }
 
     installButton.addEventListener('click', () => {
-        installButton.style.display = 'none';
+        installPrompt.style.display = 'none';
         deferredPrompt.prompt();
         deferredPrompt.userChoice.then((choiceResult) => {
             if (choiceResult.outcome === 'accepted') {
@@ -1217,12 +1271,26 @@ window.addEventListener('beforeinstallprompt', (event) => {
             deferredPrompt = null;
         });
     });
+
+    openAppButton.addEventListener('click', () => {
+        window.location.href = window.location.href;
+    });
 });
 
 // Обработчик события appinstalled (опционально)
 window.addEventListener('appinstalled', (event) => {
     console.log('PWA was installed');
+    installPrompt.style.display = 'none';
+    openAppButton.style.display = 'block';
 });
+
+// Проверка, запущен ли сайт как PWA (опционально, для начальной загрузки)
+if (window.matchMedia('(display-mode: standalone)').matches) {
+    installPrompt.style.display = 'none';
+    openAppButton.style.display = 'block';
+}
+
+
 
 
 

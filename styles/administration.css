@@ -110,7 +110,7 @@ transform: translateY(0);
 
 .modal-content {
     background-color: #cce4e9;
-    color: rgb(3, 202, 202);
+    color: rgb(24, 77, 77);
     margin: 15% auto; 
     padding: 20px;
     border: 1px solid #888;
@@ -119,6 +119,9 @@ transform: translateY(0);
     position: relative;
     border-radius: 8px;
     animation: fadeInOut 3s forwards;
+    filter: drop-shadow(1px 1px 20px rgb(31, 254, 235));
+    font-weight: 900;
+    font-family: sans-serif;
 }
 
 /* Анимация появления и исчезновения */
