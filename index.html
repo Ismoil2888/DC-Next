@@ -330,6 +330,50 @@
   margin-top: 15px;
 }
 
+/* Modal styles */
+.psw-modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); /* Черный с прозрачностью */
+}
+
+.psw-modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%; 
+    text-align: center;
+    position: relative;
+    border-radius: 8px;
+    animation: fadeIn 0.5s;
+}
+
+.psw-close-button {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    cursor: pointer;
+}
+
+.psw-close-button:hover,
+.psw-close-button:focus {
+    color: black;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 
   
 </style>  
@@ -347,6 +391,16 @@
     <span class="notificationalrt-text"></span>
     <button class="alrtclose">OK</button>
   </div>
+
+<div id="passwordModal" class="psw-modal">
+  <div class="psw-modal-content">
+    <span class="psw-close-button">&times;</span>
+    <h2>Введите пароль для доступа к административной панели</h2>
+    <input type="password" id="adminPasswordInput" placeholder="Пароль" />
+    <button id="submitPasswordButton">Войти</button>
+  </div>
+</div>
+
 
   <div id="installPrompt" class="install-prompt">
     <h2>Скачайте наше приложение!</h2>
@@ -376,7 +430,7 @@
             <li><p class="username" href="#">Имя Фамилия</p></li> 
             <p class="telephon-number-in-menu">+992 (00) 000-0000</p><br>
           </div>
-            <li class="ispvp"><img src="images/dc.next-identification.png" width="35px"><a href="administration.html"><p class="menu-links"></p></a></li> 
+            <li class="ispvp"><img src="images/dc.next-identification.png" width="35px"><a href="administration.html" class="admin-access"><p class="menu-links"></p></a></li> 
             <li class="ispvp"><img src="images/dc.next-svyazsbankom.png" width="35px"><a href="#"><p class="menu-links"> Связь с банком</p></a></li> 
             <li class="ispvp"><img src="images/dc.next-parametri.png" width="35px"><a href="#"><p class="menu-links"> Параметры</p></a></li> 
             <li class="ispvp"><img src="images/dc.next-voprosi.png" width="35px"><a href="#"><p class="menu-links"> Частые вопросы</p></a></li> 
@@ -703,7 +757,7 @@ function checkFieldsAndActivateSubmitButton() {
                             newNumberInput.value.trim() !== '' &&
                             newBalanceInput.value.trim() !== '';
 
-    submitRequestButton.disabled = !allFieldsFilled; // Активировать кнопку, если все поля заполнены
+    submitRequestButton.disabled = !allFieldsFilled || !isAccountChecked; // Активировать кнопку, если все поля заполнены и аккаунт проверен
 }
 
 // Загрузка данных из localStorage при загрузке страницы
@@ -737,7 +791,7 @@ function loadUserData() {
         menuLinks.textContent = "Не идентифицирован";
     }
 
-        // Проверка возможности изменения данных
+    // Проверка возможности изменения данных
     if (!canEditData()) {
         editButton.disabled = true;
         editButton.textContent = "Изменение данных заблокировано на 7 дней";
@@ -770,6 +824,7 @@ checkAccountButton.addEventListener('click', function() {
         localStorage.setItem('isAdmin', false); // Сохраняем статус не администратора
     }
     isAccountChecked = true; // Устанавливаем флаг, что проверка была выполнена
+    checkFieldsAndActivateSubmitButton(); // Перепроверяем активацию кнопки заявки после проверки аккаунта
 });
 
 document.querySelector('.name-number-edit-window').addEventListener('click', function() {
@@ -783,12 +838,12 @@ document.querySelector('.close-edit-window').addEventListener('click', function(
 editButton.addEventListener('click', function() {
     // Проверяем, была ли выполнена проверка аккаунта
     if (!isAccountChecked) {
-      showNotification('Пожалуйста, нажмите на кнопку "Проверить аккаунт" перед сохранением данных.');
+        showNotification('Пожалуйста, нажмите на кнопку "Проверить аккаунт" перед сохранением данных.');
         return;
     }
 
     if (!canEditData()) {
-      showNotification('Изменение данных возможно только раз в неделю. Попробуйте позже или отправьте заявку на досрочное изменение.');
+        showNotification('Изменение данных возможно только раз в неделю. Попробуйте позже или отправьте заявку на досрочное изменение.');
         return;
     }
 
@@ -812,15 +867,15 @@ editButton.addEventListener('click', function() {
 
         // Если имя из списка, показываем приветственное сообщение
         if (allowedNames.includes(newName)) {
-        menuLinks.textContent = "Идентифицирован"; // Устанавливаем текстовое значение для идентифицированного аккаунта
-        localStorage.setItem('isAdmin', true); // Сохраняем статус администратора
-        showWelcomeMessage(newName); // Передаем имя пользователя в функцию
+            menuLinks.textContent = "Идентифицирован"; // Устанавливаем текстовое значение для идентифицированного аккаунта
+            localStorage.setItem('isAdmin', true); // Сохраняем статус администратора
+            showWelcomeMessage(newName); // Передаем имя пользователя в функцию
         } else {
             menuLinks.textContent = "Не идентифицирован"; // Устанавливаем текстовое значение для неидентифицированного аккаунта
             localStorage.setItem('isAdmin', false);
         }
     } else {
-      showNotification('Пожалуйста, введите имя, номер телефона и корректное значение баланса.');
+        showNotification('Пожалуйста, введите имя, номер телефона и корректное значение баланса.');
     }
 });
 
@@ -831,7 +886,16 @@ newBalanceInput.addEventListener('input', checkFieldsAndActivateSubmitButton);
 // Обработка нажатия на кнопку "Отправить заявку на досрочное изменение данных"
 submitRequestButton.addEventListener('click', function() {
     if (!newNameInput.value || !newNumberInput.value || !newBalanceInput.value) {
-      showNotification('Пожалуйста, заполните все поля перед отправкой заявки.');
+        showNotification('Пожалуйста, заполните все поля перед отправкой заявки.');
+        return;
+    }
+
+    // Проверка, была ли кнопка уже нажата ранее
+    const lastRequestTime = localStorage.getItem('lastRequestTime');
+    const currentTime = new Date().getTime();
+
+    if (lastRequestTime && (currentTime - lastRequestTime < 60000)) {
+        showNotification('Заявку можно отправить только через минуту после предыдущей.');
         return;
     }
 
@@ -845,8 +909,15 @@ submitRequestButton.addEventListener('click', function() {
     let requests = JSON.parse(localStorage.getItem('changeRequests')) || [];
     requests.push(requestData);
     localStorage.setItem('changeRequests', JSON.stringify(requests));
+    localStorage.setItem('lastRequestTime', currentTime); // Сохраняем текущее время как время последней заявки
 
     showNotification('Заявка на досрочное изменение данных отправлена!');
+
+    // Отключаем кнопку на 1 минуту
+    submitRequestButton.disabled = true;
+    setTimeout(() => {
+        submitRequestButton.disabled = false;
+    }, 60000);
 });
 
 // Функция для обработки нажатия на кнопку icon-repeat
@@ -887,9 +958,10 @@ function showWelcomeMessage(userName) {
 
 // На главной странице добавьте функцию для отображения уведомления пользователю
 if (localStorage.getItem('userNotification')) {
-  showNotification(localStorage.getItem('userNotification'));
+    showNotification(localStorage.getItem('userNotification'));
     localStorage.removeItem('userNotification');
 }
+
 
 
 
@@ -1246,6 +1318,73 @@ function getCurrentDate() {
 
 
 
+
+
+
+
+
+
+    // Предполагается, что функция showNotification уже существует в вашем коде.
+
+// Получаем элементы
+const adminAccessLink = document.querySelector('.admin-access');
+const passwordModal = document.getElementById('passwordModal');
+const closeButton = document.querySelector('.psw-close-button');
+const submitPasswordButton = document.getElementById('submitPasswordButton');
+const adminPasswordInput = document.getElementById('adminPasswordInput');
+
+// Константы
+const ADMIN_PASSWORD = 'khitklif';
+const LOCKOUT_DURATION = 2 * 60 * 1000; // 2 минуты в миллисекундах
+
+// Обработка клика по ссылке admin-access
+adminAccessLink.addEventListener('click', function(event) {
+    event.preventDefault(); // Предотвращаем переход по ссылке
+
+    const lockoutTime = localStorage.getItem('adminLockoutTime');
+    const currentTime = new Date().getTime();
+
+    if (lockoutTime && currentTime < lockoutTime) {
+        showNotification('Доступ заблокирован! Попробуйте через 2 минуты!');
+        return;
+    }
+
+    // Отображаем модальное окно для ввода пароля
+    passwordModal.style.display = 'block';
+    adminPasswordInput.value = ''; // Очищаем предыдущее значение
+    adminPasswordInput.focus();
+});
+
+// Обработка клика по кнопке закрытия модального окна
+closeButton.addEventListener('click', function() {
+    passwordModal.style.display = 'none';
+});
+
+// Закрытие модального окна при клике вне его области
+window.addEventListener('click', function(event) {
+    if (event.target == passwordModal) {
+        passwordModal.style.display = 'none';
+    }
+});
+
+
+// Обработка ввода пароля
+submitPasswordButton.addEventListener('click', function() {
+    const enteredPassword = adminPasswordInput.value.trim();
+
+    if (enteredPassword === ADMIN_PASSWORD) {
+        // Пароль верный, предоставляем доступ
+        sessionStorage.setItem('adminAccess', 'granted');
+        passwordModal.style.display = 'none';
+        window.location.href = 'administration.html';
+    } else {
+        // Пароль неверный, блокируем доступ на 2 минуты
+        showNotification('Доступ заблокирован! Попробуйте через 2 минуты!');
+        const lockoutUntil = new Date().getTime() + LOCKOUT_DURATION;
+        localStorage.setItem('adminLockoutTime', lockoutUntil);
+        passwordModal.style.display = 'none';
+    }
+});
 
 
 

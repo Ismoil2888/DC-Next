@@ -94,3 +94,37 @@ opacity: 1;
 transform: translateY(0);
 }
 }
+
+/* Повторное использование стилей модального окна */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+    background-color: #cce4e9;
+    color: rgb(3, 202, 202);
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; 
+    text-align: center;
+    position: relative;
+    border-radius: 8px;
+    animation: fadeInOut 3s forwards;
+}
+
+/* Анимация появления и исчезновения */
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-20px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-20px); }
+}

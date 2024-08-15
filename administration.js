@@ -76,3 +76,34 @@ function loadRequests() {
 if (window.location.pathname.includes('administration.html')) {
     loadRequests();
 }
+
+
+
+// Проверка доступа при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    if (sessionStorage.getItem('adminAccess') !== 'granted') {
+        // Если доступ не предоставлен, перенаправляем на главную страницу
+        window.location.href = 'index.html';
+    } else {
+        // Если доступ предоставлен, отображаем приветственное сообщение
+        showAdminWelcomeMessage();
+
+        // Опционально, очищаем флаг доступа
+        sessionStorage.removeItem('adminAccess');
+    }
+});
+
+function showAdminWelcomeMessage() {
+    const userName = localStorage.getItem('newName') || 'Пользователь';
+    const welcomeAdminModal = document.getElementById('welcomeAdminModal');
+    const welcomeAdminMessage = document.getElementById('welcomeAdminMessage');
+
+    welcomeAdminMessage.textContent = `С возвращением ваше величество ${userName}!`;
+
+    welcomeAdminModal.style.display = 'block';
+
+    // Анимация будет длиться 3 секунды
+    setTimeout(function() {
+        welcomeAdminModal.style.display = 'none';
+    }, 3000);
+}
