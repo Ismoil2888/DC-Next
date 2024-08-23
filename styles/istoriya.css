@@ -419,7 +419,7 @@ a{
       justify-content: space-between;
       align-items: center;
       width: 87%;
-      background-color: #f5faff;
+      background-color: #EEF5FF;
       border-radius: 12px;
       padding: 16px;
       margin: 16px 0;
@@ -428,7 +428,7 @@ a{
 
     .check-istoriya p {
       margin: 0;
-      font-size: 1em;
+      font-size: 0.9em;
       color: #ACB0B5;
     }
     .check-istoriya h3 {
@@ -441,7 +441,7 @@ a{
       font-weight: bold;
       color: #323F62;
       margin-bottom: 4px;
-      font-size: 18px;
+      font-size: 17px;
     }
    
     .check-istoriya .amount-time {
@@ -551,10 +551,11 @@ a{
 
     .swipe-line{
       border: 2px solid grey;
+      border-radius: 15px;
       width: 70px;
       margin-left: 150px;
       position: absolute;
-      bottom: 630px;
+      bottom: 640px;
     }
 
     .mbimg{
@@ -713,4 +714,9 @@ a{
   background-color: #0066cc;
   border: 3px solid white;
   box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.menu-sfera{
+  margin-top: 337px;
+  margin-left: 650px;
 }
