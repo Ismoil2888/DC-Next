@@ -504,7 +504,7 @@ a{
     .modal-content .close {
       cursor: pointer;
       text-align: center;
-      margin-top: 30px;
+      margin-top: 23px;
       border: 0;
       color: white;
       background: darkorange;
@@ -554,14 +554,14 @@ a{
     .line-in-modal-2{
       border: 1.5px solid rgb(156, 153, 153);
       width: 90%;
-      margin-top: 10px;
+      /* margin-top: px; */
       position: absolute;
     }
 
     .swipe-line{
       border: 2px solid grey;
       border-radius: 15px;
-      width: 70px;
+      width: 76px;
       margin-left: 150px;
       position: absolute;
       bottom: 640px;
