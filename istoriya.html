@@ -12,7 +12,6 @@
     <title>DC Next App</title>  
     <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script> 
 </head>
-  
 <body>  
       
 <div class="container skeleton">  
@@ -72,7 +71,6 @@
               </a> 
             </div>  
     
-
     <div class="modal" id="modal">
            <div class="swipe-line"></div>
    <div class="modal-block">
@@ -249,21 +247,31 @@ window.addEventListener('load', () => {
 
 
 
+// Функция для обновления позиции элемента "menu-sfera"
+function updateMenuPosition() {
+    const menuSfera = document.querySelector('.menu-sfera');
+    const checkIstoriyaElements = document.querySelectorAll('.check-istoriya');
 
+    if (checkIstoriyaElements.length > 0) {
+      menuSfera.style.position = 'absolute';
+        menuSfera.style.bottom = '55px'; // Перемещаем на 110px вверх
+    } else {
+        menuSfera.style.bottom = '0px'; // Возвращаем в исходное положение
+    }
+}
 
+// Вызываем функцию при добавлении новых элементов "check-istoriya"
 window.addEventListener('DOMContentLoaded', (event) => {
-      const historyContainer = document.getElementById('historyContainer');
-      const payments = JSON.parse(localStorage.getItem('payments')) || [];
+    const historyContainer = document.getElementById('historyContainer');
+    const payments = JSON.parse(localStorage.getItem('payments')) || [];
 
-      payments.forEach((payment) => {
+    payments.forEach((payment) => {
         const dateElement = document.createElement('div');
         dateElement.classList.add('date');
         dateElement.textContent = payment.date;
 
         const checkIstoriya = document.createElement('div');
         checkIstoriya.classList.add('check-istoriya');
-
-        // const phoneNumberMasked = payment.phoneNumber.replace(/.(?=.{4})/g, '*');
 
         checkIstoriya.innerHTML = `
           <div class="number-in-cib" onclick="toggleForm()">
@@ -304,8 +312,72 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         historyContainer.appendChild(dateElement);
         historyContainer.appendChild(checkIstoriya);
-      });
+
+        // Обновляем позицию "menu-sfera" после добавления нового элемента "check-istoriya"
+        updateMenuPosition();
     });
+});
+
+
+
+
+
+
+// window.addEventListener('DOMContentLoaded', (event) => {
+//       const historyContainer = document.getElementById('historyContainer');
+//       const payments = JSON.parse(localStorage.getItem('payments')) || [];
+
+//       payments.forEach((payment) => {
+//         const dateElement = document.createElement('div');
+//         dateElement.classList.add('date');
+//         dateElement.textContent = payment.date;
+
+//         const checkIstoriya = document.createElement('div');
+//         checkIstoriya.classList.add('check-istoriya');
+
+//         // const phoneNumberMasked = payment.phoneNumber.replace(/.(?=.{4})/g, '*');
+
+//         checkIstoriya.innerHTML = `
+//           <div class="number-in-cib" onclick="toggleForm()">
+//           <p style="font-size: 14px">4361***8729</p>
+//           <h3 class="phone-number">${payment.phoneNumber}</h3>
+//           <p>DC (по номеру телефона)</p>
+//           </div>
+//             <div class="amount-time" onclick="toggleForm()">
+//               <div class="amount-time-block1">
+//               <span class="amount">${payment.amount+".00"}</span>
+//               <img src="images/uspeshnoopl.jpg" width="25">
+//               </div>
+//               <p class="time">${payment.time}</p>
+//             </div>
+//         `;
+
+//         let startX;
+
+//         checkIstoriya.addEventListener('click', () => {
+//           showModal(payment);
+//         });
+
+//         checkIstoriya.addEventListener('touchstart', (event) => {
+//           startX = event.touches[0].clientX;
+//         });
+
+//         checkIstoriya.addEventListener('touchmove', (event) => {
+//           const touch = event.touches[0];
+//           const change = startX - touch.clientX;
+
+//           if (change > 50) {
+//             checkIstoriya.classList.add('swipe-left');
+//             setTimeout(() => {
+//               showDeleteConfirmation(checkIstoriya, payment);
+//             }, 300);
+//           }
+//         });
+
+//         historyContainer.appendChild(dateElement);
+//         historyContainer.appendChild(checkIstoriya);
+//       });
+//     });
 
 
 
@@ -394,15 +466,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         targetCheckIstoriya.remove();
       }, 500);
     }
-
-
-
-
-
-
-
-
-
 
 
 
