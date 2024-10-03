@@ -445,8 +445,16 @@ a{
     }
    
     .check-istoriya .amount-time {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
       font-weight: 600;
     }
+
+    .amount-time-block1{
+      display: flex;
+    }
+
     .check-istoriya .amount {
       font-weight: 900;
       color: #616161;
@@ -455,6 +463,7 @@ a{
     .check-istoriya .time {
       color: #555;
       margin-left: 22px;
+      margin-top: 3px;
     }
 
     .check-istoriya img{
@@ -495,7 +504,7 @@ a{
     .modal-content .close {
       cursor: pointer;
       text-align: center;
-      margin-top: 50px;
+      margin-top: 30px;
       border: 0;
       color: white;
       background: darkorange;
