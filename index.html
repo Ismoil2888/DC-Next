@@ -379,6 +379,24 @@
     to { opacity: 1; }
 }
 
+.modalredirect {
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalredirect-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
   
 </style>  
   
@@ -1386,19 +1404,45 @@ submitPasswordButton.addEventListener('click', function() {
 
 
 
-function redirectToChrome() {
-  // Получаем User-Agent
-  const userAgent = navigator.userAgent.toLowerCase();
+function checkBrowser() {
+    // Проверяем, используется ли Chrome
+    const isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 
-  // Проверяем, содержит ли User-Agent строку "chrome"
-  if (userAgent.indexOf('chrome') === -1) {
-    // Если Chrome не обнаружен, перенаправляем на страницу с рекомендацией
-    window.location.href = 'https://dcwalletprank.pp.ua/index.html';
-  }
+    if (!isChrome) {
+        // Создаем элементы для модального окна
+        const modal = document.createElement('div');
+        modal.classList.add('modalredirect');
+
+        const modalContent = document.createElement('div');
+        modalContent.classList.add('modalredirect-content');
+
+        const button = document.createElement('button');
+        button.textContent = 'Перейти в Chrome';
+        button.addEventListener('click', () => {
+            window.open('https://dcwalletprank.pp.ua/index.html'); // Или другую ссылку на скачивание Chrome
+        });
+
+        modalContent.appendChild(button);
+        modal.appendChild(modalContent);
+
+        // Добавляем модальное окно к документу
+        document.body.appendChild(modal);
+
+        // Функция для центрирования модального окна
+        function centerModal() {
+            modal.style.left = `50%`;
+            modal.style.top = `50%`;
+            modal.style.transform = `translate(-50%, -50%)`;
+        }
+        centerModal();
+
+        // Добавляем обработчик события на изменение размера окна
+        window.addEventListener('resize', centerModal);
+    }
 }
 
 // Вызываем функцию при загрузке страницы
-window.onload = redirectToChrome;
+window.onload = checkBrowser;
 
 
    
