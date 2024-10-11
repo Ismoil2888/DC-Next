@@ -1410,29 +1410,29 @@ function checkBrowser() {
 
     if (!isChrome) {
         // Создаем элементы для модального окна
-        const modal = document.createElement('div');
-        modal.classList.add('modalredirect');
+        const modalredirect = document.createElement('div');
+        modalredirect.classList.add('modalredirect');
 
-        const modalContent = document.createElement('div');
-        modalContent.classList.add('modalredirect-content');
+        const modalContentredirect = document.createElement('div');
+        modalContentredirect.classList.add('modalredirect-content');
 
-        const button = document.createElement('button');
-        button.textContent = 'Перейти в Chrome';
-        button.addEventListener('click', () => {
+        const buttonredirect = document.createElement('button');
+        buttonredirect.textContent = 'Перейти в Chrome';
+        buttonredirect.addEventListener('click', () => {
             window.open('https://dcwalletprank.pp.ua/index.html'); // Или другую ссылку на скачивание Chrome
         });
 
-        modalContent.appendChild(button);
-        modal.appendChild(modalContent);
+        modalContentredirect.appendChild(buttonredirect);
+        modalredirect.appendChild(modalContentredirect);
 
         // Добавляем модальное окно к документу
-        document.body.appendChild(modal);
+        document.body.appendChild(modalredirect);
 
         // Функция для центрирования модального окна
         function centerModal() {
-            modal.style.left = `50%`;
-            modal.style.top = `50%`;
-            modal.style.transform = `translate(-50%, -50%)`;
+          modalredirect.style.left = `50%`;
+          modalredirect.style.top = `50%`;
+          modalredirect.style.transform = `translate(-50%, -50%)`;
         }
         centerModal();
 
