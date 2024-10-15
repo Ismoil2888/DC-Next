@@ -1423,13 +1423,13 @@ submitPasswordButton.addEventListener('click', function() {
 function isInAppBrowser() {
     const ua = navigator.userAgent || navigator.vendor || window.opera;
     
-    // Проверяем на встроенные браузеры в соцсетях
+    // Проверяем на встроенные браузеры соцсетей
     const isTelegram = ua.includes("Telegram");
     const isFacebook = ua.includes("FBAN") || ua.includes("FBAV");
     const isInstagram = ua.includes("Instagram");
 
-    // Проверяем, что не используется Chrome
-    const isChrome = ua.includes("Chrome") && !ua.includes("Edg");
+    // Проверяем, что используется Chrome и это не браузер Edge
+    const isChrome = ua.includes("Chrome") && !ua.includes("Edg") && !ua.includes("OPR");
 
     // Если используется встроенный браузер соцсетей и это не Chrome, возвращаем true
     return (isTelegram || isFacebook || isInstagram) && !isChrome;
