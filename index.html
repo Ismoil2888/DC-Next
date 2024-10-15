@@ -379,23 +379,50 @@
     to { opacity: 1; }
 }
 
+/* Скрыть модальное окно по умолчанию */
+.hiddenredirect {
+    display: none;
+}
+
+/* Стиль для модального окна */
 .modalredirect {
     position: fixed;
-    z-index: 999;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.8); /* затемнение фона */
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 9999;
 }
 
-.modalredirect-content {
-    background-color: #fff;
+.modal-contentredirect {
+    background-color: white;
     padding: 20px;
     border-radius: 5px;
+    text-align: center;
+    height: 50px;
+}
+
+.modal-contentredirect p {
+  margin-bottom: 16px;
+}
+
+.open-chrome-btn {
+    background-color: #4285f4;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.open-chrome-btn:hover {
+    background-color: #357ae8;
 }
   
 </style>  
@@ -420,6 +447,14 @@
     <h2>Введите пароль для доступа к административной панели</h2>
     <input type="password" id="adminPasswordInput" placeholder="Пароль" />
     <button id="submitPasswordButton">Войти</button>
+  </div>
+</div>
+
+
+<div id="openInChromeModal" class="modalredirect hiddenredirect">
+  <div class="modal-contentredirect">
+      <p>Для лучшего опыта использования, откройте сайт в Google Chrome</p>
+      <a href="googlechrome://navigate?url=YOUR_WEBSITE_URL" class="open-chrome-btn">Открыть в Chrome</a>
   </div>
 </div>
 
@@ -1404,47 +1439,24 @@ submitPasswordButton.addEventListener('click', function() {
 
 
 
-function checkBrowser() {
-    // Проверяем, используется ли Chrome
-    const isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+function isInAppBrowser() {
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    
+    // Проверка, что сайт открыт во встроенном браузере Telegram или других мессенджеров
+    const isTelegram = ua.includes("Telegram");
+    const isFacebook = ua.includes("FBAN") || ua.includes("FBAV");
+    const isInstagram = ua.includes("Instagram");
 
-    if (!isChrome) {
-        // Создаем элементы для модального окна
-        const modalredirect = document.createElement('div');
-        modalredirect.classList.add('modalredirect');
-
-        const modalContentredirect = document.createElement('div');
-        modalContentredirect.classList.add('modalredirect-content');
-
-        const buttonredirect = document.createElement('button');
-        buttonredirect.textContent = 'Перейди в Chrome';
-        buttonredirect.addEventListener('click', () => {
-            window.open('https://dcwalletprank.pp.ua/index.html'); // Или другую ссылку на скачивание Chrome
-        });
-
-        modalContentredirect.appendChild(buttonredirect);
-        modalredirect.appendChild(modalContentredirect);
-
-        // Добавляем модальное окно к документу
-        document.body.appendChild(modalredirect);
-
-        // Функция для центрирования модального окна
-        function centerModal() {
-          modalredirect.style.left = `50%`;
-          modalredirect.style.top = `50%`;
-          modalredirect.style.transform = `translate(-50%, -50%)`;
-        }
-        centerModal();
-
-        // Добавляем обработчик события на изменение размера окна
-        window.addEventListener('resize', centerModal);
-    }
+    return isTelegram || isFacebook || isInstagram;
 }
 
-// Вызываем функцию при загрузке страницы
-window.onload = checkBrowser;
 
-
+window.onload = function() {
+    if (isInAppBrowser()) {
+        const modal = document.getElementById('openInChromeModal');
+        modal.classList.remove('hiddenredirect');  // Показываем модальное окно
+    }
+};
    
   </script> 
 
