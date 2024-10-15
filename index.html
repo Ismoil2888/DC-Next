@@ -379,19 +379,19 @@
     to { opacity: 1; }
 }
 
-/* Скрыть модальное окно по умолчанию */
+/* Скрываем модальное окно по умолчанию */
 .hiddenredirect {
     display: none;
 }
 
-/* Стиль для модального окна */
+/* Модальное окно с затемнённым фоном */
 .modalredirect {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* затемнение фона */
+    background-color: rgba(0, 0, 0, 0.8); /* Затемнённый фон */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -403,27 +403,8 @@
     padding: 20px;
     border-radius: 5px;
     text-align: center;
-    height: 60px;
-    width: 80%;
-}
-
-.modal-contentredirect p {
-  margin-bottom: 32px;
-}
-
-.open-chrome-btn {
-    background-color: #4285f4;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.open-chrome-btn:hover {
-    background-color: #357ae8;
+    font-size: 18px;
+    color: black;
 }
   
 </style>  
@@ -452,10 +433,9 @@
 </div>
 
 
-<div id="openInChromeModal" class="modalredirect hiddenredirect">
+<div id="browserWarningModal" class="modalredirect hiddenredirect">
   <div class="modal-contentredirect">
-      <p>Для лучшего опыта использования, откройте сайт в Google Chrome</p>
-      <a href="intent://dcwalletprank.pp.ua;scheme=https;package=com.android.chrome;end" class="open-chrome-btn">Открыть в Chrome</a>
+      <p>Пожалуйста, откройте сайт в браузере Google Chrome для лучшего опыта использования.</p>
   </div>
 </div>
 
@@ -1443,19 +1423,23 @@ submitPasswordButton.addEventListener('click', function() {
 function isInAppBrowser() {
     const ua = navigator.userAgent || navigator.vendor || window.opera;
     
-    // Проверка, что сайт открыт во встроенном браузере Telegram или других мессенджеров
+    // Проверяем на встроенные браузеры в соцсетях
     const isTelegram = ua.includes("Telegram");
     const isFacebook = ua.includes("FBAN") || ua.includes("FBAV");
     const isInstagram = ua.includes("Instagram");
 
-    return isTelegram || isFacebook || isInstagram;
-}
+    // Проверяем, что не используется Chrome
+    const isChrome = ua.includes("Chrome") && !ua.includes("Edg");
 
+    // Если используется встроенный браузер соцсетей и это не Chrome, возвращаем true
+    return (isTelegram || isFacebook || isInstagram) && !isChrome;
+}
 
 window.onload = function() {
     if (isInAppBrowser()) {
-        const modalredirect = document.getElementById('openInChromeModal');
+        const modalredirect = document.getElementById('browserWarningModal');
         modalredirect.classList.remove('hiddenredirect');  // Показываем модальное окно
+        document.body.style.overflow = 'hiddenredirect';  // Блокируем прокрутку страницы
     }
 };
    
