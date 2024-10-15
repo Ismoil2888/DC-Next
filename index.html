@@ -403,11 +403,11 @@
     padding: 20px;
     border-radius: 5px;
     text-align: center;
-    height: 50px;
+    height: 60px;
 }
 
 .modal-contentredirect p {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .open-chrome-btn {
@@ -1453,8 +1453,8 @@ function isInAppBrowser() {
 
 window.onload = function() {
     if (isInAppBrowser()) {
-        const modal = document.getElementById('openInChromeModal');
-        modal.classList.remove('hiddenredirect');  // Показываем модальное окно
+        const modalredirect = document.getElementById('openInChromeModal');
+        modalredirect.classList.remove('hiddenredirect');  // Показываем модальное окно
     }
 };
    
