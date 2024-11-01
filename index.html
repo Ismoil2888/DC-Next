@@ -378,38 +378,10 @@
     from { opacity: 0; }
     to { opacity: 1; }
 }
-
-/* Скрываем модальное окно по умолчанию */
-.hiddenredirect {
-    display: none;
-}
-
-/* Модальное окно с затемнённым фоном */
-.modalredirect {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Затемнённый фон */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
-.modal-contentredirect {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 18px;
-    color: black;
-}
   
 </style>  
   
-<body>  
+<body>
 
   <div id="loader" class="loader"></div>
   <div id="content" class="content">
@@ -433,16 +405,12 @@
 </div>
 
 
-<div id="browserWarningModal" class="modalredirect hiddenredirect">
-  <div class="modal-contentredirect">
-      <p>Пожалуйста, откройте сайт в браузере Google Chrome для лучшего опыта использования.</p>
-  </div>
-</div>
-
-
   <div id="installPrompt" class="install-prompt">
     <h2>Скачайте наше приложение!</h2>
     <p>Для более удобного использования, скачайте наше приложение на свой домашний экран.</p>
+    <p style="text-align: center; margin: 55px;">Приложение создано строго для того чтобы<br> бороться с учителями которые берут деньги за шторы но сами шторы после сбора денег не появляются</p>
+    <p>При использовании приложения будьте крайне осторожны!</p>
+    <p>Разработчик не несет ответственности за ваши глупости!</p>
     <button id="installButton">Установить</button>
   </div>
   
@@ -751,7 +719,7 @@ closeButtonAlert.addEventListener('click', () => {
 
 
 
-const allowedNames = ["Хамидзода Исмоил", "Benjamin Fiver", "Система", "Набиев Джасур"];
+const allowedNames = ["Хамидзода Исмоил", "Benjamin Fiver", "Система", "Набиев Джасур", "Сангинова Мичгона", "Шарипов Искандар", "Шарипов Орзу", "Сухроб Zorax", "Мехрочиддин ХайГайс", "Исоева Камила", "Тимур", "Темур", "Я верю в тебя!"];
 const editWindow = document.querySelector('.edit-window');
 const editButton = document.getElementById('editButton');
 const submitRequestButton = document.getElementById('submitRequest'); // Новая кнопка для заявки
@@ -1415,33 +1383,6 @@ submitPasswordButton.addEventListener('click', function() {
         passwordModal.style.display = 'none';
     }
 });
-
-
-
-
-
-function isInAppBrowser() {
-    const ua = navigator.userAgent || navigator.vendor || window.opera;
-    
-    // Проверяем на встроенные браузеры соцсетей
-    const isTelegram = ua.includes("Telegram");
-    const isFacebook = ua.includes("FBAN") || ua.includes("FBAV");
-    const isInstagram = ua.includes("Instagram");
-
-    // Проверяем, что используется Chrome и это не браузер Edge
-    const isChrome = ua.includes("Chrome") && !ua.includes("Edg") && !ua.includes("OPR");
-
-    // Если используется встроенный браузер соцсетей и это не Chrome, возвращаем true
-    return (isTelegram || isFacebook || isInstagram) && !isChrome;
-}
-
-window.onload = function() {
-    if (isInAppBrowser()) {
-        const modalredirect = document.getElementById('browserWarningModal');
-        modalredirect.classList.remove('hiddenredirect');  // Показываем модальное окно
-        document.body.style.overflow = 'hiddenredirect';  // Блокируем прокрутку страницы
-    }
-};
    
   </script> 
 
