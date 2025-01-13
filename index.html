@@ -1,4 +1,4 @@
-<!DOCTYPE html>  
+<!-- <!DOCTYPE html>  
 <html lang="en">  
 <head>  
     <meta charset="UTF-8">  
@@ -1483,4 +1483,80 @@ submitPasswordButton.addEventListener('click', function() {
 <script src="js/scanner.js"></script>
  
 </body>  
+</html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Скачать APK</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Скачать APK</h1>
+  <p>Нажмите на кнопку ниже, чтобы скачать подходящий APK для вашего устройства:</p>
+  <button onclick="downloadApk()">Скачать</button>
+
+  <script>
+    function downloadApk() {
+      // Определяем архитектуру устройства
+      const arch = getDeviceArchitecture();
+
+      // Соответствие архитектур и файлов APK
+      const apkFiles = {
+        'arm64': 'apk-files/app-arm64-v8a.apk',
+        'armeabi': 'apk-files/app-armeabi-v7a.apk',
+        'x86': 'apk-files/app-x86.apk',
+        'x86_64': 'apk-files/app-x86_64.apk'
+      };
+
+      // Проверяем наличие подходящего APK
+      if (apkFiles[arch]) {
+        const apkUrl = apkFiles[arch];
+        alert(`Ваше устройство совместимо с версией: ${arch}. Скачивание началось.`);
+        window.location.href = apkUrl;
+      } else {
+        alert('К сожалению, мы не можем определить совместимую версию APK для вашего устройства.');
+      }
+    }
+
+    function getDeviceArchitecture() {
+      // Определяем архитектуру устройства (упрощённая логика)
+      const userAgent = navigator.userAgent || '';
+      if (userAgent.includes('arm64') || userAgent.includes('aarch64')) {
+        return 'arm64';
+      } else if (userAgent.includes('armeabi')) {
+        return 'armeabi';
+      } else if (userAgent.includes('x86_64')) {
+        return 'x86_64';
+      } else if (userAgent.includes('x86')) {
+        return 'x86';
+      }
+      return null; // Не удалось определить
+    }
+  </script>
+</body>
 </html>
